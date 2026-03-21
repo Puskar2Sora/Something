@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import '../styles/Hero.css';
 import StarField from '../components/Starfield';
+import Spiderhang from '../components/Spiderhang';
 
 const FLOATING_TAGS = [
   { text: 'DANCE', x: '72%', y: '20%', rotate: '-6deg', color: '#FFE600' },
@@ -49,6 +50,8 @@ const Hero = () => {
 
   return (
     <section id="home" className="comic-hero">
+      <Spiderhang />
+
         <StarField />
       {/* Spider-Man cursor — desktop only, zero-lag via RAF */}
       <div ref={cursorRef} className="spider-cursor">🕷️</div>

@@ -20,7 +20,7 @@ const NAV = [
   { label: 'Events',  href: '#events'  },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Venue',   href: '#venue'   },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Contact', href: '#contact' },   
 ];
 
 const STATS = [
@@ -170,81 +170,9 @@ export default function Footer() {
               Step into any universe.<br />Wear any face. Become the legend.
             </p>
           </div>
-
-          {/* Right date card */}
-          <div className="ft-mini-card">
-            <div className="ft-mc-corner ft-mc-tl" />
-            <div className="ft-mc-corner ft-mc-tr" />
-            <div className="ft-mc-corner ft-mc-bl" />
-            <div className="ft-mc-corner ft-mc-br" />
-            <div className="ft-mc-scan" />
-            <div className="ft-mc-head">📅 EVENT INFO</div>
-            <div className="ft-mc-body">
-              <div className="ft-mc-date">APR' 28</div>
-              <div className="ft-mc-year">2026</div>
-              <div className="ft-mc-sep" />
-              <div className="ft-mc-row"><span>📍</span> Kolkata</div>
-              <div className="ft-mc-row"><span>🕐</span> 12:00 PM+</div>
-              <div className="ft-mc-status">
-                <span className="ft-mc-dot" />
-                ACCESS_GRANTED
-              </div>
-            </div>
-          </div>
         </div>
-
-        {/* ════════════════════════════
-            STATS
-        ════════════════════════════ */}
-        <div className="ft-stats">
-          {STATS.map((s, i) => (
-            <div key={i} className="ft-stat" style={{ '--sc': s.color, '--si': i }}>
-              <div className="ft-stat-bg" />
-              <span className="ft-stat-num">{s.num}</span>
-              <span className="ft-stat-lbl">{s.label}</span>
-              <div className="ft-stat-bar" />
-            </div>
-          ))}
-        </div>
-
-        {/* ════════════════════════════
-            DIVIDER
-        ════════════════════════════ */}
-        <div className="ft-divider">
-          <div className="ft-div-l" />
-          <div className="ft-div-badge">
-            <span className="ft-div-badge-txt">BEYOND THE VEIL</span>
-          </div>
-          <div className="ft-div-r" />
-        </div>
-
-        {/* ════════════════════════════
-            CHARACTER PARADE
-        ════════════════════════════ */}
-        <div className="ft-chars-section">
-          <p className="ft-chars-label">STEP INTO ANY UNIVERSE · WEAR ANY FACE</p>
-          <div className="ft-chars-row">
-            {CHARACTERS.map((c, i) => (
-              <div
-                key={i}
-                className="ft-char"
-                style={{ '--ci': i }}
-                onMouseEnter={() => setHovered(i)}
-                onMouseLeave={() => setHovered(null)}
-              >
-                <div className={`ft-char-halo ${hovered === i ? 'on' : ''}`} />
-                <span className="ft-char-emoji">{c.emoji}</span>
-                {hovered === i && (
-                  <div className="ft-char-tip">
-                    <span className="ft-tip-name">{c.name}</span>
-                    <span className="ft-tip-uni">{c.universe}</span>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-
+        
+      
         {/* ════════════════════════════
             INFO GRID
         ════════════════════════════ */}
@@ -314,14 +242,16 @@ export default function Footer() {
           <div className="ft-credit-row">
             <p className="ft-made">
               Made <span className="ft-heart"></span> by{' '}
-              <span className="ft-author">:) PUSKAR NATH</span> &amp; (:Team LITHIUM:)
+              <span className="ft-author"> PUSKAR NATH</span>  &amp; Team LITHIUM
             </p>
 
-            <div className="ft-terminal">
-              <span className="ft-term-dot" />
-              <span className="ft-term-txt">ACCESS_GRANTED</span>
-              <span className="ft-term-cur">_</span>
-            </div>
+            <div className="ft-divider">
+          <div className="ft-div-l" />
+          <div className="ft-div-badge">
+            <span className="ft-div-badge-txt">BEYOND THE VEIL</span>
+          </div>
+          <div className="ft-div-r" />
+        </div>
 
             <p className="ft-copy">
               © 2026 Techno Bengal Institute of Technology

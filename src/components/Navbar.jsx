@@ -14,7 +14,6 @@ const navLinks = [
   { name: 'About',   href: '#about' },
   { name: 'Events',  href: '#events' },
   { name: 'Gallery', href: '#gallery' },
-  { name: 'Contact', href: '#contact' },
 ];
 
 const NavIcon = ({ path }) => (
@@ -131,8 +130,7 @@ const Navbar = () => {
         <div className="drawer-divider" />
         <div className="drawer-foot">
           <span>© 2026 Techno Bengal Institute of Technology</span>
-          <div className="drawer-foot-chars">🕷️ 🏴‍☠️ 🧙 🦸</div>
-        </div>
+                  </div>
 
         {/* Decorative glow orbs inside drawer */}
         <div className="drawer-orb drawer-orb-1" />

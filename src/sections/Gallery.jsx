@@ -1,258 +1,220 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 import '../styles/Gallery.css';
 
 const PHOTOS = [
-  { src: '/assets/pic/img1.jpg', caption: 'Opening Ceremony',  year: '2K25' },
-  { src: '/assets/pic/img2.jpg', caption: 'Dance Performance',  year: '2K25' },
-  { src: '/assets/pic/img3.jpg', caption: 'Band Night',         year: '2K25' },
-  { src: '/assets/pic/img4.jpg', caption: 'Cosplay Winners',    year: '2K25' },
-  { src: '/assets/pic/img5.jpg', caption: 'Drama Skit',         year: '2K25' },
-  { src: '/assets/pic/prashmita.jpg', caption: 'DJ Night',           year: '2K25' },
- ];
+  { src: '/pic/img1.png',  caption: 'Opening Ceremony',  year: '2K25', tag: 'Grand Opening', color: '#E8192C', bg: '#e6bf11' },
+  { src: '/assets/pic/img2.png',  caption: 'Dance Performance', year: '2K25', tag: 'On Stage',       color: '#fff',    bg: '#E8192C' },
+  { src: '/assets/pic/img3.png',  caption: 'Band Night',        year: '2K25', tag: 'Live Music',     color: '#0a0a0a', bg: '#00D4FF' },
+  { src: '/assets/pic/img4.png',  caption: 'Cosplay Showdown',  year: '2K25', tag: 'Competition',    color: '#fff',    bg: '#FF2D87' },
+  { src: '/assets/pic/img5.png',  caption: 'Drama Skit',        year: '2K25', tag: 'Theatre',        color: '#0a0a0a', bg: '#00FF88' },
+  { src: '/assets/pic/img6.png',  caption: 'DJ Night',          year: '2K25', tag: 'Night Events',   color: '#FFE600', bg: '#0a0a0a' },
+];
 
-const Gallery = () => {
-  const trackRef   = useRef(null);
-  const [lightbox, setLightbox]   = useState(null);
-  const [isDragging, setDragging] = useState(false);
-  const [progress, setProgress]   = useState(0); // 0–100 for progress bar
+export default function Gallery() {
+  const [active, setActive]   = useState(0);
+  const [prev,   setPrev]     = useState(null);  // for exit direction
+  const [dir,    setDir]      = useState(1);     // 1=right, -1=left
+  const dragRef  = useRef({ down: false, startX: 0 });
+  const trackRef = useRef(null);
 
-  // ── Drag / touch state (refs = no re-render lag)
-  const drag = useRef({
-    active: false,
-    startX: 0,
-    scrollLeft: 0,
-    velX: 0,
-    lastX: 0,
-    lastT: 0,
-    raf: null,
-  });
+  const total = PHOTOS.length;
 
-  // Update progress bar
-  const updateProgress = useCallback(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    const max = el.scrollWidth - el.clientWidth;
-    setProgress(max > 0 ? (el.scrollLeft / max) * 100 : 0);
-  }, []);
+  const goTo = useCallback((idx) => {
+    if (idx === active) return;
+    setDir(idx > active ? 1 : -1);
+    setPrev(active);
+    setActive(idx);
+  }, [active]);
 
-  // Momentum scroll after release
-  const momentum = useCallback(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    const d = drag.current;
-    if (Math.abs(d.velX) < 0.5) { updateProgress(); return; }
-    d.velX *= 0.92;
-    el.scrollLeft += d.velX;
-    updateProgress();
-    d.raf = requestAnimationFrame(momentum);
-  }, [updateProgress]);
+  const next = useCallback(() => goTo((active + 1) % total), [active, goTo, total]);
+  const prev_ = useCallback(() => goTo((active - 1 + total) % total), [active, goTo, total]);
 
-  const stopMomentum = () => {
-    if (drag.current.raf) {
-      cancelAnimationFrame(drag.current.raf);
-      drag.current.raf = null;
-    }
-  };
-
-  // ── MOUSE events
-  const onMouseDown = (e) => {
-    stopMomentum();
-    const el = trackRef.current;
-    drag.current = { ...drag.current, active: true, startX: e.pageX - el.offsetLeft, scrollLeft: el.scrollLeft, velX: 0, lastX: e.pageX, lastT: Date.now() };
-    setDragging(true);
-  };
-
-  const onMouseMove = (e) => {
-    const d = drag.current;
-    if (!d.active) return;
-    e.preventDefault();
-    const el = trackRef.current;
-    const x = e.pageX - el.offsetLeft;
-    const walk = (x - d.startX) * 1.2;
-    const now = Date.now();
-    d.velX = (e.pageX - d.lastX) / Math.max(1, now - d.lastT) * 16;
-    d.lastX = e.pageX;
-    d.lastT = now;
-    el.scrollLeft = d.scrollLeft - walk;
-    updateProgress();
-  };
-
-  const onMouseUp = () => {
-    drag.current.active = false;
-    setDragging(false);
-    drag.current.raf = requestAnimationFrame(momentum);
-  };
-
-  // ── TOUCH events
-  const onTouchStart = (e) => {
-    stopMomentum();
-    const el = trackRef.current;
-    const t = e.touches[0];
-    drag.current = { ...drag.current, active: true, startX: t.pageX - el.offsetLeft, scrollLeft: el.scrollLeft, velX: 0, lastX: t.pageX, lastT: Date.now() };
-  };
-
-  const onTouchMove = (e) => {
-    const d = drag.current;
-    if (!d.active) return;
-    const el = trackRef.current;
-    const t = e.touches[0];
-    const x = t.pageX - el.offsetLeft;
-    const walk = (x - d.startX) * 1.1;
-    const now = Date.now();
-    d.velX = (t.pageX - d.lastX) / Math.max(1, now - d.lastT) * 16;
-    d.lastX = t.pageX;
-    d.lastT = now;
-    el.scrollLeft = d.scrollLeft - walk;
-    updateProgress();
-  };
-
-  const onTouchEnd = () => {
-    drag.current.active = false;
-    drag.current.raf = requestAnimationFrame(momentum);
-  };
-
-  // scroll via button arrows
-  const scrollBy = (dir) => {
-    stopMomentum();
-    const el = trackRef.current;
-    const amount = el.clientWidth * 0.75 * dir;
-    el.scrollBy({ left: amount, behavior: 'smooth' });
-    setTimeout(updateProgress, 400);
-  };
-
+  /* Keyboard */
   useEffect(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    el.addEventListener('scroll', updateProgress, { passive: true });
-    return () => el.removeEventListener('scroll', updateProgress);
-  }, [updateProgress]);
-
-  // Lightbox keyboard nav
-  useEffect(() => {
-    if (lightbox === null) return;
     const onKey = (e) => {
-      if (e.key === 'ArrowRight') setLightbox(l => (l + 1) % PHOTOS.length);
-      if (e.key === 'ArrowLeft')  setLightbox(l => (l - 1 + PHOTOS.length) % PHOTOS.length);
-      if (e.key === 'Escape')     setLightbox(null);
+      if (e.key === 'ArrowRight') next();
+      if (e.key === 'ArrowLeft')  prev_();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [lightbox]);
+  }, [next, prev_]);
+
+  /* Drag / touch */
+  const onPointerDown = (e) => {
+    dragRef.current = { down: true, startX: e.clientX ?? e.touches?.[0]?.clientX ?? 0 };
+  };
+  const onPointerUp = (e) => {
+    if (!dragRef.current.down) return;
+    dragRef.current.down = false;
+    const endX = e.clientX ?? e.changedTouches?.[0]?.clientX ?? 0;
+    const dx = endX - dragRef.current.startX;
+    if (Math.abs(dx) > 50) {
+      if (dx < 0) next();
+      else prev_();
+    }
+  };
+
+  /* Compute positions for visible cards */
+  const getCardStyle = (i) => {
+    const diff = i - active;
+    const absDiff = Math.abs(diff);
+
+    if (absDiff > 3) return { display: 'none' };
+
+    // Z and visual priority
+    const z    = 10 - absDiff;
+    const scale = absDiff === 0 ? 1 : absDiff === 1 ? 0.82 : absDiff === 2 ? 0.67 : 0.54;
+    const tx   = diff * 220;
+    const rotate = diff * -6;
+    const opacity = absDiff > 2 ? 0.35 : 1;
+
+    return {
+      transform: `translateX(${tx}px) scale(${scale}) rotate(${rotate}deg)`,
+      zIndex: z,
+      opacity,
+      transition: 'transform 0.5s cubic-bezier(0.34,1.4,0.64,1), opacity 0.4s ease',
+      pointerEvents: absDiff === 0 ? 'all' : 'none',
+    };
+  };
+
+  const photo = PHOTOS[active];
 
   return (
-    <section id="gallery" className="gal-section">
-      <div className="gal-dot-bg" />
+    <section id="gallery" className="gl-section">
 
-      <div className="gal-header">
-        <span className="gal-eyebrow">✦ Previous Year ✦</span>
-        <div className="gal-title-wrap">
-          <h2 className="gal-title">MEMORIES</h2>
-          <span className="gal-classified">CAPTURED MOMENTS</span>
+      {/* Dot texture */}
+      <div className="gl-dots" />
+
+      {/* Diagonal accent stripe */}
+      <div className="gl-stripe" />
+
+      {/* ── HEADER ── */}
+      <div className="gl-header">
+        <div className="gl-header-left">
+          <span className="gl-eyebrow">✦ Previous Year ✦</span>
+          <h2 className="gl-title">MEMORIES</h2>
+          <div className="gl-title-badge">CAPTURED MOMENTS</div>
         </div>
-        <p className="gal-sub">Relive the magic of LITHIUM 2K25</p>
+        <div className="gl-header-right">
+          <div className="gl-counter">
+            <span className="gl-cnum">{String(active + 1).padStart(2,'0')}</span>
+            <span className="gl-csep">/</span>
+            <span className="gl-ctot">{String(total).padStart(2,'0')}</span>
+          </div>
+          <p className="gl-sub">Relive the magic of LITHIUM 2K25</p>
+        </div>
       </div>
 
-      {/* Film strip + scroll track */}
-      <div className="gal-filmstrip-wrap">
+      {/* ── CAROUSEL STAGE ── */}
+      <div
+        className="gl-stage"
+        ref={trackRef}
+        onMouseDown={onPointerDown}
+        onMouseUp={onPointerUp}
+        onTouchStart={onPointerDown}
+        onTouchEnd={onPointerUp}
+      >
+        {/* Fan of cards */}
+        <div className="gl-fan">
+          {PHOTOS.map((p, i) => {
+            const style = getCardStyle(i);
+            if (style.display === 'none') return null;
+            const isActive = i === active;
+            return (
+              <div
+                key={i}
+                className={`gl-card ${isActive ? 'gl-card-active' : ''}`}
+                style={style}
+                onClick={() => !isActive && goTo(i)}
+              >
+                {/* Polaroid frame */}
+                <div className="gl-polaroid" style={{ background: p.bg }}>
 
-        {/* Top holes */}
-        <div className="gal-film-holes top">
-          {Array.from({ length: 20 }).map((_, i) => <span key={i} className="film-hole" />)}
+                  {/* Top strip tag */}
+                  <div className="gl-card-tag" style={{ color: p.color }}>
+                    {p.tag}
+                  </div>
+
+                  {/* Photo area */}
+                  <div className="gl-photo-area">
+                    {/* Placeholder — replace with real <img> */}
+                    <div className="gl-placeholder">
+                      <span className="gl-ph-ico">📸</span>
+                      <span className="gl-ph-num" style={{ color: p.bg === '#0a0a0a' ? '#FFE600' : p.bg }}>
+                        {String(i + 1).padStart(2,'0')}
+                      </span>
+                    </div>
+                    {/* <img src={p.src} alt={p.caption} draggable="false" /> */}
+
+                    {/* Active card overlay glint */}
+                    {isActive && <div className="gl-glint" />}
+                  </div>
+
+                  {/* Caption strip */}
+                  <div className="gl-caption-strip">
+                    <span className="gl-caption" style={{ color: p.color }}>
+                      {p.caption}
+                    </span>
+                    <span className="gl-year" style={{ color: p.color, opacity: 0.55 }}>
+                      LITHIUM {p.year}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Shadow under card */}
+                <div className="gl-card-shadow" />
+              </div>
+            );
+          })}
         </div>
 
-        {/* Scrollable track */}
-        <div
-          ref={trackRef}
-          className={`gal-track ${isDragging ? 'dragging' : ''}`}
-          onMouseDown={onMouseDown}
-          onMouseMove={onMouseMove}
-          onMouseUp={onMouseUp}
-          onMouseLeave={onMouseUp}
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-        >
-          {PHOTOS.map((photo, i) => (
-            <div
+        {/* Side click zones */}
+        <button className="gl-side-btn gl-side-l" onClick={prev_} aria-label="Previous">
+          <span>‹</span>
+        </button>
+        <button className="gl-side-btn gl-side-r" onClick={next} aria-label="Next">
+          <span>›</span>
+        </button>
+      </div>
+
+      {/* ── BOTTOM INFO + CONTROLS ── */}
+      <div className="gl-bottom">
+
+        {/* Active card info */}
+        <div className="gl-info">
+          <div
+            className="gl-info-color"
+            style={{ background: photo.bg }}
+          />
+          <div className="gl-info-text">
+            <span className="gl-info-caption">{photo.caption}</span>
+            <span className="gl-info-tag">{photo.tag}</span>
+          </div>
+        </div>
+
+        {/* Dot nav */}
+        <div className="gl-nav-dots">
+          {PHOTOS.map((_, i) => (
+            <button
               key={i}
-              className="gal-card"
-              onClick={() => !drag.current.active && setLightbox(i)}
-              style={{ '--i': i }}
-            >
-              {/* Placeholder — replace with real <img> */}
-              <div className="gal-card-img">
-                <span className="gal-card-ico">📸</span>
-                <span className="gal-card-num">0{i + 1}</span>
-              </div>
-              {/* Uncomment for real images: */}
-              {/* <img src={photo.src} alt={photo.caption} draggable="false" /> */}
-
-              <div className="gal-card-info">
-                <span className="gal-card-caption">{photo.caption}</span>
-                <span className="gal-card-year">{photo.year}</span>
-              </div>
-
-              {/* Comic corner */}
-              <div className="gal-card-corner" />
-            </div>
+              className={`gl-dot ${i === active ? 'gl-dot-active' : ''}`}
+              style={i === active ? { background: photo.bg, borderColor: '#0a0a0a' } : {}}
+              onClick={() => goTo(i)}
+              aria-label={`Go to ${i + 1}`}
+            />
           ))}
         </div>
 
-        {/* Bottom holes */}
-        <div className="gal-film-holes bottom">
-          {Array.from({ length: 20 }).map((_, i) => <span key={i} className="film-hole" />)}
+        {/* Swipe hint */}
+        <div className="gl-hint">
+          <span className="gl-hint-arrow">←</span>
+          SWIPE
+          <span className="gl-hint-arrow">→</span>
         </div>
       </div>
 
-      {/* Controls row */}
-      <div className="gal-controls">
-        {/* Progress bar */}
-        <div className="gal-progress-wrap">
-          <div className="gal-progress-track">
-            <div className="gal-progress-fill" style={{ width: `${progress}%` }} />
-          </div>
-        </div>
-
-        {/* Hint + arrows */}
-        <div className="gal-hints">
-          <span className="gal-hint-text">← SWIPE OR DRAG →</span>
-          <div className="gal-arrows">
-            <button className="gal-arrow" onClick={() => scrollBy(-1)} aria-label="Previous">‹</button>
-            <button className="gal-arrow" onClick={() => scrollBy(1)}  aria-label="Next">›</button>
-          </div>
-        </div>
-      </div>
-
-      {/* Lightbox */}
-      {lightbox !== null && (
-        <div className="gal-lightbox" onClick={() => setLightbox(null)}>
-          <button className="lb-close" onClick={() => setLightbox(null)}>✕</button>
-
-          <div className="lb-card" onClick={e => e.stopPropagation()}>
-            <div className="lb-img-wrap">
-              <div className="lb-placeholder">
-                <span>📸</span>
-                <span>{PHOTOS[lightbox].caption}</span>
-              </div>
-              {/* <img src={PHOTOS[lightbox].src} alt={PHOTOS[lightbox].caption} /> */}
-            </div>
-            <div className="lb-info">
-              <span className="lb-caption">{PHOTOS[lightbox].caption}</span>
-              <div className="lb-meta">
-                <span className="lb-tag">{PHOTOS[lightbox].year}</span>
-                <span className="lb-counter">{lightbox + 1} / {PHOTOS.length}</span>
-              </div>
-            </div>
-          </div>
-
-          <button className="lb-nav lb-prev"
-            onClick={e => { e.stopPropagation(); setLightbox(l => (l - 1 + PHOTOS.length) % PHOTOS.length); }}>‹</button>
-          <button className="lb-nav lb-next"
-            onClick={e => { e.stopPropagation(); setLightbox(l => (l + 1) % PHOTOS.length); }}>›</button>
-        </div>
-      )}
+      {/* Floating spider */}
+      <div className="gl-spider">🕷️</div>
     </section>
   );
-};
-
-export default Gallery;
+}

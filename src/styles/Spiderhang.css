@@ -1,0 +1,193 @@
+/* ================================================
+   SPIDER HANG — Pendulum oscillating Spider-Man
+   ================================================ */
+
+/* ── ROOT — fixed to top-right, just below navbar ── */
+.sh-root {
+  position: absolute;        /* sits inside hero section */
+  top: 0;
+  right: 60px;               /* distance from right edge — adjust to taste */
+  z-index: 20;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* ── ANCHOR POINT ── */
+.sh-anchor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* ── WEB FAN (decorative threads at top) ── */
+.sh-web-fan {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 20px;
+  pointer-events: none;
+}
+
+.sh-thread {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 20px;
+  transform-origin: top center;
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.7) 0%,
+    rgba(255,255,255,0.2) 100%
+  );
+}
+.sh-t1 { transform: rotate(-30deg); }
+.sh-t2 { transform: rotate(0deg); }
+.sh-t3 { transform: rotate(30deg); }
+
+/* ── MAIN VERTICAL WEB THREAD ── */
+.sh-web-line {
+  width: 1.5px;
+  height: 90px;              /* length of thread above image */
+  background: linear-gradient(
+    180deg,
+    rgba(255,255,255,0.0) 0%,
+    rgba(255,255,255,0.85) 15%,
+    rgba(255,255,255,0.75) 80%,
+    rgba(255,255,255,0.4) 100%
+  );
+  box-shadow:
+    0 0 3px rgba(255,255,255,0.5),
+    0 0 8px rgba(200,200,255,0.2);
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+/* ── PENDULUM wrapper — this is what swings ── */
+.sh-pendulum {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Pivot at the very top of this element */
+  transform-origin: top center;
+
+  /* Pendulum swing animation */
+  animation: pendulumSwing 3.2s cubic-bezier(0.37, 0, 0.63, 1) infinite alternate;
+
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes pendulumSwing {
+  0%   { transform: rotate(-18deg); }
+  100% { transform: rotate(18deg);  }
+}
+
+/* Slight speed variation for realism */
+.sh-pendulum {
+  animation-timing-function: ease-in-out;
+}
+
+/* ── WEB KNOT ── */
+.sh-knot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.85);
+  box-shadow:
+    0 0 4px rgba(255,255,255,0.8),
+    0 0 10px rgba(200,200,255,0.4);
+  margin-bottom: 2px;
+  flex-shrink: 0;
+}
+
+/* ── IMAGE WRAPPER ── */
+.sh-img-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── SPIDER-MAN IMAGE ── */
+.sh-img {
+  width: 160px;              /* size — adjust to taste */
+  height: auto;
+  display: block;
+  object-fit: contain;
+
+  /* Drop shadow matching yellow outline in image */
+  filter:
+    drop-shadow(0 0 12px rgba(255,200,0,0.55))
+    drop-shadow(0 0 28px rgba(255,150,0,0.25))
+    drop-shadow(4px 8px 16px rgba(0,0,0,0.7));
+
+  /* Very slight scale breath while swinging */
+  animation: imgBreath 3.2s ease-in-out infinite alternate;
+}
+
+@keyframes imgBreath {
+  0%   { filter:
+    drop-shadow(0 0 12px rgba(255,200,0,0.55))
+    drop-shadow(0 0 28px rgba(255,150,0,0.25))
+    drop-shadow(4px 8px 16px rgba(0,0,0,0.7));
+  }
+  100% { filter:
+    drop-shadow(0 0 20px rgba(255,200,0,0.85))
+    drop-shadow(0 0 45px rgba(255,150,0,0.4))
+    drop-shadow(4px 8px 20px rgba(0,0,0,0.7));
+  }
+}
+
+/* ── GLOW BLOB below image ── */
+.sh-glow {
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 20px;
+  background: radial-gradient(
+    ellipse,
+    rgba(255,180,0,0.25) 0%,
+    transparent 70%
+  );
+  filter: blur(6px);
+  animation: glowPulse 3.2s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes glowPulse {
+  0%   { opacity: 0.5; transform: translateX(-50%) scaleX(0.8); }
+  100% { opacity: 1;   transform: translateX(-50%) scaleX(1.2); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .sh-root {
+    right: 20px;
+  }
+  .sh-img {
+    width: 120px;
+  }
+  .sh-web-line {
+    height: 70px;
+  }
+}
+
+@media (max-width: 600px) {
+  .sh-root {
+    right: 10px;
+  }
+  .sh-img {
+    width: 90px;
+  }
+  .sh-web-line {
+    height: 50px;
+  }
+}
