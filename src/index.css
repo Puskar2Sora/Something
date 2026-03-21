@@ -1,0 +1,12 @@
+:root {
+  --gold-primary: #ffe7c1;
+  --gold-glow: rgba(255, 214, 140, 0.45);
+  --bg-deep: #0a0a0a;
+  --font-ancient: "Cinzel", serif;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--gold-primary);
+  font-family: 'Poppins', sans-serif;
+}

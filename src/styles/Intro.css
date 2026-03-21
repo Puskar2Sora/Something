@@ -1,0 +1,528 @@
+/* ================================================
+   INTRO PRELOADER — Heavy Cinematic Comic Theme
+   ================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@700;900&display=swap');
+
+/* ── BASE ── */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  gap: 0;
+}
+
+/* ── CANVAS ── */
+.intro-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ── BACKGROUNDS ── */
+.intro-bg-base {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 0%,   #0d002e 0%, transparent 60%),
+    radial-gradient(ellipse 100% 60% at 50% 100%, #1a000a 0%, transparent 60%),
+    #04001a;
+  z-index: 0;
+}
+
+.intro-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image:
+    linear-gradient(rgba(255,230,0,0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,230,0,0.035) 1px, transparent 1px);
+  background-size: 56px 56px;
+  animation: gridBreath 4s ease-in-out infinite;
+}
+@keyframes gridBreath {
+  0%,100% { opacity: 0.4; transform: scale(1); }
+  50%      { opacity: 0.9; transform: scale(1.01); }
+}
+
+.intro-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: radial-gradient(ellipse 80% 80% at 50% 50%, transparent 40%, rgba(2,0,12,0.75) 100%);
+  pointer-events: none;
+}
+
+/* ── ORB BLOBS ── */
+.intro-orb {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 1;
+  pointer-events: none;
+  filter: blur(70px);
+}
+
+.orb-purple {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(180,0,255,0.18) 0%, transparent 70%);
+  top: -200px; right: -150px;
+  animation: orbDrift 7s ease-in-out infinite alternate;
+}
+.orb-orange {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(255,90,0,0.14) 0%, transparent 70%);
+  bottom: -160px; left: -120px;
+  animation: orbDrift 9s ease-in-out infinite alternate-reverse;
+}
+.orb-cyan {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, rgba(0,210,255,0.12) 0%, transparent 70%);
+  top: 40%; left: 35%;
+  animation: orbDrift 5s ease-in-out infinite alternate;
+}
+@keyframes orbDrift {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(25px,18px) scale(1.12); }
+}
+
+/* ── FLOATING BG CHARS ── */
+.intro-bg-chars { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+
+.bg-char {
+  position: absolute;
+  font-size: clamp(28px, 5vw, 48px);
+  opacity: 0;
+  filter: drop-shadow(0 0 10px rgba(255,230,0,0.25));
+  animation: charAppear 1s ease forwards, charFloat 5s ease-in-out infinite alternate;
+}
+
+.bg-char-0 { top: 8%;  left: 4%;  animation-delay: 0.6s, 0s;   }
+.bg-char-1 { top: 14%; right: 5%; animation-delay: 0.8s, 0.5s; }
+.bg-char-2 { top: 55%; left: 3%;  animation-delay: 1.0s, 1.0s; }
+.bg-char-3 { bottom: 12%; right: 4%; animation-delay: 1.2s, 1.5s; }
+.bg-char-4 { top: 38%; left: 1.5%; animation-delay: 1.4s, 2.0s; }
+.bg-char-5 { bottom: 28%; right: 2%; animation-delay: 1.6s, 2.5s; }
+.bg-char-6 { top: 72%; left: 6%;  animation-delay: 1.8s, 3.0s; }
+.bg-char-7 { top: 25%; right: 2%; animation-delay: 2.0s, 3.5s; }
+
+@keyframes charAppear {
+  to { opacity: 0.12; }
+}
+@keyframes charFloat {
+  from { transform: translateY(0) rotate(-10deg) scale(1); }
+  to   { transform: translateY(-22px) rotate(10deg) scale(1.05); }
+}
+
+/* ── CONTENT WRAPPER ── */
+.intro-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.01s, transform 0.01s;
+}
+.intro-content.content-visible {
+  animation: contentReveal 0.8s cubic-bezier(0.34,1.56,0.64,1) forwards;
+}
+@keyframes contentReveal {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── EYEBROW ── */
+.intro-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  animation: fadeSlideDown 0.6s ease 0.3s both;
+}
+@keyframes fadeSlideDown {
+  from { opacity: 0; transform: translateY(-14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.eyebrow-line {
+  width: 60px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,230,0,0.5));
+}
+.eyebrow-line:last-child {
+  background: linear-gradient(270deg, transparent, rgba(255,230,0,0.5));
+}
+.eyebrow-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(8px, 1.4vw, 11px);
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255,230,0,0.55);
+  white-space: nowrap;
+}
+
+/* ── LOGO BLOCK ── */
+.intro-logo {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+/* Glowing L with rings */
+.logo-L-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: lDrop 0.8s cubic-bezier(0.34,1.7,0.64,1) 0.1s both;
+}
+@keyframes lDrop {
+  from { opacity: 0; transform: scale(0.3) rotate(-20deg); }
+  60%  { transform: scale(1.12) rotate(4deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
+}
+
+.logo-L {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(90px, 16vw, 150px);
+  line-height: 1;
+  color: #FFE600;
+  position: relative;
+  z-index: 2;
+  -webkit-text-stroke: 2px rgba(0,0,0,0.5);
+  text-shadow:
+    0 0 20px rgba(255,230,0,1),
+    0 0 50px rgba(255,230,0,0.7),
+    0 0 100px rgba(255,230,0,0.3),
+    5px 5px 0 rgba(0,0,0,0.9);
+  animation: lGlow 2.5s ease-in-out infinite;
+}
+@keyframes lGlow {
+  0%,100% {
+    text-shadow:
+      0 0 20px rgba(255,230,0,1),
+      0 0 50px rgba(255,230,0,0.7),
+      5px 5px 0 rgba(0,0,0,0.9);
+  }
+  50% {
+    text-shadow:
+      0 0 30px rgba(255,230,0,1),
+      0 0 80px rgba(255,230,0,0.85),
+      0 0 130px rgba(255,230,0,0.4),
+      0 0 200px rgba(255,200,0,0.15),
+      5px 5px 0 rgba(0,0,0,0.9);
+  }
+}
+
+/* Spinning rings around L */
+.logo-L-ring {
+  position: absolute;
+  inset: -12px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,230,0,0.25);
+  animation: ringSpinCW 4s linear infinite;
+  border-top-color: rgba(255,230,0,0.8);
+  border-right-color: rgba(232,25,44,0.5);
+}
+.ring-2 {
+  inset: -22px;
+  border-color: transparent;
+  border-bottom-color: rgba(0,212,255,0.6);
+  border-left-color: rgba(255,45,135,0.4);
+  animation: ringSpinCCW 3s linear infinite;
+}
+@keyframes ringSpinCW  { to { transform: rotate(360deg); } }
+@keyframes ringSpinCCW { to { transform: rotate(-360deg); } }
+
+/* LITHIUM text with per-letter drop */
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.logo-lithium {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(52px, 10vw, 100px);
+  letter-spacing: 0.1em;
+  line-height: 1;
+  color: #fff;
+  text-shadow:
+    4px 4px 0 rgba(0,0,0,0.9),
+    0 0 20px rgba(255,255,255,0.1);
+  display: flex;
+  align-items: center;
+}
+
+.letter {
+  display: inline-block;
+  opacity: 0;
+  animation: letterPop 0.5s cubic-bezier(0.34,1.8,0.64,1) forwards;
+  animation-delay: calc(0.3s + var(--li) * 0.07s);
+}
+@keyframes letterPop {
+  0%   { opacity: 0; transform: translateY(-30px) scale(0.5) rotate(-15deg); }
+  70%  { transform: translateY(4px) scale(1.1) rotate(2deg); }
+  100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+.logo-year {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(22px, 4vw, 38px);
+  letter-spacing: 0.35em;
+  color: #E8192C;
+  text-shadow:
+    0 0 12px rgba(232,25,44,0.7),
+    0 0 30px rgba(232,25,44,0.3),
+    2px 2px 0 rgba(0,0,0,0.9);
+  display: block;
+  animation: fadeSlideUp 0.6s ease 0.85s both;
+}
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── THEME LINE ── */
+.intro-theme {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  animation: fadeSlideUp 0.5s ease 1s both;
+}
+.theme-dash {
+  font-family: 'Bangers', cursive;
+  font-size: 20px;
+  color: rgba(255,255,255,0.2);
+}
+.theme-text {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(20px, 4vw, 36px);
+  letter-spacing: 0.25em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255,230,0,0.5);
+  text-stroke: 1.5px rgba(255,230,0,0.5);
+  text-shadow: 0 0 20px rgba(255,230,0,0.2);
+}
+
+/* ── LOADER ── */
+.intro-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: min(500px, 84vw);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+.intro-loader.loader-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Counter */
+.loader-counter {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.counter-number {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(64px, 13vw, 110px);
+  color: #FFE600;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  text-shadow:
+    0 0 24px rgba(255,230,0,0.8),
+    0 0 60px rgba(255,230,0,0.35),
+    4px 4px 0 rgba(0,0,0,0.9);
+  min-width: 2.4ch;
+  text-align: right;
+  tabular-nums: 'tnum';
+  font-variant-numeric: tabular-nums;
+}
+.counter-pct {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(28px, 5vw, 44px);
+  color: rgba(255,230,0,0.45);
+  letter-spacing: 0.05em;
+}
+
+/* Progress bar */
+.loader-bar-outer {
+  width: 100%;
+  position: relative;
+  padding: 0 4px;
+}
+
+/* Comic corner notches */
+.bar-notch {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 8px;
+  height: 20px;
+  background: rgba(255,230,0,0.4);
+  border: 1px solid rgba(255,230,0,0.6);
+}
+.notch-l { left: -4px; }
+.notch-r { right: -4px; }
+
+.loader-bar-track {
+  width: 100%;
+  height: 8px;
+  background: rgba(255,255,255,0.07);
+  border: 1.5px solid rgba(255,255,255,0.12);
+  position: relative;
+  overflow: hidden;
+}
+
+.loader-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #FFE600 0%, #E8192C 45%, #FF2D87 70%, #00D4FF 100%);
+  transition: width 0.4s cubic-bezier(0.4,0,0.2,1);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animated shine on fill */
+.bar-shine {
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.55), transparent);
+  animation: shineSweep 1.6s ease-in-out infinite;
+}
+@keyframes shineSweep {
+  0%   { left: -60%; }
+  100% { left: 110%; }
+}
+
+/* Tick marks */
+.bar-tick {
+  position: absolute;
+  top: -3px;
+  transform: translateX(-50%);
+  width: 1.5px;
+  height: calc(100% + 6px);
+  background: rgba(255,255,255,0.18);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+.bar-tick.tick-on {
+  background: rgba(255,255,255,0.6);
+  box-shadow: 0 0 6px rgba(255,255,255,0.4);
+}
+
+/* Status */
+.loader-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #FFE600;
+  box-shadow: 0 0 8px rgba(255,230,0,0.8);
+  animation: dotBlink 1s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.status-dot.dot-green {
+  background: #00FF88;
+  box-shadow: 0 0 10px rgba(0,255,136,0.9);
+  animation: none;
+}
+@keyframes dotBlink {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.3; transform: scale(0.7); }
+}
+.status-text {
+  font-family: 'Nunito', sans-serif;
+  font-size: clamp(9px, 1.6vw, 12px);
+  font-weight: 900;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  transition: color 0.4s ease;
+}
+
+/* ═══════════════════════════════════════
+   SLAM EXIT — two panels meet at center
+   then split apart revealing the site
+═══════════════════════════════════════ */
+
+.slam-panel {
+  position: fixed;
+  left: 0;
+  right: 0;
+  height: 55%; /* slightly over 50% so they overlap at center */
+  z-index: 99998;
+  pointer-events: none;
+}
+
+.slam-top {
+  top: 0;
+  background: #FFE600;
+  transform: translateY(-101%);
+}
+.slam-bot {
+  bottom: 0;
+  background: #FFE600;
+  transform: translateY(101%);
+}
+
+/* Step 1: panels SLAM TO CENTER */
+.slam-top.slam-active {
+  animation: slamTop 1.1s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+.slam-bot.slam-active {
+  animation: slamBot 1.1s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+@keyframes slamTop {
+  0%   { transform: translateY(-101%); }
+  42%  { transform: translateY(0%);    } /* slam covers screen */
+  58%  { transform: translateY(0%);    } /* brief hold */
+  100% { transform: translateY(-101%); } /* retreat up */
+}
+
+@keyframes slamBot {
+  0%   { transform: translateY(101%);  }
+  42%  { transform: translateY(0%);    } /* slam covers screen */
+  58%  { transform: translateY(0%);    } /* brief hold */
+  100% { transform: translateY(101%);  } /* retreat down */
+}
+
+/* When slam is active — hide the intro content mid-slam */
+.intro.intro-slam .intro-content,
+.intro.intro-slam .intro-bg-chars,
+.intro.intro-slam .intro-canvas {
+  animation: hideMidSlam 1.1s ease forwards;
+}
+@keyframes hideMidSlam {
+  0%   { opacity: 1; }
+  38%  { opacity: 1; }
+  45%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
+/* After slam panels retreat, remove the intro from flow */
+.intro.intro-slam {
+  animation: introFadeOut 0.2s ease 1.0s forwards;
+}
+@keyframes introFadeOut {
+  to { opacity: 0; pointer-events: none; visibility: hidden; }
+}

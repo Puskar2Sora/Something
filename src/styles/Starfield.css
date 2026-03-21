@@ -1,0 +1,147 @@
+/* ================================================
+   STARFIELD — Full cinematic CSS star system
+   ================================================ */
+
+/* Root wrapper — fills whatever parent it's inside */
+.sf-root {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ── NEBULA COLOR WASHES ── */
+.sf-nebula {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+  animation: sfNebulaBreath 8s ease-in-out infinite alternate;
+}
+
+.sf-n1 {
+  width: 800px; height: 600px;
+  background: radial-gradient(ellipse, rgba(90, 0, 180, 0.18) 0%, transparent 70%);
+  top: -200px; right: -150px;
+  animation-delay: 0s;
+}
+
+.sf-n2 {
+  width: 600px; height: 500px;
+  background: radial-gradient(ellipse, rgba(0, 100, 200, 0.13) 0%, transparent 70%);
+  bottom: -160px; left: -100px;
+  animation-delay: 3s;
+}
+
+.sf-n3 {
+  width: 420px; height: 420px;
+  background: radial-gradient(ellipse, rgba(180, 0, 80, 0.11) 0%, transparent 70%);
+  top: 28%; left: 18%;
+  animation-delay: 5.5s;
+}
+
+@keyframes sfNebulaBreath {
+  0%   { transform: scale(1)    translate(0px, 0px);    opacity: 0.7; }
+  50%  { transform: scale(1.14) translate(18px, 10px);  opacity: 1;   }
+  100% { transform: scale(0.9)  translate(-10px, 15px); opacity: 0.6; }
+}
+
+/* ── STARS LAYER ── */
+.sf-stars {
+  position: absolute;
+  inset: 0;
+}
+
+.sf-star {
+  position: absolute;
+  border-radius: 50%;
+  animation: sfStarTwinkle var(--dur, 4s) ease-in-out infinite alternate;
+}
+
+@keyframes sfStarTwinkle {
+  0%   { opacity: 0.08; transform: scale(0.4); }
+  40%  { opacity: 1;    transform: scale(1.25); }
+  70%  { opacity: 0.55; transform: scale(0.9);  }
+  100% { opacity: 0.12; transform: scale(0.45); }
+}
+
+/* ── METEOR LAYER ── */
+/* Whole layer tilted so meteors fall diagonally */
+.sf-meteors {
+  position: absolute;
+  inset: 0;
+  transform: rotate(-35deg);
+  transform-origin: center;
+}
+
+.sf-meteor {
+  position: absolute;
+  border-radius: 100px;
+  opacity: 0;
+  transform-origin: right center;
+  animation: sfMeteorFall var(--dur, 2s) ease-in infinite;
+}
+
+@keyframes sfMeteorFall {
+  0%   {
+    opacity: 0;
+    transform: translateX(0px) scaleX(0.05);
+  }
+  4%   {
+    opacity: 1;
+    transform: translateX(0px) scaleX(1);
+  }
+  86%  {
+    opacity: 0.85;
+    transform: translateX(640px) scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(740px) scaleX(0.4);
+  }
+}
+
+/* ── SPARKLE CROSSES ── */
+.sf-sparkles {
+  position: absolute;
+  inset: 0;
+}
+
+.sf-sparkle {
+  position: absolute;
+  animation: sfSparklePop var(--dur, 3s) ease-in-out infinite;
+}
+
+/* Horizontal arm */
+.sf-sparkle::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 2px;
+}
+
+/* Vertical arm */
+.sf-sparkle::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 2px;
+}
+
+@keyframes sfSparklePop {
+  0%,100% { opacity: 0;    transform: scale(0)   rotate(0deg);  }
+  20%     { opacity: 0.95; transform: scale(1.2)  rotate(30deg); }
+  50%     { opacity: 0.5;  transform: scale(0.85) rotate(55deg); }
+  80%     { opacity: 0;    transform: scale(0.15) rotate(90deg); }
+}

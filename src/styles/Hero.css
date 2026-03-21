@@ -1,0 +1,421 @@
+/* ========================================
+   HERO — Comic Book / Spider-Verse
+   ======================================== */
+
+.comic-hero {
+  position: relative;
+  min-height: 100vh;
+  background: #0a0a0a;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: none;
+}
+
+/* ---- Custom Spider Cursor (desktop only) ---- */
+.spider-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  font-size: 32px;
+  transform: translate(-50%, -50%);
+  /* NO transition — RAF handles smoothness, transition adds lag */
+  user-select: none;
+  will-change: left, top;
+  filter: drop-shadow(0 0 6px rgba(255,45,135,0.6));
+}
+
+/* Hide cursor on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  .spider-cursor { display: none !important; }
+  /* Bigger sticker on mobile */
+  .hero-spiderman-sticker {
+    font-size: 80px !important;
+    bottom: 5% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    animation: stickerBob 2s ease-in-out infinite alternate !important;
+  }
+}
+
+/* ---- Background layers ---- */
+.hero-dot-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,230,0,0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+  z-index: 0;
+}
+
+.hero-slash {
+  position: absolute;
+  top: -10%;
+  right: -5%;
+  width: 55%;
+  height: 130%;
+  background: #111111;
+  transform: skewX(-8deg);
+  z-index: 0;
+  border-left: 4px solid #FFE600;
+}
+
+/* ---- Inner Layout ---- */
+.comic-hero-inner {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 140px 40px 80px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* ========== LEFT COLUMN ========== */
+.comic-hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Badge */
+.comic-badge {
+  display: inline-block;
+  background: #FFE600;
+  color: #0a0a0a;
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border: 3px solid #0a0a0a;
+  box-shadow: 4px 4px 0 #0a0a0a;
+  width: fit-content;
+}
+
+/* Main title */
+.comic-hero-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  line-height: 0.9;
+  margin: 0;
+}
+
+.title-line-1 {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(80px, 13vw, 140px);
+  color: #FFE600;
+  letter-spacing: 0.06em;
+  text-shadow:
+    4px 4px 0 #0a0a0a,
+    -1px -1px 0 #0a0a0a,
+    6px 6px 0 rgba(232,25,44,0.4);
+  display: block;
+}
+
+.title-line-2 {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(50px, 8vw, 90px);
+  letter-spacing: 0.2em;
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+.title-2k {
+  color: #ffffff;
+  text-shadow: 3px 3px 0 #0a0a0a;
+}
+.title-26 {
+  color: #E8192C;
+  text-shadow: 3px 3px 0 #0a0a0a;
+}
+
+/* Theme */
+.comic-theme-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 4px;
+}
+.comic-theme-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+  font-weight: 900;
+  letter-spacing: 0.3em;
+  color: #00D4FF;
+  text-transform: uppercase;
+}
+.comic-theme-title {
+  font-family: 'Bangers', cursive;
+  font-size: clamp(36px, 6vw, 64px);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin: 0;
+  color: #ffffff;
+  text-shadow:
+    3px 3px 0 #0a0a0a,
+    -1px -1px 0 #0a0a0a;
+  -webkit-text-stroke: 1px #ffffff;
+}
+
+/* Sub */
+.comic-hero-sub {
+  font-family: 'Nunito', sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.6;
+}
+.comic-hero-sub strong { color: #FFE600; }
+
+/* Bengali */
+.comic-bengali {
+  font-size: 14px;
+  color: rgba(255,255,255,0.4);
+  font-weight: 600;
+  border-left: 3px solid #FFE600;
+  padding-left: 14px;
+  font-style: italic;
+}
+
+/* CTAs */
+.comic-hero-cta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.comic-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 14px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 3px solid #0a0a0a;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.comic-btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 6px 6px 0 #0a0a0a;
+}
+
+.comic-btn-yellow {
+  background: #FFE600;
+  color: #0a0a0a;
+  box-shadow: 4px 4px 0 #0a0a0a;
+}
+.comic-btn-yellow:hover {
+  background: #fff700;
+  box-shadow: 7px 7px 0 #0a0a0a;
+}
+
+.comic-btn-outline {
+  background: transparent;
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.4);
+  box-shadow: none;
+}
+.comic-btn-outline:hover {
+  background: rgba(255,255,255,0.08);
+  border-color: #FFE600;
+  color: #FFE600;
+  box-shadow: 4px 4px 0 #FFE600;
+}
+
+.btn-arrow {
+  font-size: 12px;
+  background: #0a0a0a;
+  color: #FFE600;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* ========== RIGHT COLUMN ========== */
+.comic-hero-right {
+  position: relative;
+  height: 500px;
+}
+
+/* Intel Card */
+.comic-intel-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 260px;
+  background: #0a0a0a;
+  border: 3px solid #ffffff;
+  box-shadow: 8px 8px 0 #00D4FF;
+  z-index: 5;
+}
+
+.intel-card-header {
+  background: #00D4FF;
+  color: #0a0a0a;
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 8px 16px;
+  border-bottom: 2px solid #0a0a0a;
+}
+
+.intel-card-body {
+  padding: 24px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.intel-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.4);
+  text-transform: uppercase;
+}
+
+.intel-date {
+  font-family: 'Bangers', cursive;
+  font-size: 52px;
+  color: #00D4FF;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-shadow: 3px 3px 0 rgba(0,212,255,0.3);
+}
+
+.intel-year {
+  font-family: 'Bangers', cursive;
+  font-size: 32px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
+.intel-venue {
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.5;
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.intel-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 11px;
+  font-weight: 900;
+  color: #00FF88;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #00FF88;
+  animation: pulse 1.5s ease-in-out infinite;
+  flex-shrink: 0;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(0.8); }
+}
+
+/* Floating tags */
+.comic-float-tag {
+  position: absolute;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  background: #0a0a0a;
+  border: 2.5px solid;
+  box-shadow: 3px 3px 0 currentColor;
+  animation: floatTag 3s ease-in-out infinite alternate;
+  white-space: nowrap;
+  z-index: 3;
+}
+
+@keyframes floatTag {
+  from { transform: translateY(0) rotate(var(--rot, 0deg)); }
+  to   { transform: translateY(-8px) rotate(var(--rot, 0deg)); }
+}
+
+/* Spider-Man sticker */
+.hero-spiderman-sticker {
+  position: absolute;
+  bottom: 10%;
+  left: 10%;
+  font-size: 52px;
+  animation: stickerBob 2s ease-in-out infinite alternate;
+  filter: drop-shadow(4px 4px 0px rgba(232,25,44,0.5));
+  z-index: 6;
+}
+@keyframes stickerBob {
+  from { transform: translateY(0) rotate(-5deg); }
+  to   { transform: translateY(-12px) rotate(5deg); }
+}
+
+/* Scroll hint */
+.comic-scroll-hint {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 20px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.25em;
+  color: rgba(255,255,255,0.35);
+  text-transform: uppercase;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .comic-hero-inner {
+    grid-template-columns: 1fr;
+    padding: 120px 24px 60px;
+    gap: 40px;
+  }
+  .comic-hero-right {
+    height: 360px;
+  }
+  .hero-slash {
+    display: none;
+  }
+}
+@media (max-width: 480px) {
+  .comic-hero-cta { flex-direction: column; }
+  .comic-btn { justify-content: center; }
+}
