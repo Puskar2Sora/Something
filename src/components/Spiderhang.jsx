@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/SpiderHang.css';
+import '../styles/Spiderhang.css';
 
 /**
  * SpiderHang
