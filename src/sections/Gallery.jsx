@@ -2,19 +2,61 @@ import React, { useState, useRef, useCallback, useEffect } from 'react';
 import '../styles/Gallery.css';
 
 const PHOTOS = [
-  { src: '/pic/img1.png',  caption: 'Opening Ceremony',  year: '2K25', tag: 'Grand Opening', color: '#E8192C', bg: '#e6bf11' },
-  { src: '/assets/pic/img2.png',  caption: 'Dance Performance', year: '2K25', tag: 'On Stage',       color: '#fff',    bg: '#E8192C' },
-  { src: '/assets/pic/img3.png',  caption: 'Band Night',        year: '2K25', tag: 'Live Music',     color: '#0a0a0a', bg: '#00D4FF' },
-  { src: '/assets/pic/img4.png',  caption: 'Cosplay Showdown',  year: '2K25', tag: 'Competition',    color: '#fff',    bg: '#FF2D87' },
-  { src: '/assets/pic/img5.png',  caption: 'Drama Skit',        year: '2K25', tag: 'Theatre',        color: '#0a0a0a', bg: '#00FF88' },
-  { src: '/assets/pic/img6.png',  caption: 'DJ Night',          year: '2K25', tag: 'Night Events',   color: '#FFE600', bg: '#0a0a0a' },
+  { 
+    src: new URL('../assets/pic/img1.png', import.meta.url).href, 
+    caption: 'The Whole Grommers', 
+    year: '2K25', 
+    tag: 'Grand Opening', 
+    color: '#E8192C', 
+    bg: '#e6bf11' 
+  },
+  { 
+    src: new URL('../assets/pic/img2.png', import.meta.url).href, 
+    caption: 'Dance Performance', 
+    year: '2K25', 
+    tag: 'On Stage', 
+    color: '#fff', 
+    bg: '#E8192C' 
+  },
+  { 
+    src: new URL('../assets/pic/img3.png', import.meta.url).href, 
+    caption: 'Ultra Music', 
+    year: '2K25', 
+    tag: 'Spider Sence', 
+    color: '#0a0a0a', 
+    bg: '#00D4FF' 
+  },
+  { 
+    src: new URL('../assets/pic/img4.jpg', import.meta.url).href, 
+    caption: 'Cultural', 
+    year: '2K25', 
+    tag: 'Performance', 
+    color: '#fff', 
+    bg: '#FF2D87' 
+  },
+  { 
+    src: new URL('../assets/pic/img5.png', import.meta.url).href, 
+    caption: 'The RoadMap', 
+    year: '2K24', 
+    tag: 'Follow Them', 
+    color: '#0a0a0a', 
+    bg: '#00FF88' 
+  },
+  { 
+    src: new URL('../assets/pic/img6.png', import.meta.url).href, 
+    caption: 'Host', 
+    year: '2K25', 
+    tag: 'Night Events', 
+    color: '#FFE600', 
+    bg: '#0a0a0a' 
+  },
 ];
 
 export default function Gallery() {
-  const [active, setActive]   = useState(0);
-  const [prev,   setPrev]     = useState(null);  // for exit direction
-  const [dir,    setDir]      = useState(1);     // 1=right, -1=left
-  const dragRef  = useRef({ down: false, startX: 0 });
+  const [active, setActive] = useState(0);
+  const [prev, setPrev] = useState(null);
+  const [dir, setDir] = useState(1);
+  const dragRef = useRef({ down: false, startX: 0 });
   const trackRef = useRef(null);
 
   const total = PHOTOS.length;
@@ -29,20 +71,19 @@ export default function Gallery() {
   const next = useCallback(() => goTo((active + 1) % total), [active, goTo, total]);
   const prev_ = useCallback(() => goTo((active - 1 + total) % total), [active, goTo, total]);
 
-  /* Keyboard */
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'ArrowRight') next();
-      if (e.key === 'ArrowLeft')  prev_();
+      if (e.key === 'ArrowLeft') prev_();
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [next, prev_]);
 
-  /* Drag / touch */
   const onPointerDown = (e) => {
     dragRef.current = { down: true, startX: e.clientX ?? e.touches?.[0]?.clientX ?? 0 };
   };
+
   const onPointerUp = (e) => {
     if (!dragRef.current.down) return;
     dragRef.current.down = false;
@@ -54,17 +95,14 @@ export default function Gallery() {
     }
   };
 
-  /* Compute positions for visible cards */
   const getCardStyle = (i) => {
     const diff = i - active;
     const absDiff = Math.abs(diff);
-
     if (absDiff > 3) return { display: 'none' };
 
-    // Z and visual priority
-    const z    = 10 - absDiff;
+    const z = 10 - absDiff;
     const scale = absDiff === 0 ? 1 : absDiff === 1 ? 0.82 : absDiff === 2 ? 0.67 : 0.54;
-    const tx   = diff * 220;
+    const tx = diff * 220;
     const rotate = diff * -6;
     const opacity = absDiff > 2 ? 0.35 : 1;
 
@@ -81,14 +119,9 @@ export default function Gallery() {
 
   return (
     <section id="gallery" className="gl-section">
-
-      {/* Dot texture */}
       <div className="gl-dots" />
-
-      {/* Diagonal accent stripe */}
       <div className="gl-stripe" />
 
-      {/* ── HEADER ── */}
       <div className="gl-header">
         <div className="gl-header-left">
           <span className="gl-eyebrow">✦ Previous Year ✦</span>
@@ -97,15 +130,14 @@ export default function Gallery() {
         </div>
         <div className="gl-header-right">
           <div className="gl-counter">
-            <span className="gl-cnum">{String(active + 1).padStart(2,'0')}</span>
+            <span className="gl-cnum">{String(active + 1).padStart(2, '0')}</span>
             <span className="gl-csep">/</span>
-            <span className="gl-ctot">{String(total).padStart(2,'0')}</span>
+            <span className="gl-ctot">{String(total).padStart(2, '0')}</span>
           </div>
           <p className="gl-sub">Relive the magic of LITHIUM 2K25</p>
         </div>
       </div>
 
-      {/* ── CAROUSEL STAGE ── */}
       <div
         className="gl-stage"
         ref={trackRef}
@@ -114,7 +146,6 @@ export default function Gallery() {
         onTouchStart={onPointerDown}
         onTouchEnd={onPointerUp}
       >
-        {/* Fan of cards */}
         <div className="gl-fan">
           {PHOTOS.map((p, i) => {
             const style = getCardStyle(i);
@@ -127,72 +158,58 @@ export default function Gallery() {
                 style={style}
                 onClick={() => !isActive && goTo(i)}
               >
-                {/* Polaroid frame */}
                 <div className="gl-polaroid" style={{ background: p.bg }}>
-
-                  {/* Top strip tag */}
                   <div className="gl-card-tag" style={{ color: p.color }}>
                     {p.tag}
                   </div>
 
-                  {/* Photo area */}
-                  <div className="gl-photo-area">
-                    {/* Placeholder — replace with real <img> */}
+                  <div className="gl-photo-area" style={{ position: 'relative', overflow: 'hidden' }}>
+                    <img
+                      src={p.src}
+                      alt={p.caption}
+                      className="gl-real-img"
+                      draggable="false"
+                      style={{
+                        position: 'absolute',
+                        top: 0, left: 0,
+                        width: '100%', height: '100%',
+                        objectFit: 'cover',
+                        zIndex: 2,
+                      }}
+                    />
                     <div className="gl-placeholder">
                       <span className="gl-ph-ico">📸</span>
                       <span className="gl-ph-num" style={{ color: p.bg === '#0a0a0a' ? '#FFE600' : p.bg }}>
-                        {String(i + 1).padStart(2,'0')}
+                        {String(i + 1).padStart(2, '0')}
                       </span>
                     </div>
-                    {/* <img src={p.src} alt={p.caption} draggable="false" /> */}
-
-                    {/* Active card overlay glint */}
                     {isActive && <div className="gl-glint" />}
                   </div>
 
-                  {/* Caption strip */}
                   <div className="gl-caption-strip">
-                    <span className="gl-caption" style={{ color: p.color }}>
-                      {p.caption}
-                    </span>
-                    <span className="gl-year" style={{ color: p.color, opacity: 0.55 }}>
-                      LITHIUM {p.year}
-                    </span>
+                    <span className="gl-caption" style={{ color: p.color }}>{p.caption}</span>
+                    <span className="gl-year" style={{ color: p.color, opacity: 0.55 }}>LITHIUM {p.year}</span>
                   </div>
                 </div>
-
-                {/* Shadow under card */}
                 <div className="gl-card-shadow" />
               </div>
             );
           })}
         </div>
 
-        {/* Side click zones */}
-        <button className="gl-side-btn gl-side-l" onClick={prev_} aria-label="Previous">
-          <span>‹</span>
-        </button>
-        <button className="gl-side-btn gl-side-r" onClick={next} aria-label="Next">
-          <span>›</span>
-        </button>
+        <button className="gl-side-btn gl-side-l" onClick={prev_} aria-label="Previous"><span>‹</span></button>
+        <button className="gl-side-btn gl-side-r" onClick={next} aria-label="Next"><span>›</span></button>
       </div>
 
-      {/* ── BOTTOM INFO + CONTROLS ── */}
       <div className="gl-bottom">
-
-        {/* Active card info */}
         <div className="gl-info">
-          <div
-            className="gl-info-color"
-            style={{ background: photo.bg }}
-          />
+          <div className="gl-info-color" style={{ background: photo.bg }} />
           <div className="gl-info-text">
             <span className="gl-info-caption">{photo.caption}</span>
             <span className="gl-info-tag">{photo.tag}</span>
           </div>
         </div>
 
-        {/* Dot nav */}
         <div className="gl-nav-dots">
           {PHOTOS.map((_, i) => (
             <button
@@ -200,20 +217,14 @@ export default function Gallery() {
               className={`gl-dot ${i === active ? 'gl-dot-active' : ''}`}
               style={i === active ? { background: photo.bg, borderColor: '#0a0a0a' } : {}}
               onClick={() => goTo(i)}
-              aria-label={`Go to ${i + 1}`}
             />
           ))}
         </div>
 
-        {/* Swipe hint */}
         <div className="gl-hint">
-          <span className="gl-hint-arrow">←</span>
-          SWIPE
-          <span className="gl-hint-arrow">→</span>
+          <span className="gl-hint-arrow">←</span> SWIPE <span className="gl-hint-arrow">→</span>
         </div>
       </div>
-
-      {/* Floating spider */}
       <div className="gl-spider">🕷️</div>
     </section>
   );

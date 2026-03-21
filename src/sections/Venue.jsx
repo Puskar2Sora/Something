@@ -18,7 +18,7 @@ const Venue = () => {
           {/* Info panel */}
           <div className="comic-venue-info">
             <div className="venue-info-row">
-              <div className="venue-info-icon-wrap">📍</div>
+              <div className="venue-info-icon-wrap"></div>
               <div>
                 <div className="venue-info-label">Venue</div>
                 <div className="venue-info-value">Laban Hrad Mancha BD Auditorium</div>
@@ -29,7 +29,7 @@ const Venue = () => {
             <div className="venue-divider" />
 
             <div className="venue-info-row">
-              <div className="venue-info-icon-wrap">🗓</div>
+              <div className="venue-info-icon-wrap"></div>
               <div>
                 <div className="venue-info-label">Date & Time</div>
                 <div className="venue-info-value">April 28, 2026</div>
@@ -43,8 +43,7 @@ const Venue = () => {
               <div className="venue-info-icon-wrap">🎭</div>
               <div>
                 <div className="venue-info-label">Dress Code</div>
-                <div className="venue-info-value">Any Character. Any Universe.</div>
-                <div className="venue-info-sub">Cosplay strongly encouraged</div>
+                <div className="venue-info-value">Any Character. Any Mind</div>
               </div>
             </div>
 
