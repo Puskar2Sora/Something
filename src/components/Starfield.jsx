@@ -15,6 +15,7 @@ const STARS = Array.from({ length: 180 }, (_, i) => ({
           : '#ffffff',
 }));
 
+
 const METEORS = Array.from({ length: 22 }, (_, i) => ({
   id: i,
   left:     `${(Math.random() * 120 - 10).toFixed(2)}%`,
