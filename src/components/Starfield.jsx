@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import '../styles/StarField.css';
+import '../styles/Starfield.css';
 
 // Generate once on module load — never re-renders
 const STARS = Array.from({ length: 180 }, (_, i) => ({
