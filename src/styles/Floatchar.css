@@ -1,0 +1,58 @@
+/* ================================================
+   FLOAT CHAR — Reusable floating character image
+   ================================================ */
+
+.fc-root {
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+}
+
+.fc-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+/* ── ANIMATION: float (gentle up-down) ── */
+.fc-anim-float {
+  animation: fcFloat 3.5s ease-in-out infinite alternate;
+}
+@keyframes fcFloat {
+  from { transform: translateY(0px) rotate(-3deg); }
+  to   { transform: translateY(-18px) rotate(3deg); }
+}
+
+/* ── ANIMATION: swing (pendulum left-right) ── */
+.fc-anim-swing {
+  transform-origin: top center;
+  animation: fcSwing 3.2s ease-in-out infinite alternate;
+}
+@keyframes fcSwing {
+  from { transform: rotate(-14deg); }
+  to   { transform: rotate(14deg);  }
+}
+
+/* ── ANIMATION: bob (small bounce, stays put) ── */
+.fc-anim-bob {
+  animation: fcBob 2.2s ease-in-out infinite alternate;
+}
+@keyframes fcBob {
+  from { transform: translateY(0px) scale(1); }
+  to   { transform: translateY(-10px) scale(1.04); }
+}
+
+/* ── ANIMATION: pulse (breathe in-out) ── */
+.fc-anim-pulse {
+  animation: fcPulse 2.8s ease-in-out infinite alternate;
+}
+@keyframes fcPulse {
+  from { transform: scale(1) rotate(-2deg); }
+  to   { transform: scale(1.08) rotate(2deg); }
+}
+
+/* Flip support */
+.fc-root[style*="scaleX(-1)"] .fc-img {
+  transform: scaleX(-1);
+}

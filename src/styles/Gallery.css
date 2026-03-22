@@ -166,7 +166,7 @@
 /* ── INDIVIDUAL CARD ── */
 .gl-card {
   position: absolute;
-  width: 280px;
+  width: 450px;
   cursor: pointer;
   will-change: transform;
 }

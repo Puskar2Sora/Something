@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Footer.css';
+import Floatchar from '../components/Floatchar';
+
 
 const CHARACTERS = [
   { emoji: '🕷️', name: 'Spider-Man',  universe: 'Marvel'       },
@@ -135,6 +137,15 @@ export default function Footer() {
       </div>
 
       <div className="ft-inner">
+<Floatchar
+  src="/assets/chars/miles.png"
+  alt="Miles Morales"
+  size={350}
+  bottom="70%"
+  right="53%"
+  animation="float"
+  glowColor="#FF2D87"
+/>
 
         {/* ════════════════════════════
             BRAND HERO
@@ -142,12 +153,7 @@ export default function Footer() {
         <div className="ft-brand-section">
           <div className="ft-brand-center">
             {/* Eyebrow */}
-            <div className="ft-eyebrow">
-              <span className="ft-ey-line" />
-              <span className="ft-ey-txt">TECHNO BENGAL INSTITUTE OF TECHNOLOGY PRESENTS</span>
-              <span className="ft-ey-line ft-ey-line-r" />
-            </div>
-
+            
             {/* Main wordmark */}
             <h2 className="ft-wordmark">LITHIUM</h2>
 

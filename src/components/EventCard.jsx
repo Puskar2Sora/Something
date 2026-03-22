@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/EventCard.css';
+import Floatchar from '../components/Floatchar';
 
 const CARD_COLORS = ['#FFB3BA', '#BAE1FF', '#BAFFC9', '#FFE4BA', '#E8BAFF', '#BAFFF0'];
 const BORDER_COLORS = ['#E8192C', '#00D4FF', '#00FF88', '#FF9500', '#FF2D87', '#00D4FF'];

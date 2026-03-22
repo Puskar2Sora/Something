@@ -1,5 +1,7 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import '../styles/Gallery.css';
+import Floatchar from '../components/Floatchar';
+
 
 const PHOTOS = [
   { 
@@ -118,6 +120,7 @@ export default function Gallery() {
   const photo = PHOTOS[active];
 
   return (
+    
     <section id="gallery" className="gl-section">
       <div className="gl-dots" />
       <div className="gl-stripe" />
@@ -127,7 +130,9 @@ export default function Gallery() {
           <span className="gl-eyebrow">✦ Previous Year ✦</span>
           <h2 className="gl-title">MEMORIES</h2>
           <div className="gl-title-badge">CAPTURED MOMENTS</div>
+          
         </div>
+        
         <div className="gl-header-right">
           <div className="gl-counter">
             <span className="gl-cnum">{String(active + 1).padStart(2, '0')}</span>
@@ -136,6 +141,7 @@ export default function Gallery() {
           </div>
           <p className="gl-sub">Relive the magic of LITHIUM 2K25</p>
         </div>
+        
       </div>
 
       <div
@@ -147,11 +153,13 @@ export default function Gallery() {
         onTouchEnd={onPointerUp}
       >
         <div className="gl-fan">
+          
           {PHOTOS.map((p, i) => {
             const style = getCardStyle(i);
             if (style.display === 'none') return null;
             const isActive = i === active;
             return (
+              
               <div
                 key={i}
                 className={`gl-card ${isActive ? 'gl-card-active' : ''}`}
@@ -177,6 +185,7 @@ export default function Gallery() {
                         zIndex: 2,
                       }}
                     />
+                    
                     <div className="gl-placeholder">
                       <span className="gl-ph-ico">📸</span>
                       <span className="gl-ph-num" style={{ color: p.bg === '#0a0a0a' ? '#FFE600' : p.bg }}>
@@ -226,6 +235,8 @@ export default function Gallery() {
         </div>
       </div>
       <div className="gl-spider">🕷️</div>
+  
     </section>
+    
   );
 }

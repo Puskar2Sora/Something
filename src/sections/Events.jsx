@@ -1,6 +1,7 @@
 import React from 'react';
 import EventCard from '../components/EventCard';
 import '../styles/Events.css';
+import Floatchar from '../components/Floatchar';
 
 const Events = () => {
   const eventList = [
@@ -79,6 +80,15 @@ const Events = () => {
 
       {/* Spider-Man peeking from corner */}
       <div className="events-spiderman">🕷️</div>
+            <Floatchar
+        src="/assets/chars/fall.png"
+        alt="Villain"
+        size={350}
+        top="-10%"
+        left="0.5%"
+        animation="float"
+        glowColor="#FF2D87"
+      />
     </section>
   );
 };

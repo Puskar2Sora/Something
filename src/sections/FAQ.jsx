@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/FAQ.css';
+import Floatchar from '../components/Floatchar';
 
 const FAQS = [
   {
@@ -41,6 +42,7 @@ const FAQ = () => {
 
   return (
     <section id="faq" className="faq-section">
+    
       <div className="faq-dot-bg" />
 
       <div className="faq-inner">
@@ -87,15 +89,19 @@ const FAQ = () => {
 
         {/* Bottom CTA */}
         <div className="faq-cta">
-          <p className="faq-cta-text">Still have questions?</p>
-          <a href="#contact" className="faq-cta-btn">
-            <span>▶</span> Contact Us
-          </a>
+          <Floatchar
+        src="/assets/chars/zotopia.png"
+        alt="Villain"
+        size={255}
+        top="75%"
+        left="28%"
+      />
         </div>
       </div>
 
-      {/* Spider sticker */}
-      <div className="faq-spider">🕷️</div>
+       
+      
+      
     </section>
   );
 };
