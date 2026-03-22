@@ -140,8 +140,7 @@ const Hero = () => {
           ))}
 
           {/* Spider-Man character sticker */}
-          <div className="hero-spiderman-sticker">🕷️</div>
-        </div>
+                 </div>
       </div>
 
       {/* Bottom scroll hint */}
