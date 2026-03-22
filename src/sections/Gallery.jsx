@@ -236,7 +236,7 @@ export default function Gallery() {
         alt="Villain"
         size={300}
         top="61%"
-        left="50%"
+        left="45%"
       />
           </section>
     
