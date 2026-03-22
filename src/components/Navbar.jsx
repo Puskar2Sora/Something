@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Navbar.css';
+import Floatchar from '../components/Floatchar';
 
 const NAV_ICONS = {
   Home:    'M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6',
@@ -59,8 +60,10 @@ const Navbar = () => {
           onClick={() => setIsOpen(v => !v)}
           aria-label="Menu"
         >
+          
           <span /><span /><span />
         </button>
+        
       </div>
 
       {/* ── BACKDROP ── */}
@@ -68,7 +71,7 @@ const Navbar = () => {
         className={`btv-backdrop ${isOpen ? 'show' : ''}`}
         onClick={() => setIsOpen(false)}
       />
-
+     
       {/* ── DRAWER ── */}
       <nav className={`btv-drawer ${isOpen ? 'open' : ''}`}>
 
@@ -79,7 +82,16 @@ const Navbar = () => {
             <span className="dh-year">2K26</span>
           </div>
           <div className="drawer-head-theme">✦ BEYOND THE VEIL ✦</div>
-
+<Floatchar
+        src="/assets/chars/spidy.png"
+        alt="Villain"
+        size={400}
+        top="190%"
+        left="-2%"
+        animation="float"
+        glowColor="#FF2D87"
+        delay="0.4s"
+        />
           {/* Close button */}
           <button className="drawer-close" onClick={() => setIsOpen(false)} aria-label="Close">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
