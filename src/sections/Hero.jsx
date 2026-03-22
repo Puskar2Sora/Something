@@ -87,10 +87,6 @@ const Hero = () => {
             <strong>Great Responsibility</strong>
           </p>
 
-          {/* Bengali */}
-          <p className="comic-bengali">
-            জীবন চলছে না আর সোজা পথে, তবু আজও হাসি কোনোমতে
-          </p>
 
           {/* CTAs */}
           <div className="comic-hero-cta">
