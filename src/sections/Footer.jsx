@@ -204,7 +204,7 @@ export default function Footer() {
               THE EVENT
             </div>
             {[
-              { icon: '📅', lbl: 'DATE',    val: 'April 28, 2026'                              },
+              { icon: '📅', lbl: 'DATE',    val: 'April 25, 2026'                              },
               { icon: '🕐', lbl: 'TIME',    val: '12:00 PM onwards'                            },
               { icon: '📍', lbl: 'VENUE',   val: 'Laban Hrad Mancha BD Auditorium, Kolkata'    },
               { icon: '🎭', lbl: 'DRESS',   val: 'Any Character · Any Universe'               },

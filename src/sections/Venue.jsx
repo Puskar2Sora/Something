@@ -32,7 +32,7 @@ const Venue = () => {
               <div className="venue-info-icon-wrap"></div>
               <div>
                 <div className="venue-info-label">Date & Time</div>
-                <div className="venue-info-value">April 28, 2026</div>
+                <div className="venue-info-value">April 25, 2026</div>
                 <div className="venue-info-sub">12:00 PM onwards</div>
               </div>
             </div>
@@ -59,7 +59,7 @@ const Venue = () => {
 
           {/* Map */}
           <div className="comic-venue-map">
-            <div className="map-header-bar">📡 LIVE MAP FEED</div>
+            <div className="map-header-bar">LIVE MAP FEED</div>
             <iframe
               title="Venue Map"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.053255936746!2d88.4116463!3d22.5771092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0275cc15555555%3A0x6006f6e52c8b8434!2sLaban%20Hrad%20Mancha!5e0!3m2!1sen!2sin!4v1710000000000"
