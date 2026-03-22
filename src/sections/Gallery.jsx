@@ -234,8 +234,8 @@ export default function Gallery() {
           <Floatchar
         src="/assets/chars/zotopia.png"
         alt="Villain"
-        size={255}
-        top="65%"
+        size={300}
+        top="61%"
         left="50%"
       />
           </section>
