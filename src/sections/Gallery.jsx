@@ -230,13 +230,15 @@ export default function Gallery() {
           ))}
         </div>
 
-        <div className="gl-hint">
-          <span className="gl-hint-arrow">←</span> SWIPE <span className="gl-hint-arrow">→</span>
-        </div>
       </div>
-      <div className="gl-spider">🕷️</div>
-  
-    </section>
+          <Floatchar
+        src="/assets/chars/zotopia.png"
+        alt="Villain"
+        size={255}
+        top="65%"
+        left="50%"
+      />
+          </section>
     
   );
 }

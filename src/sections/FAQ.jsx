@@ -88,15 +88,7 @@ const FAQ = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="faq-cta">
-          <Floatchar
-        src="/assets/chars/zotopia.png"
-        alt="Villain"
-        size={255}
-        top="75%"
-        left="28%"
-      />
-        </div>
+        
       </div>
 
        
