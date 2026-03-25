@@ -6,6 +6,7 @@ import Footer from "./sections/Footer";
 import Gallery from './sections/Gallery';
 import FAQ from './sections/FAQ';
 import Intro from './components/Intro.jsx';
+import Winners from './components/Winners.jsx'
 import "./App.css";
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Hero />
         <Events />
         <Gallery />
+        <Winners />
         <Venue />
       </main>
       <FAQ />

@@ -37,6 +37,7 @@ const Events = () => {
     },
     {
       title: "Surprise",
+       desc: "Something Good is coming",
       icon:"🕸️",
       tag: "Nothing",
     },
