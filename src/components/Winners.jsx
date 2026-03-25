@@ -3,6 +3,32 @@ import '../styles/Winners.css';
 import Floatchar from '../components/Floatchar';
 
 const WINNERS = [
+    {
+    id: 7,
+    title: 'Best Couple',
+    name: 'Sagnik Roy Choudhury ',
+    instagram: '@sagnik.roy.chowdhury ',
+    year: '2K25',
+    crown: '💞',
+    frameColor: '#FF9500',
+    glowColor: '#FF9500',
+    tagline: 'Two Worlds, One Vibe',
+    img: '/assets/winners/saguda.jpeg',
+    number: '07',
+  },
+    {
+    id: 6,
+    title: 'Best Couple',
+    name: 'Tanisha Banerjee ',
+    instagram: '@guitfiddle.tanisha',
+    year: '2K25',
+    crown: '💞',
+    frameColor: '#FF9500',
+    glowColor: '#FF9500',
+    tagline: 'Two Worlds, One Vibe',
+    img: '/assets/winners/Tanisha Banerjee.jpg',
+    number: '06',
+  },
   {
     id: 1,
     title: 'Mrs. Fresher',
@@ -68,32 +94,8 @@ const WINNERS = [
     img: '/assets/winners/tanisa.jpg',
     number: '05',
   },
-  {
-    id: 6,
-    title: 'Best Couple',
-    name: 'Tanisha Banerjee ',
-    instagram: '@guitfiddle.tanisha',
-    year: '2K25',
-    crown: '💞',
-    frameColor: '#FF9500',
-    glowColor: '#FF9500',
-    tagline: 'Two Worlds, One Vibe',
-    img: '/assets/winners/Tanisha Banerjee.jpg',
-    number: '06',
-  },
-  {
-    id: 7,
-    title: 'Best Couple',
-    name: 'Sagnik Roy Choudhury ',
-    instagram: '@sagnik.roy.chowdhury ',
-    year: '2K25',
-    crown: '💞',
-    frameColor: '#FF9500',
-    glowColor: '#FF9500',
-    tagline: 'Two Worlds, One Vibe',
-    img: '/assets/winners/saguda.jpeg',
-    number: '07',
-  },
+
+
    {
     id: 8,
     title: ' ',
