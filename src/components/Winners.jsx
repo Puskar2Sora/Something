@@ -329,7 +329,7 @@ export default function Winners() {
   alt="Miles Morales"
   size={200}
   bottom="80%"
-  right="67%"
+  right="65%"
   animation="float"
   glowColor="#FF2D87"
 />
