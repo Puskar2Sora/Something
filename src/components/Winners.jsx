@@ -217,7 +217,7 @@ export default function Winners() {
       <div className="wn-header">
         <span className="wn-eyebrow">✦ Hall of Fame · 2K25 ✦</span>
         <div className="wn-title-block">
-          <h2 className="wn-title-main">OUR LEGEND</h2>
+          <h2 className="wn-title-main">OUR LEGENDARY</h2>
           <div className="wn-title-row2">
             <h2 className="wn-title-accent">GROMMERS</h2>
             <span className="wn-classified">#LEGENDS</span>
