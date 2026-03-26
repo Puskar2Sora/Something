@@ -94,7 +94,19 @@ const WINNERS = [
     img: '/assets/winners/tanisa.jpg',
     number: '05',
   },
-
+{
+    id: 12,
+    title: ' Mr. Charming',
+    name: 'Parthib Mandal',
+    instagram: '@parthib_mondal',
+    year: '2K25',
+    crown: '💞',
+    frameColor: '#2600ff',
+    glowColor: '#2600ff',
+    tagline: 'Free Bird',
+    img: '/assets/winners/parthib.jpg',
+    number: '12',
+  },
 
    {
     id: 8,
@@ -161,19 +173,7 @@ const WINNERS = [
     img: '/assets/winners/sujal.jpg',
     number: '11',
   },
-  {
-    id: 12,
-    title: ' ',
-    name: 'Parthib Mandal',
-    instagram: '@parthib_mondal',
-    year: '2K25',
-    crown: '💞',
-    frameColor: '#2600ff',
-    glowColor: '#2600ff',
-    tagline: 'Free Bird',
-    img: '/assets/winners/parthib.jpg',
-    number: '12',
-  },
+  
   {
     id: 13,
     title: ' ',
