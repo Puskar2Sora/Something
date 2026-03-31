@@ -12,7 +12,7 @@
 .venue-dot-bg {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(255,230,0,0.06) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(circle, rgba(255, 230, 0, 0.06) 1.5px, transparent 1.5px);
   background-size: 22px 22px;
   pointer-events: none;
 }
@@ -40,7 +40,7 @@
   font-weight: 900;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .comic-venue-title {
@@ -50,7 +50,7 @@
   letter-spacing: 0.08em;
   margin: 0;
   line-height: 0.9;
-  text-shadow: 4px 4px 0 #0a0a0a, 6px 6px 0 rgba(232,25,44,0.3);
+  text-shadow: 4px 4px 0 #0a0a0a, 6px 6px 0 rgba(232, 25, 44, 0.3);
   transform: skewX(-4deg);
 }
 
@@ -92,7 +92,10 @@
   gap: 16px;
   padding: 18px 0;
 }
-.venue-info-row:first-child { padding-top: 0; }
+
+.venue-info-row:first-child {
+  padding-top: 0;
+}
 
 .venue-info-icon-wrap {
   font-size: 28px;
@@ -105,7 +108,7 @@
   font-weight: 900;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.5);
+  color: rgba(0, 0, 0, 0.5);
   margin-bottom: 3px;
 }
 
@@ -121,13 +124,13 @@
   font-family: 'Nunito', sans-serif;
   font-size: 13px;
   font-weight: 600;
-  color: rgba(0,0,0,0.55);
+  color: rgba(0, 0, 0, 0.55);
   margin-top: 2px;
 }
 
 .venue-divider {
   height: 2px;
-  background: rgba(0,0,0,0.12);
+  background: rgba(0, 0, 0, 0.12);
 }
 
 .comic-btn-venue {
@@ -145,13 +148,14 @@
   text-transform: uppercase;
   text-decoration: none;
   border: 3px solid #0a0a0a;
-  box-shadow: 4px 4px 0 rgba(0,0,0,0.3);
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
   transition: transform 0.15s, box-shadow 0.15s;
   width: fit-content;
 }
+
 .comic-btn-venue:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 7px 7px 0 rgba(0,0,0,0.4);
+  box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.4);
 }
 
 /* ---- Map ---- */
@@ -180,6 +184,11 @@
 }
 
 @media (max-width: 860px) {
-  .comic-venue-grid { grid-template-columns: 1fr; }
-  .comic-venue-inner { padding: 0 20px; }
+  .comic-venue-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comic-venue-inner {
+    padding: 0 20px;
+  }
 }

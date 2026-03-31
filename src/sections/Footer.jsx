@@ -246,10 +246,7 @@ export default function Footer() {
           <div className="ft-bottom-line" />
 
           <div className="ft-credit-row">
-            <p className="ft-made">
-              Made <span className="ft-heart"></span> by{' '}
-              <span className="ft-author"> PUSKAR NATH</span>  &amp; Team LITHIUM
-            </p>
+            
 
             <div className="ft-divider">
           <div className="ft-div-l" />
