@@ -2,41 +2,38 @@ import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Footer.css';
 import Floatchar from '../components/Floatchar';
 
-
-const CHARACTERS = [
-  { emoji: '🕷️', name: 'Spider-Man',  universe: 'Marvel'       },
-  { emoji: '🏴‍☠️', name: 'Pirate',      universe: 'Caribbean'     },
-  { emoji: '🧙',  name: 'Sorcerer',    universe: 'Fantasy'       },
-  { emoji: '🦸',  name: 'Hero',        universe: 'DC Universe'   },
-  { emoji: '🦹',  name: 'Villain',     universe: 'Dark Side'     },
-  { emoji: '⚔️',  name: 'Knight',      universe: 'Medieval'      },
-  { emoji: '🧛',  name: 'Vampire',     universe: 'Gothic'        },
-  { emoji: '🤖',  name: 'Cyborg',      universe: 'Future World'  },
-  { emoji: '🧝',  name: 'Elf',         universe: 'Middle Earth'  },
-  { emoji: '🐉',  name: 'Dragon',      universe: 'GoT'           },
-];
-
 const NAV = [
   { label: 'Home',    href: '#home'    },
-  { label: 'About',   href: '#about'   },
   { label: 'Events',  href: '#events'  },
   { label: 'Gallery', href: '#gallery' },
   { label: 'Venue',   href: '#venue'   },
-  { label: 'Contact', href: '#contact' },   
-];
-
-const STATS = [
-  { num: '10+',  label: 'Events',      color: '#FFE600' },
-  { num: '500+', label: 'Students',    color: '#FF2D87' },
-  { num: '6',    label: 'Genres',      color: '#00D4FF' },
-  { num: '1',    label: 'Epic Night',  color: '#00FF88' },
 ];
 
 const SOCIALS = [
-  { icon: '📸', label: 'Instagram', handle: '@lithium2k26',         href: '#' },
-  { icon: '💬', label: 'WhatsApp',  handle: 'Join the Group',       href: '#' },
-  { icon: '✉️', label: 'Email',     handle: 'lithium@bit.edu.in',   href: 'mailto:lithium@bit.edu.in' },
-  { icon: '📘', label: 'Facebook',  handle: 'LITHIUM 2K26',         href: '#' },
+  { 
+    icon: '/assets/icons/insta.png', 
+    label: 'Instagram', 
+    handle: '@bit_lithium2k26',      
+    href: 'https://www.instagram.com/bit_lithium2k25' 
+  },
+  { 
+    icon: '/assets/icons/whatsapp.png', 
+    label: 'WhatsApp',  
+    handle: 'Join Group',        
+    href: 'https://chat.whatsapp.com/YOUR_GROUP_INVITE_CODE' // Replace with your actual invite code
+  },
+  { 
+    icon: '/assets/icons/gmail.png', 
+    label: 'Email',      
+    handle: 'boitkolkata@gmail.com',   
+    href: 'mailto:boitkolkata@gmail.com' 
+  },
+  { 
+    icon: '/assets/icons/facebook.png', 
+    label: 'Facebook',  
+    handle: 'Lithium 2k26',          
+    href: 'https://www.facebook.com/LITHIUM2K23?rdid=w4yznTAycBnyysMU&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F168qwXXAoE%2F#' // Replace with your actual FB page slug
+  },
 ];
 
 /* Stable star/meteor data — generated once */
@@ -204,11 +201,10 @@ export default function Footer() {
               THE EVENT
             </div>
             {[
-              { icon: '📅', lbl: 'DATE',    val: 'April 25, 2026'                              },
-              { icon: '🕐', lbl: 'TIME',    val: '12:00 PM onwards'                            },
-              { icon: '📍', lbl: 'VENUE',   val: 'Laban Hrad Mancha BD Auditorium, Kolkata'    },
-              { icon: '🎭', lbl: 'DRESS',   val: 'Any Character · Any Universe'               },
-              { icon: '🏫', lbl: 'HOST',    val: 'Techno Bengal Institute of Technology'       },
+              { icon: '', lbl: 'DATE',    val: 'May 8, 2026'                              },
+              { icon: '', lbl: 'TIME',    val: '3:00 PM onwards'                            },
+              { icon: '', lbl: 'VENUE',   val: 'Laban Hrad Mancha BD Auditorium, Kolkata'    },
+              { icon: '', lbl: 'HOST',    val: 'Techno Bengal Institute of Technology'       },
             ].map((r, i) => (
               <div key={i} className="ft-event-row">
                 <span className="ft-ev-ico">{r.icon}</span>
@@ -227,15 +223,17 @@ export default function Footer() {
               CONNECT
             </div>
             {SOCIALS.map((s, i) => (
-              <a key={i} href={s.href} className="ft-social" target="_blank" rel="noreferrer">
-                <span className="ft-soc-ico">{s.icon}</span>
-                <div className="ft-soc-txt">
-                  <span className="ft-soc-lbl">{s.label}</span>
-                  <span className="ft-soc-hdl">{s.handle}</span>
-                </div>
-                <span className="ft-soc-arr">›</span>
-              </a>
-            ))}
+  <a key={i} href={s.href} className="ft-social" target="_blank" rel="noopener noreferrer">
+    <span className="ft-soc-ico">
+      <img src={s.icon} alt={s.label} style={{ width: '30px', height: '30px', objectFit: 'contain' }} />
+    </span>
+    <div className="ft-soc-txt">
+      <span className="ft-soc-lbl">{s.label}</span>
+      <span className="ft-soc-hdl">{s.handle}</span>
+    </div>
+    <span className="ft-soc-arr">›</span>
+  </a>
+))}
           </div>
         </div>
 
