@@ -20,7 +20,7 @@ const SOCIALS = [
     icon: '/assets/icons/whatsapp.png', 
     label: 'WhatsApp',  
     handle: 'Join Group',        
-    href: 'https://chat.whatsapp.com/YOUR_GROUP_INVITE_CODE' // Replace with your actual invite code
+    href: 'https://chat.whatsapp.com/YOUR_GROUP_INVITE_CODE' 
   },
   { 
     icon: '/assets/icons/gmail.png', 
@@ -32,7 +32,7 @@ const SOCIALS = [
     icon: '/assets/icons/facebook.png', 
     label: 'Facebook',  
     handle: 'Lithium 2k26',          
-    href: 'https://www.facebook.com/LITHIUM2K23?rdid=w4yznTAycBnyysMU&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F168qwXXAoE%2F#' // Replace with your actual FB page slug
+    href: 'https://www.facebook.com/LITHIUM2K23?rdid=w4yznTAycBnyysMU&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F168qwXXAoE%2F#' 
   },
 ];
 
