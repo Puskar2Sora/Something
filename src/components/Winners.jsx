@@ -46,7 +46,7 @@ const WINNERS = [
     id: 2,
     title: 'Mr.Fresher',
     name: 'Ayushman Das',
-    instagram: '@priya.dey_official',
+    instagram: '@_ayushman_das',
     year: '2K25',
     crown: '👑',
     frameColor: '#FF2D87',
@@ -55,6 +55,7 @@ const WINNERS = [
     img: '/assets/winners/Ayushman.png',
     number: '02',
   },
+  
   {
     id: 3,
     title: 'Ms graceful ',
