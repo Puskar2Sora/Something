@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import '../styles/Hero.css';
 import StarField from '../components/Starfield';
 import Spiderhang from '../components/Spiderhang';
+import Floatchar from '../components/Floatchar';
 
 const FLOATING_TAGS = [
   { text: 'DANCE', x: '72%', y: '20%', rotate: '-6deg', color: '#FFE600' },
@@ -53,6 +54,25 @@ const Hero = () => {
       <Spiderhang />
 
         <StarField />
+        <Floatchar
+          src="/assets/chars/techno.png"
+          alt="Techno"
+          size={43}
+          bottom="89%"
+          right="50%"
+          animation="none"
+          glowColor="#790a1b"
+        />
+        <Floatchar
+          src="/assets/chars/bit.png"
+          alt="TBIT"
+          size={44}
+          bottom="89%"
+          right="75%"
+          animation="none"
+          glowColor="#FF2D87"
+        />
+        <br/>
       {/* Spider-Man cursor — desktop only, zero-lag via RAF */}
       <div ref={cursorRef} className="spider-cursor">🕷️</div>
 
