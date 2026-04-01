@@ -31,7 +31,7 @@ const WINNERS = [
   },
   {
     id: 1,
-    title: 'Mrs. Fresher',
+    title: 'Ms. Fresher',
     name: 'Surasree Majumder',
     instagram: '@areh._peculiar',
     year: '2K25',
@@ -57,7 +57,7 @@ const WINNERS = [
   },
   {
     id: 3,
-    title: 'Mrs graceful ',
+    title: 'Ms graceful ',
     name: 'Palak ray ',
     instagram: '@x.palak.r',
     year: '2K25',
