@@ -127,7 +127,7 @@ const Hero = () => {
             <div className="intel-card-header">OFFICIAL INTEL</div>
             <div className="intel-card-body">
               <div className="intel-label">TARGET TIMELINE LOCKED</div>
-              <div className="intel-date">APR' 25</div>
+              <div className="intel-date">MAY' 7</div>
               <div className="intel-year">2026</div>
               <div className="intel-venue">Laban Hrad Mancha BD Auditorium, Kolkata</div>
               <div className="intel-status">

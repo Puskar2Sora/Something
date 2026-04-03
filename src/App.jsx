@@ -6,7 +6,9 @@ import Footer from "./sections/Footer";
 import Gallery from './sections/Gallery';
 import FAQ from './sections/FAQ';
 import Intro from './components/Intro.jsx';
-import Winners from './components/Winners.jsx'
+import Winners from './components/Winners.jsx';
+import MessageFromLeaders from './sections/Messagefromleaders';
+
 import "./App.css";
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
         <Gallery />
         <Winners />
         <Venue />
+        <MessageFromLeaders />
       </main>
       <FAQ />
       <Footer />

@@ -1,194 +1,526 @@
-/* ========================================
-   VENUE — Comic Style (Dark)
-   ======================================== */
+/* ═══════════════════════════════════════════════
+   VENUE v2 — Comic / Spider-Verse Theme
+   Matches: dark bg, yellow + cyan + magenta accent
+   ═══════════════════════════════════════════════ */
 
-.comic-venue-section {
+/* ── Tokens ───────────────────────────────────── */
+.v2-venue {
+  --y: #FFE600;
+  --c: #00D4FF;
+  --m: #FF2D87;
+  --g: #00FF88;
+  --bg: #0a0a0f;
+  --bg2: #111118;
+  --border: rgba(255,230,0,0.25);
+  --text: #f0f0f0;
+  --muted: rgba(240,240,240,0.5);
+
   position: relative;
-  background: #111111;
-  padding: 100px 0 80px;
+  background: var(--bg);
+  min-height: 100vh;
+  padding: 80px 24px 60px;
   overflow: hidden;
+  font-family: 'Bangers', 'Impact', sans-serif;
 }
 
-.venue-dot-bg {
+/* ── Background Layers ────────────────────────── */
+.v2-grid-bg {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(255, 230, 0, 0.06) 1.5px, transparent 1.5px);
-  background-size: 22px 22px;
+  background-image:
+    linear-gradient(rgba(255,230,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,230,0,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridDrift 20s linear infinite;
   pointer-events: none;
 }
 
-.comic-venue-inner {
+@keyframes gridDrift {
+  from { background-position: 0 0; }
+  to   { background-position: 40px 40px; }
+}
+
+.v2-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.18) 3px,
+    rgba(0,0,0,0.18) 4px
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.v2-grain {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Corner Brackets ──────────────────────────── */
+.v2-corner {
+  position: absolute;
+  width: 36px; height: 36px;
+  border-color: var(--y);
+  border-style: solid;
+  z-index: 2;
+  animation: cornerPulse 3s ease-in-out infinite;
+}
+.v2-corner--tl { top: 16px; left: 16px; border-width: 3px 0 0 3px; }
+.v2-corner--tr { top: 16px; right: 16px; border-width: 3px 3px 0 0; animation-delay: .75s; }
+.v2-corner--bl { bottom: 16px; left: 16px; border-width: 0 0 3px 3px; animation-delay: 1.5s; }
+.v2-corner--br { bottom: 16px; right: 16px; border-width: 0 3px 3px 0; animation-delay: 2.25s; }
+
+@keyframes cornerPulse {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* ── Inner Wrapper ────────────────────────────── */
+.v2-inner {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.v2-inner--visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* ---- Header ---- */
-.comic-section-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
+/* ── Header ───────────────────────────────────── */
+.v2-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: 56px;
 }
 
-.comic-venue-badge {
-  font-family: 'Nunito', sans-serif;
-  font-size: 11px;
-  font-weight: 900;
+.v2-eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
   letter-spacing: 0.3em;
+  color: var(--c);
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.4);
+  margin-bottom: 12px;
 }
 
-.comic-venue-title {
-  font-family: 'Bangers', cursive;
-  font-size: clamp(56px, 10vw, 110px);
-  color: #FFE600;
-  letter-spacing: 0.08em;
-  margin: 0;
+.v2-dot {
+  width: 6px; height: 6px;
+  background: var(--c);
+  border-radius: 50%;
+  display: inline-block;
+  animation: blink 1.2s step-end infinite;
+}
+.v2-dot:last-child { animation-delay: 0.6s; }
+
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.v2-title {
+  font-size: clamp(4rem, 12vw, 9rem);
   line-height: 0.9;
-  text-shadow: 4px 4px 0 #0a0a0a, 6px 6px 0 rgba(232, 25, 44, 0.3);
-  transform: skewX(-4deg);
-}
-
-.venue-classified {
-  background: #00D4FF;
-  color: #0a0a0a;
-  font-family: 'Nunito', sans-serif;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.2em;
+  color: var(--y);
+  -webkit-text-stroke: 3px #000;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: 5px 18px;
-  border: 3px solid #0a0a0a;
-  box-shadow: 3px 3px 0 #0a0a0a;
+  position: relative;
+  display: inline-block;
+  paint-order: stroke fill;
+  filter: drop-shadow(6px 6px 0 #000) drop-shadow(0 0 30px rgba(255,230,0,0.3));
+  margin: 0;
 }
 
-/* ---- Grid ---- */
-.comic-venue-grid {
+/* Glitch effect */
+.v2-title--glitch::before,
+.v2-title--glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  font-size: inherit;
+  letter-spacing: inherit;
+}
+.v2-title--glitch::before {
+  color: var(--m);
+  clip-path: polygon(0 20%, 100% 20%, 100% 40%, 0 40%);
+  transform: translateX(-4px);
+  animation: glitchA 0.4s steps(2) forwards;
+}
+.v2-title--glitch::after {
+  color: var(--c);
+  clip-path: polygon(0 60%, 100% 60%, 100% 80%, 0 80%);
+  transform: translateX(4px);
+  animation: glitchB 0.4s steps(2) forwards;
+}
+
+@keyframes glitchA {
+  0%   { transform: translateX(-4px) skewX(-2deg); }
+  50%  { transform: translateX(4px)  skewX(2deg); }
+  100% { transform: translateX(0); }
+}
+@keyframes glitchB {
+  0%   { transform: translateX(4px) skewX(2deg); }
+  50%  { transform: translateX(-4px) skewX(-2deg); }
+  100% { transform: translateX(0); }
+}
+
+.v2-title-sub {
+  margin-top: 10px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.v2-slash { color: var(--m); }
+
+/* ── Body Grid ────────────────────────────────── */
+.v2-body {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 28px;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 32px;
   align-items: start;
 }
 
-/* ---- Info Card ---- */
-.comic-venue-info {
-  background: #FFE600;
-  border: 3px solid #0a0a0a;
-  box-shadow: 6px 6px 0 #0a0a0a;
-  padding: 28px;
+/* ── Left: Cards ──────────────────────────────── */
+.v2-left {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 14px;
 }
 
-.venue-info-row {
+.v2-card {
+  position: relative;
   display: flex;
   align-items: flex-start;
   gap: 16px;
-  padding: 18px 0;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--y);
+  padding: 18px 20px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: slideInLeft 0.5s ease forwards;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.v2-inner--visible .v2-card { animation-play-state: running; }
+
+@keyframes slideInLeft {
+  to { opacity: 1; transform: translateX(0); }
 }
 
-.venue-info-row:first-child {
-  padding-top: 0;
+.v2-card:hover {
+  border-left-color: var(--c);
+  box-shadow: 0 0 20px rgba(0,212,255,0.15), inset 0 0 20px rgba(0,212,255,0.03);
 }
 
-.venue-info-icon-wrap {
-  font-size: 28px;
+.v2-card-icon {
+  font-size: 1.6rem;
+  line-height: 1;
   flex-shrink: 0;
+  margin-top: 2px;
+  filter: drop-shadow(0 0 6px rgba(255,230,0,0.5));
 }
 
-.venue-info-label {
-  font-family: 'Nunito', sans-serif;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: rgba(0, 0, 0, 0.5);
-  margin-bottom: 3px;
+.v2-card-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  color: var(--y);
+  margin-bottom: 4px;
 }
 
-.venue-info-value {
-  font-family: 'Bangers', cursive;
-  font-size: 22px;
-  letter-spacing: 0.04em;
-  color: #0a0a0a;
+.v2-card-value {
+  font-size: 1.2rem;
+  letter-spacing: 0.06em;
+  color: var(--text);
+  -webkit-text-stroke: 0.5px rgba(255,255,255,0.1);
   line-height: 1.1;
 }
 
-.venue-info-sub {
-  font-family: 'Nunito', sans-serif;
-  font-size: 13px;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.55);
-  margin-top: 2px;
+.v2-card-sub {
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
+  color: var(--muted);
+  margin-top: 4px;
+  white-space: pre-line;
+  line-height: 1.5;
 }
 
-.venue-divider {
+.v2-card-bar {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
   height: 2px;
-  background: rgba(0, 0, 0, 0.12);
+  background: linear-gradient(90deg, var(--y), var(--c), var(--m));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.v2-card:hover .v2-card-bar { transform: scaleX(1); }
+
+/* Scan line on hover */
+.v2-card::before {
+  content: '';
+  position: absolute;
+  left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--c), transparent);
+  top: -2px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  animation: scanDown 1.5s linear infinite;
+}
+.v2-card:hover::before { opacity: 1; }
+
+@keyframes scanDown {
+  from { top: 0; }
+  to   { top: 100%; }
 }
 
-.comic-btn-venue {
-  display: inline-flex;
+/* ── Features Strip ───────────────────────────── */
+.v2-features {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  padding: 16px 20px;
+}
+
+.v2-features-label {
+  font-family: 'Courier New', monospace;
+  font-size: 0.58rem;
+  letter-spacing: 0.3em;
+  color: var(--m);
+  margin-bottom: 12px;
+}
+
+.v2-features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.v2-feature-chip {
+  display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 13px 26px;
-  margin-top: 20px;
-  background: #0a0a0a;
-  color: #FFE600;
-  font-family: 'Nunito', sans-serif;
-  font-size: 14px;
-  font-weight: 900;
+  gap: 6px;
+  background: rgba(255,230,0,0.07);
+  border: 1px solid rgba(255,230,0,0.2);
+  padding: 5px 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
   letter-spacing: 0.1em;
-  text-transform: uppercase;
+  color: var(--text);
+  opacity: 0;
+  animation: popIn 0.4s ease forwards;
+  transition: background 0.3s, border-color 0.3s;
+  cursor: default;
+}
+.v2-feature-chip:hover {
+  background: rgba(255,230,0,0.15);
+  border-color: var(--y);
+  color: var(--y);
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* ── CTA Button ───────────────────────────────── */
+.v2-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: var(--y);
+  color: #000;
+  padding: 16px 32px;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
   text-decoration: none;
-  border: 3px solid #0a0a0a;
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.3);
-  transition: transform 0.15s, box-shadow 0.15s;
-  width: fit-content;
-}
-
-.comic-btn-venue:hover {
-  transform: translate(-3px, -3px);
-  box-shadow: 7px 7px 0 rgba(0, 0, 0, 0.4);
-}
-
-/* ---- Map ---- */
-.comic-venue-map {
-  border: 3px solid #0a0a0a;
-  box-shadow: 6px 6px 0 #FFE600;
+  font-family: 'Bangers', 'Impact', sans-serif;
+  border: 3px solid #000;
+  box-shadow: 5px 5px 0 #000;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+  position: relative;
   overflow: hidden;
 }
 
-.map-header-bar {
-  background: #0a0a0a;
-  color: #00FF88;
-  font-family: 'Nunito', sans-serif;
-  font-size: 11px;
-  font-weight: 900;
+.v2-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.2) 50%, transparent 60%);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease;
+}
+.v2-cta:hover::after { transform: translateX(100%); }
+.v2-cta:hover {
+  background: var(--c);
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 #000;
+}
+.v2-cta:active {
+  transform: translate(2px, 2px);
+  box-shadow: 3px 3px 0 #000;
+}
+
+.v2-cta-icon { font-size: 0.8rem; }
+.v2-cta-arrow {
+  margin-left: auto;
+  font-size: 1.1rem;
+  transition: transform 0.3s;
+}
+.v2-cta:hover .v2-cta-arrow { transform: translateX(4px); }
+
+/* ── Right: Map ───────────────────────────────── */
+.v2-right { display: flex; flex-direction: column; }
+
+.v2-map-wrap {
+  border: 2px solid var(--border);
+  background: var(--bg2);
+  overflow: hidden;
+  box-shadow: 0 0 40px rgba(0,212,255,0.1);
+  animation: mapGlow 4s ease-in-out infinite;
+}
+
+@keyframes mapGlow {
+  0%,100% { box-shadow: 0 0 30px rgba(0,212,255,0.08); }
+  50%      { box-shadow: 0 0 60px rgba(0,212,255,0.2); }
+}
+
+.v2-map-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #000;
+  padding: 10px 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.65rem;
   letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: 10px 18px;
-  border-bottom: 2px solid #333;
+  color: var(--c);
+  border-bottom: 1px solid var(--border);
 }
 
-.comic-venue-map iframe {
-  display: block;
+.v2-map-dot {
+  width: 8px; height: 8px;
+  background: var(--g);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--g);
+  animation: blink 1s step-end infinite;
+}
+
+.v2-map-coords {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 0.58rem;
+}
+
+.v2-map-frame {
+  position: relative;
+  height: 380px;
+}
+
+.v2-map-frame iframe {
   width: 100%;
-  filter: saturate(0.5) contrast(1.1);
+  height: 100%;
+  display: block;
+  filter: invert(0.9) hue-rotate(180deg) saturate(0.8) brightness(0.85);
+  transition: filter 0.4s;
+}
+.v2-map-frame:hover iframe {
+  filter: invert(0) saturate(1) brightness(1);
 }
 
-@media (max-width: 860px) {
-  .comic-venue-grid {
+/* Map corner brackets */
+.v2-map-corner {
+  position: absolute;
+  width: 20px; height: 20px;
+  border-color: var(--y);
+  border-style: solid;
+  z-index: 2;
+  pointer-events: none;
+}
+.v2-map-corner--tl { top: 6px; left: 6px; border-width: 2px 0 0 2px; }
+.v2-map-corner--tr { top: 6px; right: 6px; border-width: 2px 2px 0 0; }
+.v2-map-corner--bl { bottom: 6px; left: 6px; border-width: 0 0 2px 2px; }
+.v2-map-corner--br { bottom: 6px; right: 6px; border-width: 0 2px 2px 0; }
+
+.v2-map-footer {
+  padding: 10px 16px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.62rem;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  background: #000;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Ticker ───────────────────────────────────── */
+.v2-ticker {
+  margin-top: 48px;
+  border-top: 2px solid var(--y);
+  border-bottom: 2px solid var(--y);
+  background: #000;
+  overflow: hidden;
+  padding: 10px 0;
+}
+
+.v2-ticker-track {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 30s linear infinite;
+  font-family: 'Courier New', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--y);
+}
+
+.v2-ticker-track span { padding-right: 40px; }
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ── Responsive ───────────────────────────────── */
+@media (max-width: 900px) {
+  .v2-body {
     grid-template-columns: 1fr;
+    gap: 24px;
   }
 
-  .comic-venue-inner {
-    padding: 0 20px;
-  }
+  .v2-map-frame { height: 300px; }
+
+  .v2-venue { padding: 60px 16px 40px; }
+}
+
+@media (max-width: 480px) {
+  .v2-title { -webkit-text-stroke: 2px #000; }
+  .v2-map-frame { height: 240px; }
+  .v2-features-grid { gap: 6px; }
+  .v2-feature-chip { font-size: 0.58rem; padding: 4px 10px; }
+  .v2-card { padding: 14px 14px; }
+  .v2-cta { font-size: 0.9rem; padding: 14px 20px; }
 }

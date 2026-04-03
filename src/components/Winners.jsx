@@ -4,7 +4,7 @@ import Floatchar from '../components/Floatchar';
 
 const WINNERS = [
     {
-    id: 7,
+    id: 1,
     title: 'Best Couple',
     name: 'Sagnik Roy Choudhury ',
     instagram: '@sagnik.roy.chowdhury ',
@@ -14,10 +14,10 @@ const WINNERS = [
     glowColor: '#FF9500',
     tagline: 'Two Worlds, One Vibe',
     img: '/assets/winners/saguda.jpeg',
-    number: '07',
+    number: '01',
   },
     {
-    id: 6,
+    id: 2,
     title: 'Best Couple',
     name: 'Tanisha Banerjee ',
     instagram: '@guitfiddle.tanisha',
@@ -27,10 +27,10 @@ const WINNERS = [
     glowColor: '#FF9500',
     tagline: 'Two Worlds, One Vibe',
     img: '/assets/winners/Tanisha Banerjee.jpg',
-    number: '06',
+    number: '02',
   },
   {
-    id: 1,
+    id: 3,
     title: 'Ms. Fresher',
     name: 'Surasree Majumder',
     instagram: '@areh._peculiar',
@@ -40,10 +40,10 @@ const WINNERS = [
     glowColor: '#FF2D87',
     tagline: 'Born to Shine',
     img: '/assets/winners/surasree.jpg',
-    number: '01',
+    number: '03',
   },
   {
-    id: 2,
+    id: 4,
     title: 'Mr.Fresher',
     name: 'Ayushman Das',
     instagram: '@_ayushman_das',
@@ -53,11 +53,11 @@ const WINNERS = [
     glowColor: '#FF2D87',
     tagline: 'Grace & Glory',
     img: '/assets/winners/Ayushman.png',
-    number: '02',
+    number: '04',
   },
   
   {
-    id: 3,
+    id: 5,
     title: 'Ms graceful ',
     name: 'Palak ray ',
     instagram: '@x.palak.r',
@@ -67,10 +67,10 @@ const WINNERS = [
     glowColor: '#00D4FF',
     tagline: ' Grace your self ',
     img: '/assets/winners/palak.jpg',
-    number: '03',
+    number: '05',
   },
   {
-    id: 4,
+    id: 6,
     title: 'Mr. Personality',
     name: 'Atanu karmakar ',
     instagram: '@arghhhaa',
@@ -80,10 +80,10 @@ const WINNERS = [
     glowColor: '#00FF88',
     tagline: 'Built Different',
     img: '/assets/winners/Atanu.jpg',
-    number: '04',
+    number: '06',
   },
   {
-    id: 5,
+    id: 7,
     title: 'Ms Personality',
     name: 'Tanisa Naskar',
     instagram: '@1234',
@@ -93,10 +93,10 @@ const WINNERS = [
     glowColor: '#3cff00',
     tagline: 'Personality is the key',
     img: '/assets/winners/tanisa.jpg',
-    number: '05',
+    number: '07',
   },
 {
-    id: 12,
+    id: 8,
     title: ' Mr. Charming',
     name: 'Parthib Mandal',
     instagram: '@parthib_mondal',
@@ -106,24 +106,39 @@ const WINNERS = [
     glowColor: '#2600ff',
     tagline: 'Free Bird',
     img: '/assets/winners/parthib.jpg',
-    number: '12',
+    number: '08',
   },
 
-   {
-    id: 8,
+  {
+    id: 9,
     title: ' ',
-    name: 'Anwesha dey ',
-    instagram: '@__.anw_sha.__',
+    name: 'Khushi Yadav ',
+    instagram: '@_khushi.__08',
+    year: '2K25',
+    crown: '💞',
+    frameColor: '#2600ff',
+    glowColor: '#2600ff',
+    tagline: 'Free Bird',
+    img: '/assets/winners/khushi.jpg',
+    number: '09',
+  },
+
+  {
+    id: 10,
+    title: ' ',
+    name: 'Nargis Sultana',
+    instagram: '@_nargissultana._ ',
     year: '2K25',
     crown: '💞',
     frameColor: '#ff2200',
     glowColor: '#FF9500',
-    tagline: 'One path one way',
-    img: '/assets/winners/aneswa.jpg',
-    number: '08',
-  },
+    tagline: 'Dare to match my vibe ?',
+    img: '/assets/winners/nargis.jpg',
+    number: '10',
+  },  
+
   {
-    id: 9,
+    id: 11,
     title: ' ',
     name: 'Ankit Das ',
     instagram: '@tan_duri_chicken ',
@@ -133,10 +148,10 @@ const WINNERS = [
     glowColor: '#FF9500',
     tagline: 'Dare to match my vibe ?',
     img: '/assets/winners/Ankit Das.webp',
-    number: '09',
+    number: '11',
   },
   {
-    id: 10,
+    id: 12,
     title: ' ',
     name: 'Monalisa Sen',
     instagram: '@_misss_sen_',
@@ -146,10 +161,10 @@ const WINNERS = [
     glowColor: '#c800ff',
     tagline: 'Lets Stay Together',
     img: '/assets/winners/mona.jpg',
-    number: '10',
+    number: '12',
   },
   {
-    id: 11,
+    id: 13,
     title: ' ',
     name: 'Roumik Ghosh',
     instagram: '@_itz_roumik_',
@@ -159,10 +174,10 @@ const WINNERS = [
     glowColor: '#c800ff',
     tagline: 'Lets Stay Together',
     img: '/assets/winners/roumik.jpg',
-    number: '10',
+    number: '13',
   },
   {
-    id: 11,
+    id: 14,
     title: ' ',
     name: 'Sujal Singh',
     instagram: '@__singhsujal17',
@@ -172,11 +187,25 @@ const WINNERS = [
     glowColor: '#eeff00',
     tagline: 'Free Bird',
     img: '/assets/winners/sujal.jpg',
-    number: '11',
+    number: '14',
   },
   
   {
-    id: 13,
+    id: 15,
+    title: ' ',
+    name: 'Anwesha dey ',
+    instagram: '@__.anw_sha.__',
+    year: '2K25',
+    crown: '💞',
+    frameColor: '#00f7ff',
+    glowColor: '#00f7ff',
+    tagline: 'One path one way',
+    img: '/assets/winners/aneswa.jpg',
+    number: '15',
+  },
+
+  {
+    id: 16,
     title: ' ',
     name: 'Sahim Uddin Farhan',
     instagram: '@the_ethereal.sky',
@@ -184,15 +213,15 @@ const WINNERS = [
     crown: '💞',
     frameColor: '#00f7ff',
     glowColor: '#00f7ff',
-    tagline: 'Free Bird',
+    tagline: 'One path one way',
     img: '/assets/winners/sahim.jpg',
-    number: '13',
+    number: '16',
   },
+
 ];
 
 const LOOP = [...WINNERS, ...WINNERS, ...WINNERS, ...WINNERS];
 
-/* ── DRAG HOOK ── */
 function useDragScroll() {
   const ref = useRef(null);
   const drag = useRef({ active: false, startX: 0, scrollLeft: 0, vel: 0, lastX: 0, lastT: 0, raf: null });
@@ -242,7 +271,6 @@ function useDragScroll() {
     d.raf = requestAnimationFrame(momentum);
   }, [momentum]);
 
-  /* seed to middle on mount */
   useEffect(() => {
     const node = ref.current; if (!node) return;
     const seed = () => { const t = node.scrollWidth / 4; if (t > 0) node.scrollLeft = t * 2; };

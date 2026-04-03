@@ -19,8 +19,8 @@ const SOCIALS = [
   { 
     icon: '/assets/icons/whatsapp.png', 
     label: 'WhatsApp',  
-    handle: 'Join Group',        
-    href: 'https://chat.whatsapp.com/YOUR_GROUP_INVITE_CODE' 
+    handle: 'LITHIUM 2K26 Group',        
+    href: 'https://chat.whatsapp.com/BT1bPV3g4JnFpjwy2dIJWN?mode=gi_t' 
   },
   { 
     icon: '/assets/icons/gmail.png', 
@@ -201,8 +201,8 @@ export default function Footer() {
               THE EVENT
             </div>
             {[
-              { icon: '', lbl: 'DATE',    val: 'May 8, 2026'                              },
-              { icon: '', lbl: 'TIME',    val: '3:00 PM onwards'                            },
+              { icon: '', lbl: 'DATE',    val: 'May 7, 2026'                              },
+              { icon: '', lbl: 'TIME',    val: '2:00 PM onwards'                            },
               { icon: '', lbl: 'VENUE',   val: 'Laban Hrad Mancha BD Auditorium, Kolkata'    },
               { icon: '', lbl: 'HOST',    val: 'Techno Bengal Institute of Technology'       },
             ].map((r, i) => (
@@ -261,10 +261,6 @@ export default function Footer() {
         </div>
 
       </div>
-
-      {/* ── ANIMATED FLOOR BAR ── */}
-      <div className="ft-floor" />
-
     </footer>
   );
 }

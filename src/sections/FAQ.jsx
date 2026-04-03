@@ -44,7 +44,15 @@ const FAQ = () => {
     <section id="faq" className="faq-section">
     
       <div className="faq-dot-bg" />
-
+<Floatchar
+  src="/assets/chars/edith.png"
+  alt="Miles Morales"
+  size={100}
+  bottom="84%"
+  right="35%"
+  animation="float"
+  glowColor="#FF2D87"
+/>
       <div className="faq-inner">
         {/* Header */}
         <div className="faq-header">

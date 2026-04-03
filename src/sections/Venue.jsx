@@ -1,77 +1,166 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import '../styles/Venue.css';
+import Floatchar from '../components/Floatchar';
+
+const DETAILS = [
+  {
+    icon: '',
+    label: 'VENUE',
+    value: 'Laban Hrad Mancha',
+    sub: 'BD Auditorium, HCV4+HM5, BD Block\nSector 1, Bidhannagar, Kolkata – 700064',
+  },
+  {
+    icon: '',
+    label: 'DATE',
+    value: 'May 7, 2026',
+    sub: 'Thursday',
+  },
+  {
+    icon: '',
+    label: 'TIME',
+    value: '2:00 PM',
+    sub: 'Doors open at 12:00 PM',
+  },
+];
+
 
 const Venue = () => {
+  const sectionRef = useRef(null);
+  const [visible, setVisible] = useState(false);
+  const [glitch, setGlitch] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setVisible(true); },
+      { threshold: 0.15 }
+    );
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  // Periodic glitch on title
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setGlitch(true);
+      setTimeout(() => setGlitch(false), 400);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <section id="venue" className="comic-venue-section">
-      <div className="venue-dot-bg" />
+    <section id="venue" className="v2-venue" ref={sectionRef}>
+      {/* Scanline overlay */}
+      <div className="v2-scanlines" />
+      {/* Noise grain */}
+      <div className="v2-grain" />
+      {/* Animated grid bg */}
+      <div className="v2-grid-bg" />
+  
+      {/* Floating corner brackets */}
+      
+      <div className={`v2-inner ${visible ? 'v2-inner--visible' : ''}`}>
+<Floatchar
+  src="/assets/chars/captain.png"
+  alt="Miles Morales"
+  size={170}
+  bottom="91%"
+  right="28%"
+  animation="none"
+  glowColor="#e0d3d9"
+/>
 
-      <div className="comic-venue-inner">
-        {/* Header */}
-        <div className="comic-section-header">
-          <span className="comic-venue-badge">✦ Location ✦</span>
-          <h2 className="comic-venue-title">THE PORTAL</h2>
-          <span className="venue-classified">MISSION COORDINATES</span>
-        </div>
+<br/>
 
-        <div className="comic-venue-grid">
-          {/* Info panel */}
-          <div className="comic-venue-info">
-            <div className="venue-info-row">
-              <div className="venue-info-icon-wrap"></div>
-              <div>
-                <div className="venue-info-label">Venue</div>
-                <div className="venue-info-value">Laban Hrad Mancha BD Auditorium</div>
-                <div className="venue-info-sub">Kolkata, West Bengal</div>
+<br/>
+        {/* ── HEADER ─────────────────────────── */}
+        <header className="v2-header">
+          <div className="v2-eyebrow">
+            <span className="v2-dot" />
+            <span>MISSION COORDINATES</span>
+            <span className="v2-dot" />
+          </div>
+          <h2 className={`v2-title ${glitch ? 'v2-title--glitch' : ''}`}
+              data-text="THE PORTAL">
+            THE PORTAL
+          </h2>
+        </header>
+
+        {/* ── BODY GRID ──────────────────────── */}
+        <div className="v2-body">
+
+          {/* LEFT: Detail Cards */}
+          <div className="v2-left">
+            {DETAILS.map((d, i) => (
+              <div
+                key={i}
+                className="v2-card"
+                style={{ animationDelay: `${i * 0.12}s` }}
+              >
+                <div className="v2-card-icon">{d.icon}</div>
+                <div className="v2-card-content">
+                  <div className="v2-card-label">{d.label}</div>
+                  <div className="v2-card-value">{d.value}</div>
+                  <div className="v2-card-sub">{d.sub}</div>
+                </div>
+                <div className="v2-card-bar" />
               </div>
-            </div>
+            ))}
 
-            <div className="venue-divider" />
 
-            <div className="venue-info-row">
-              <div className="venue-info-icon-wrap"></div>
-              <div>
-                <div className="venue-info-label">Date & Time</div>
-                <div className="venue-info-value">April 25, 2026</div>
-                <div className="venue-info-sub">12:00 PM onwards</div>
-              </div>
-            </div>
-
-            <div className="venue-divider" />
-
-            <div className="venue-info-row">
-              <div className="venue-info-icon-wrap">🎭</div>
-              <div>
-                <div className="venue-info-label">Dress Code</div>
-                <div className="venue-info-value">Any Character. Any Mind</div>
-              </div>
-            </div>
-
+            {/* CTA */}
             <a
-              href="https://maps.google.com/?q=Laban+Hrad+Mancha+Kolkata"
+              href="https://maps.google.com/?q=Laban+Hrad+Mancha+BD+Auditorium+Bidhannagar+Kolkata"
               target="_blank"
               rel="noreferrer"
-              className="comic-btn-venue"
+              className="v2-cta"
             >
-              <span>▶</span> Get Directions
+              <span className="v2-cta-icon">▶</span>
+              <span>GET DIRECTIONS</span>
+              <span className="v2-cta-arrow">→</span>
             </a>
           </div>
 
-          {/* Map */}
-          <div className="comic-venue-map">
-            <div className="map-header-bar">LIVE MAP FEED</div>
-            <iframe
-              title="Venue Map"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3684.053255936746!2d88.4116463!3d22.5771092!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a0275cc15555555%3A0x6006f6e52c8b8434!2sLaban%20Hrad%20Mancha!5e0!3m2!1sen!2sin!4v1710000000000"
-              width="100%"
-              height="340"
-              style={{ border: 0, display: 'block' }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-            />
+          {/* RIGHT: Map */}
+          <div className="v2-right">
+            <div className="v2-map-wrap">
+              <div className="v2-map-header">
+                <span className="v2-map-dot" />
+                <span>LIVE MAP FEED</span>
+                <span className="v2-map-coords">22.5939°N · 88.4067°E</span>
+              </div>
+              <div className="v2-map-frame">
+                <iframe
+                  title="Venue Map"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.6776506!2d88.4041463!3d22.5938914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027ae41b153381%3A0x6ae8be3071e5d785!2sLaban%20Hrad%20Mancha%20BD%20Auditorium!5e0!3m2!1sen!2sin!4v1712160000000"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, display: 'block' }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+                {/* Map corner decorations */}
+                <div className="v2-map-corner v2-map-corner--tl" />
+                <div className="v2-map-corner v2-map-corner--tr" />
+                <div className="v2-map-corner v2-map-corner--bl" />
+                <div className="v2-map-corner v2-map-corner--br" />
+              </div>
+              <div className="v2-map-footer">
+                <span> HCV4+HM5, BD Block, Sector 1, Bidhannagar</span>
+              </div>
+            </div>
           </div>
         </div>
+
+        {/* ── TICKER ─────────────────────────── */}
+        <div className="v2-ticker">
+          <div className="v2-ticker-track">
+            {Array(6).fill('✦ LITHIUM 2K26  ·  BEYOND THE VEIL  ·  MAY 7  2026  ·  KOLKATA  ·  BD AUDITORIUM  ').map((t, i) => (
+              <span key={i}>{t}</span>
+            ))}
+          </div>
+        </div>
+
       </div>
     </section>
   );
