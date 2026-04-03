@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import '../styles/MessageFromLeaders.css';
+import '../styles/Messagefromleaders.css';
 import Floatchar from '../components/Floatchar';
 
 /*
