@@ -2,41 +2,28 @@ import React, { useEffect, useRef, useState } from 'react';
 import '../styles/Messagefromleaders.css';
 import Floatchar from '../components/Floatchar';
 
-/*
-  ┌─────────────────────────────────────────────────────────────┐
-  │  USAGE                                                       │
-  │  Replace the `videoSrc` fields below with your actual       │
-  │  video file paths (e.g. "/assets/videos/director.mp4")      │
-  │  or embed URLs (YouTube / Drive).                           │
-  │                                                              │
-  │  For YouTube embeds, change <VideoCard> to use an           │
-  │  <iframe> instead of <video> — instructions in VideoCard.   │
-  └─────────────────────────────────────────────────────────────*/
-
 const LEADERS = [
   {
     id: 'director',
     role: 'DIRECTOR',
-    name: 'DR.  NARAYAN CHANDRA GHOSH',               // ← replace with actual name
+    name: 'DR. NARAYAN CHANDRA GHOSH',
     dept: 'Director of Techno Bengal Institute Of Technology',
     accentColor: '#FFE600',
     glowColor: 'rgba(255,230,0,0.25)',
     badgeIcon: '',
-    quote: '"Education is not preparation for life; education is life itself. Welcome to Lithium 2K26."',
-    videoSrc: '/assets/videos/director.mp4',   // ← your video path
-    poster: '/assets/posters/director.jpg',    // ← thumbnail image
+    videoSrc: '/assets/videos/director.mp4',
+    poster: '/assets/posters/director.jpg',
   },
   {
     id: 'principal',
     role: 'PRINCIPAL',
-    name: "DR. SHANTA PHANI",             // ← replace with actual name
+    name: "DR. SHANTA PHANI",
     dept: 'Principal of Techno Bengal Institute Of Technology',
     accentColor: '#FF2D87',
     glowColor: 'rgba(255,45,135,0.25)',
     badgeIcon: '',
-    quote: '"To our first-year students — this college is your canvas. Lithium 2K26 is your first brushstroke."',
-    videoSrc: '/assets/videos/principal.mp4',  // ← your video path
-    poster: '/assets/posters/principal.jpg',   // ← thumbnail image
+    videoSrc: '/assets/videos/principal.mp4',
+    poster: '/assets/posters/principal.jpg',
   },
 ];
 
@@ -44,7 +31,6 @@ const LEADERS = [
 const VideoCard = ({ leader, index, isVisible }) => {
   const videoRef = useRef(null);
   const [playing, setPlaying] = useState(false);
-  const [loaded, setLoaded]   = useState(false);
 
   const togglePlay = () => {
     const v = videoRef.current;
@@ -56,18 +42,17 @@ const VideoCard = ({ leader, index, isVisible }) => {
   return (
     <div
       className={`mfl-card ${isVisible ? 'mfl-card--in' : ''}`}
-      style={{ '--accent': leader.accentColor, '--glow': leader.glowColor, animationDelay: `${index * 0.2}s` }}
+      style={{
+        '--accent': leader.accentColor,
+        '--glow': leader.glowColor,
+        animationDelay: `${index * 0.2}s`,
+      }}
     >
-        
       {/* ── Top label bar ── */}
-      <div className="mfl-card-topbar">
-        <span className="mfl-card-badge">{leader.badgeIcon}</span>
-        <span className="mfl-card-role">{leader.role}</span>
-        <span className="mfl-card-id">INTEL-0{index + 1}</span>
-      </div>
-
+     
       {/* ── Video frame ── */}
-      <div className="mfl-video-wrap" onClick={togglePlay}>
+      <div className="mfl-video-wrap">
+        {/* Plain video — NO filter, plays with sound */}
         <video
           ref={videoRef}
           className="mfl-video"
@@ -75,30 +60,38 @@ const VideoCard = ({ leader, index, isVisible }) => {
           poster={leader.poster}
           preload="metadata"
           playsInline
-          onLoadedData={() => setLoaded(true)}
           onEnded={() => setPlaying(false)}
         />
 
-        {/* Overlay — hidden while playing */}
-        <div className={`mfl-video-overlay ${playing ? 'mfl-video-overlay--playing' : ''}`}>
-          <div className="mfl-play-btn">
-            {playing
-              ? <span className="mfl-pause-icon">⏸</span>
-              : <span className="mfl-play-icon">▶</span>
-            }
-          </div>
-          {!playing && (
-            <div className="mfl-video-label">PRESS PLAY</div>
-          )}
-        </div>
-
-        {/* Corner brackets on the frame */}
+        {/* Corner brackets */}
         <div className="mfl-frame-corner mfl-frame-corner--tl" />
         <div className="mfl-frame-corner mfl-frame-corner--tr" />
         <div className="mfl-frame-corner mfl-frame-corner--bl" />
         <div className="mfl-frame-corner mfl-frame-corner--br" />
 
-        {/* Scanline */}
+        {/* Big centered play overlay — only when paused */}
+        {!playing && (
+          <div className="mfl-video-overlay" onClick={togglePlay}>
+            <div className="mfl-play-btn">
+              {/* Triangle SVG play icon */}
+              <svg className="mfl-play-svg" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="10,6 30,18 10,30" fill="#000" />
+              </svg>
+            </div>
+            <span className="mfl-video-label">PRESS PLAY</span>
+          </div>
+        )}
+
+        {/* Small pause pill — bottom-right, only while playing */}
+        {playing && (
+          <button className="mfl-pause-fab" onClick={togglePlay} aria-label="Pause video">
+            {/* Two-bar pause SVG */}
+            <svg className="mfl-pause-svg" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+              <rect x="8"  y="6" width="8" height="24" rx="2" fill="#000" />
+              <rect x="20" y="6" width="8" height="24" rx="2" fill="#000" />
+            </svg>
+          </button>
+        )}
       </div>
 
       {/* ── Info ── */}
@@ -107,8 +100,7 @@ const VideoCard = ({ leader, index, isVisible }) => {
         <div className="mfl-card-dept">{leader.dept}</div>
       </div>
 
-     
-      {/* Bottom bar */}
+      {/* Bottom animated bar */}
       <div className="mfl-card-bottombar" />
     </div>
   );
@@ -130,23 +122,38 @@ const MessageFromLeaders = () => {
 
   return (
     <section id="leaders" className="mfl-section" ref={sectionRef}>
-      {/* Background layers */}
-
-      {/* Diagonal slash accent */}
       <div className="mfl-slash-accent" />
 
-<Floatchar
-  src="/assets/chars/batman.png"
-  alt="Miles Morales"
-  size={200}
-  bottom="85%"
-  right="23%"
-  animation="none"
-  glowColor="#FF2D87"
-/>
-<br/>
+      {/* Floatchar — desktop size */}
+      <div className="mfl-floatchar mfl-floatchar--desktop">
+        <Floatchar
+          src="/assets/chars/batman.png"
+          alt="Batman"
+          size={200}
+          bottom="85%"
+          right="23%"
+          animation="none"
+          glowColor="#FF2D87"
+        />
+      </div>
+      {/* Floatchar — mobile size */}
+      <div className="mfl-floatchar mfl-floatchar--mobile">
+        <Floatchar
+          src="/assets/chars/batman.png"
+          alt="Batman"
+          size={90}
+          bottom="97%"
+          right="4%"
+          animation="none"
+          glowColor="#FF2D87"
+        />
+      </div>
+
+      <br />
+
       <div className={`mfl-inner ${visible ? 'mfl-inner--visible' : ''}`}>
-<br/>
+        <br />
+
         {/* ── Header ── */}
         <header className="mfl-header">
           <div className="mfl-eyebrow">
@@ -154,7 +161,6 @@ const MessageFromLeaders = () => {
             <span>TRANSMISSION INCOMING</span>
             <span className="mfl-dot" />
           </div>
-
           <h2 className="mfl-title">
             <span className="mfl-title-line1">A MESSAGE</span>
             <span className="mfl-title-line2">FROM THE VEIL</span>
