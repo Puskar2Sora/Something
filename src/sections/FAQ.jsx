@@ -53,6 +53,8 @@ const FAQ = () => {
   animation="float"
   glowColor="#FF2D87"
 />
+
+
       <div className="faq-inner">
         {/* Header */}
         <div className="faq-header">

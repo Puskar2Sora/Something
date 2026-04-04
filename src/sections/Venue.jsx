@@ -23,7 +23,6 @@ const DETAILS = [
   },
 ];
 
-
 const Venue = () => {
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
@@ -38,7 +37,6 @@ const Venue = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Periodic glitch on title
   useEffect(() => {
     const interval = setInterval(() => {
       setGlitch(true);
@@ -49,43 +47,41 @@ const Venue = () => {
 
   return (
     <section id="venue" className="v2-venue" ref={sectionRef}>
-      {/* Scanline overlay */}
+      {/* Background layers */}
       <div className="v2-scanlines" />
-      {/* Noise grain */}
       <div className="v2-grain" />
-      {/* Animated grid bg */}
       <div className="v2-grid-bg" />
-  
-      {/* Floating corner brackets */}
-      
+
+      {/* ── TICKER — full bleed, outside inner container ── */}
+      <div className="v2-ticker v2-ticker--top">
+        <div className="v2-ticker-track">
+          {Array(8).fill('✦ LITHIUM 2K26  ·  BEYOND THE VEIL  ·  MAY 7  2026  ·  KOLKATA  ·  BD AUDITORIUM  ').map((t, i) => (
+            <span key={i}>{t}</span>
+          ))}
+        </div>
+      </div>
+
       <div className={`v2-inner ${visible ? 'v2-inner--visible' : ''}`}>
-<Floatchar
-  src="/assets/chars/captain.png"
-  alt="Miles Morales"
-  size={170}
-  bottom="91%"
-  right="28%"
-  animation="none"
-  glowColor="#e0d3d9"
-/>
 
-<br/>
-
-<br/>
-        {/* ── HEADER ─────────────────────────── */}
+        {/* ── HEADER ── */}
+        <br/>
         <header className="v2-header">
           <div className="v2-eyebrow">
             <span className="v2-dot" />
             <span>MISSION COORDINATES</span>
             <span className="v2-dot" />
           </div>
-          <h2 className={`v2-title ${glitch ? 'v2-title--glitch' : ''}`}
-              data-text="THE PORTAL">
+
+          {/* Full-width title */}
+          <h2
+            className={`v2-title ${glitch ? 'v2-title--glitch' : ''}`}
+            data-text="THE PORTAL"
+          >
             THE PORTAL
           </h2>
         </header>
 
-        {/* ── BODY GRID ──────────────────────── */}
+        {/* ── BODY GRID ── */}
         <div className="v2-body">
 
           {/* LEFT: Detail Cards */}
@@ -106,8 +102,6 @@ const Venue = () => {
               </div>
             ))}
 
-
-            {/* CTA */}
             <a
               href="https://maps.google.com/?q=Laban+Hrad+Mancha+BD+Auditorium+Bidhannagar+Kolkata"
               target="_blank"
@@ -139,28 +133,26 @@ const Venue = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-                {/* Map corner decorations */}
                 <div className="v2-map-corner v2-map-corner--tl" />
                 <div className="v2-map-corner v2-map-corner--tr" />
                 <div className="v2-map-corner v2-map-corner--bl" />
                 <div className="v2-map-corner v2-map-corner--br" />
               </div>
               <div className="v2-map-footer">
-                <span> HCV4+HM5, BD Block, Sector 1, Bidhannagar</span>
+                <span>📍 HCV4+HM5, BD Block, Sector 1, Bidhannagar</span>
               </div>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* ── TICKER ─────────────────────────── */}
-        <div className="v2-ticker">
-          <div className="v2-ticker-track">
-            {Array(6).fill('✦ LITHIUM 2K26  ·  BEYOND THE VEIL  ·  MAY 7  2026  ·  KOLKATA  ·  BD AUDITORIUM  ').map((t, i) => (
-              <span key={i}>{t}</span>
-            ))}
-          </div>
+      {/* ── TICKER BOTTOM — full bleed, outside inner container ── */}
+      <div className="v2-ticker v2-ticker--bottom">
+        <div className="v2-ticker-track v2-ticker-track--reverse">
+          {Array(8).fill('✦ LITHIUM 2K26  ·  BEYOND THE VEIL  ·  MAY 7  2026  ·  KOLKATA  ·  BD AUDITORIUM  ').map((t, i) => (
+            <span key={i}>{t}</span>
+          ))}
         </div>
-
       </div>
     </section>
   );
