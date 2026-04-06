@@ -578,30 +578,3 @@ git push origin feature/your-feature-name
 
 <br/>
 
-## 👨‍💻 Built By
-
-<div align="center">
-
-<br/>
-
-**PUSKAR NATH**  
-*& Team LITHIUM*
-
-<br/>
-
-*Techno Bengal Institute of Technology*  
-*Cultural Committee · 2026*
-
-<br/>
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=E8192C&height=100&section=footer&text=BEYOND%20THE%20VEIL&fontSize=24&fontColor=FFE600&fontAlignY=65&animation=fadeIn" width="100%"/>
-
-</div>
-
----
-
-<div align="center">
-
-<sub>Made with ♥ and a lot of CSS · LITHIUM 2K26 · Techno Bengal</sub>
-
-</div>
