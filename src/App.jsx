@@ -5,6 +5,7 @@ import Venue from "./sections/Venue";
 import Footer from "./sections/Footer";
 import Gallery from './sections/Gallery';
 import FAQ from './sections/FAQ';
+import About from './sections/About';
 import Intro from './components/Intro.jsx';
 import Winners from './components/Winners.jsx';
 import MessageFromLeaders from './sections/Messagefromleaders';
@@ -20,6 +21,7 @@ function App() {
       <Navbar />
       <main>
         <Hero />
+        <About/>
         <Events />
         <Gallery />
         <Winners />
