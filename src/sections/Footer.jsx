@@ -11,25 +11,25 @@ const NAV = [
 
 const SOCIALS = [
   { 
-    icon: '/assets/icons/insta.png', 
+    icon: '/assets-optimized/icons/insta.webp', 
     label: 'Instagram', 
     handle: '@bit_lithium2k26',      
     href: 'https://www.instagram.com/bit_lithium2k25' 
   },
   { 
-    icon: '/assets/icons/whatsapp.png', 
+    icon: '/assets-optimized/icons/whatsapp.webp', 
     label: 'WhatsApp',  
     handle: 'LITHIUM 2K26 Group',        
     href: 'https://chat.whatsapp.com/BT1bPV3g4JnFpjwy2dIJWN?mode=gi_t' 
   },
   { 
-    icon: '/assets/icons/gmail.png', 
+    icon: '/assets-optimized/icons/gmail.webp', 
     label: 'Email',      
     handle: 'boitkolkata@gmail.com',   
     href: 'mailto:boitkolkata@gmail.com' 
   },
   { 
-    icon: '/assets/icons/facebook.png', 
+    icon: '/assets-optimized/icons/facebook.webp', 
     label: 'Facebook',  
     handle: 'Lithium 2k26',          
     href: 'https://www.facebook.com/LITHIUM2K23?rdid=w4yznTAycBnyysMU&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F168qwXXAoE%2F#' 
@@ -135,7 +135,7 @@ export default function Footer() {
 
       <div className="ft-inner">
 <Floatchar
-  src="/assets/chars/miles.png"
+  src="/assets-optimized/chars/miles.webp"
   alt="Miles Morales"
   size={350}
   bottom="70%"

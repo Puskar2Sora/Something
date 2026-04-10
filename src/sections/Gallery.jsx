@@ -5,7 +5,7 @@ import Floatchar from '../components/Floatchar';
 
 const PHOTOS = [
   { 
-    src: new URL('../assets/pic/img1.png', import.meta.url).href, 
+    src: new URL('../assets-optimized/pic/img1.webp', import.meta.url).href, 
     caption: 'The Whole Grommers', 
     year: '2K25', 
     tag: 'Grand Opening', 
@@ -13,7 +13,7 @@ const PHOTOS = [
     bg: '#e6bf11' 
   },
   { 
-    src: new URL('../assets/pic/img2.png', import.meta.url).href, 
+    src: new URL('../assets-optimized/pic/img2.webp', import.meta.url).href, 
     caption: 'Dance Performance', 
     year: '2K25', 
     tag: 'On Stage', 
@@ -21,7 +21,7 @@ const PHOTOS = [
     bg: '#E8192C' 
   },
   { 
-    src: new URL('../assets/pic/img3.png', import.meta.url).href, 
+    src: new URL('../assets-optimized/pic/img3.webp', import.meta.url).href, 
     caption: 'Ultra Music', 
     year: '2K25', 
     tag: 'Spider Sence', 
@@ -29,7 +29,7 @@ const PHOTOS = [
     bg: '#00D4FF' 
   },
   { 
-    src: new URL('../assets/pic/img4.jpg', import.meta.url).href, 
+    src: new URL('../assets-optimized/pic/img4.webp', import.meta.url).href, 
     caption: 'Cultural', 
     year: '2K25', 
     tag: 'Performance', 
@@ -37,7 +37,7 @@ const PHOTOS = [
     bg: '#FF2D87' 
   },
   { 
-    src: new URL('../assets/pic/img5.png', import.meta.url).href, 
+    src: new URL('../assets-optimized/pic/img5.webp', import.meta.url).href, 
     caption: 'The RoadMap', 
     year: '2K24', 
     tag: 'Follow Them', 
@@ -45,7 +45,7 @@ const PHOTOS = [
     bg: '#00FF88' 
   },
   { 
-    src: new URL('../assets/pic/img6.png', import.meta.url).href, 
+    src: new URL('../assets-optimized/pic/img6.webp', import.meta.url).href, 
     caption: 'Host', 
     year: '2K25', 
     tag: 'Night Events', 
@@ -56,8 +56,6 @@ const PHOTOS = [
 
 export default function Gallery() {
   const [active, setActive] = useState(0);
-  const [prev, setPrev] = useState(null);
-  const [dir, setDir] = useState(1);
   const dragRef = useRef({ down: false, startX: 0 });
   const trackRef = useRef(null);
 
@@ -65,8 +63,6 @@ export default function Gallery() {
 
   const goTo = useCallback((idx) => {
     if (idx === active) return;
-    setDir(idx > active ? 1 : -1);
-    setPrev(active);
     setActive(idx);
   }, [active]);
 
@@ -177,6 +173,9 @@ export default function Gallery() {
                       alt={p.caption}
                       className="gl-real-img"
                       draggable="false"
+                      loading={isActive ? 'eager' : 'lazy'}
+                      fetchPriority={isActive ? 'high' : 'low'}
+                      decoding="async"
                       style={{
                         position: 'absolute',
                         top: 0, left: 0,
@@ -232,7 +231,7 @@ export default function Gallery() {
 
       </div>
           <Floatchar
-        src="/assets/chars/zotopia.png"
+        src="/assets-optimized/chars/zotopia.webp"
         alt="Villain"
         size={300}
         top="61%"

@@ -9,7 +9,7 @@ import '../styles/Floatchar.css';
  *   import FloatChar from '../components/FloatChar';
  *
  *   <FloatChar
- *     src="/assets/chars/miles.png"
+ *     src="/assets-optimized/chars/miles.webp"
  *     alt="Miles Morales"
  *     size={140}
  *     bottom="10%"
@@ -21,17 +21,18 @@ import '../styles/Floatchar.css';
  */
 export default function FloatChar({
   src,
-  alt       = 'character',
-  size      = 140,
+  alt = 'character',
+  size = 140,
   top,
   bottom,
   left,
   right,
   animation = 'float',   // float | swing | bob | pulse
   glowColor = '#FFE600',
-  delay     = '0s',
-  flip      = false,     // mirror horizontally
-  zIndex    = 10,
+  delay = '0s',
+  flip = false,          // mirror horizontally
+  zIndex = 10,
+  priority = false,
 }) {
   return (
     <div
@@ -53,6 +54,9 @@ export default function FloatChar({
         alt={alt}
         className="fc-img"
         draggable="false"
+        loading={priority ? 'eager' : 'lazy'}
+        fetchPriority={priority ? 'high' : 'low'}
+        decoding="async"
         style={{
           filter: `drop-shadow(0 0 14px ${glowColor}88)
                    drop-shadow(0 0 32px ${glowColor}33)

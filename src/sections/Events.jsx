@@ -82,7 +82,7 @@ const Events = () => {
       {/* Spider-Man peeking from corner */}
       <div className="events-spiderman">🕷️</div>
             <Floatchar
-        src="/assets/chars/fall.png"
+        src="/assets-optimized/chars/fall.webp"
         alt="Villain"
         size={350}
         top="-10%"

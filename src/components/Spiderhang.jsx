@@ -37,10 +37,15 @@ export default function SpiderHang() {
           {/* The actual image */}
           <div className="sh-img-wrap">
             <img
-              src="/assets/spiderman-hang.png"
+              src="/assets-optimized/spiderman-hang.webp"
               alt="Spider-Man hanging"
               className="sh-img"
+              width="384"
+              height="508"
               draggable="false"
+              loading="eager"
+              fetchPriority="high"
+              decoding="sync"
             />
             {/* Glow underneath */}
             <div className="sh-glow" />
