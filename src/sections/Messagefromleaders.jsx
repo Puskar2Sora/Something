@@ -11,8 +11,8 @@ const LEADERS = [
     accentColor: '#FFE600',
     glowColor: 'rgba(255,230,0,0.25)',
     badgeIcon: '',
-    videoSrc: '/assets/videos/director.mp4',
-    poster: '/assets/posters/director.jpg',
+    videoSrc: '/assets-optimized/videos/director.mp4',
+    poster: '/assets-optimized/posters/director.webp',
   },
   {
     id: 'principal',
@@ -22,8 +22,8 @@ const LEADERS = [
     accentColor: '#FF2D87',
     glowColor: 'rgba(255,45,135,0.25)',
     badgeIcon: '',
-    videoSrc: '/assets/videos/principal.mp4',
-    poster: '/assets/posters/principal.jpg',
+    videoSrc: '/assets-optimized/videos/principal.mp4',
+    poster: '/assets-optimized/posters/principal.webp',
   },
 ];
 
@@ -31,6 +31,7 @@ const LEADERS = [
 const VideoCard = ({ leader, index, isVisible }) => {
   const videoRef = useRef(null);
   const [playing, setPlaying] = useState(false);
+  const shouldLoad = isVisible || playing;
 
   const togglePlay = () => {
     const v = videoRef.current;
@@ -56,9 +57,8 @@ const VideoCard = ({ leader, index, isVisible }) => {
         <video
           ref={videoRef}
           className="mfl-video"
-          src={leader.videoSrc}
-          poster={leader.poster}
-          preload="metadata"
+          src={shouldLoad ? leader.videoSrc : undefined}
+          preload="none"
           playsInline
           onEnded={() => setPlaying(false)}
         />
@@ -127,7 +127,7 @@ const MessageFromLeaders = () => {
       {/* Floatchar — desktop size */}
       <div className="mfl-floatchar mfl-floatchar--desktop">
         <Floatchar
-          src="/assets/chars/batman.png"
+          src="/assets-optimized/chars/batman.webp"
           alt="Batman"
           size={200}
           bottom="85%"
@@ -139,7 +139,7 @@ const MessageFromLeaders = () => {
       {/* Floatchar — mobile size */}
       <div className="mfl-floatchar mfl-floatchar--mobile">
         <Floatchar
-          src="/assets/chars/batman.png"
+          src="/assets-optimized/chars/batman.webp"
           alt="Batman"
           size={90}
           bottom="97%"

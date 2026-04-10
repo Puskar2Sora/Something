@@ -55,7 +55,7 @@ const Hero = () => {
 
         <StarField />
         <Floatchar
-          src="/assets/chars/techno.png"
+          src="/assets-optimized/chars/techno.webp"
           alt="Techno"
           size={43}
           bottom="89%"
@@ -64,7 +64,7 @@ const Hero = () => {
           glowColor="#790a1b"
         />
         <Floatchar
-          src="/assets/chars/bit.png"
+          src="/assets-optimized/chars/bit.webp"
           alt="TBIT"
           size={44}
           bottom="89%"

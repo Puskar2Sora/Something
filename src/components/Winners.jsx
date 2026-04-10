@@ -13,7 +13,7 @@ const WINNERS = [
     frameColor: '#FF9500',
     glowColor: '#FF9500',
     tagline: 'Two Worlds, One Vibe',
-    img: '/assets/winners/saguda.jpeg',
+    img: '/assets-optimized/winners/saguda.webp',
     number: '01',
   },
     {
@@ -26,7 +26,7 @@ const WINNERS = [
     frameColor: '#FF9500',
     glowColor: '#FF9500',
     tagline: 'Two Worlds, One Vibe',
-    img: '/assets/winners/Tanisha Banerjee.jpg',
+    img: '/assets-optimized/winners/Tanisha Banerjee.webp',
     number: '02',
   },
   {
@@ -39,7 +39,7 @@ const WINNERS = [
     frameColor: '#FF2D87',
     glowColor: '#FF2D87',
     tagline: 'Born to Shine',
-    img: '/assets/winners/surasree.jpg',
+    img: '/assets-optimized/winners/surasree.webp',
     number: '03',
   },
   {
@@ -52,7 +52,7 @@ const WINNERS = [
     frameColor: '#FF2D87',
     glowColor: '#FF2D87',
     tagline: 'Grace & Glory',
-    img: '/assets/winners/Ayushman.png',
+    img: '/assets-optimized/winners/Ayushman.webp',
     number: '04',
   },
   
@@ -66,7 +66,7 @@ const WINNERS = [
     frameColor: '#00D4FF',
     glowColor: '#00D4FF',
     tagline: ' Grace your self ',
-    img: '/assets/winners/palak.jpg',
+    img: '/assets-optimized/winners/palak.webp',
     number: '05',
   },
   {
@@ -79,7 +79,7 @@ const WINNERS = [
     frameColor: '#00FF88',
     glowColor: '#00FF88',
     tagline: 'Built Different',
-    img: '/assets/winners/Atanu.jpg',
+    img: '/assets-optimized/winners/Atanu.webp',
     number: '06',
   },
   {
@@ -92,7 +92,7 @@ const WINNERS = [
     frameColor: '#00ff0d',
     glowColor: '#3cff00',
     tagline: 'Personality is the key',
-    img: '/assets/winners/tanisa.jpg',
+    img: '/assets-optimized/winners/tanisa.webp',
     number: '07',
   },
 {
@@ -105,7 +105,7 @@ const WINNERS = [
     frameColor: '#2600ff',
     glowColor: '#2600ff',
     tagline: 'Free Bird',
-    img: '/assets/winners/parthib.jpg',
+    img: '/assets-optimized/winners/parthib.webp',
     number: '08',
   },
 
@@ -119,7 +119,7 @@ const WINNERS = [
     frameColor: '#2600ff',
     glowColor: '#2600ff',
     tagline: 'Free Bird',
-    img: '/assets/winners/khushi.jpg',
+    img: '/assets-optimized/winners/khushi.webp',
     number: '09',
   },
 
@@ -133,7 +133,7 @@ const WINNERS = [
     frameColor: '#ff2200',
     glowColor: '#FF9500',
     tagline: 'Dare to match my vibe ?',
-    img: '/assets/winners/nargis.jpg',
+    img: '/assets-optimized/winners/nargis.webp',
     number: '10',
   },  
 
@@ -147,7 +147,7 @@ const WINNERS = [
     frameColor: '#ff2200',
     glowColor: '#FF9500',
     tagline: 'Dare to match my vibe ?',
-    img: '/assets/winners/Ankit Das.webp',
+    img: '/assets-optimized/winners/Ankit Das.webp',
     number: '11',
   },
   {
@@ -160,7 +160,7 @@ const WINNERS = [
     frameColor: '#c800ff',
     glowColor: '#c800ff',
     tagline: 'Lets Stay Together',
-    img: '/assets/winners/mona.jpg',
+    img: '/assets-optimized/winners/mona.webp',
     number: '12',
   },
   {
@@ -173,7 +173,7 @@ const WINNERS = [
     frameColor: '#c800ff',
     glowColor: '#c800ff',
     tagline: 'Lets Stay Together',
-    img: '/assets/winners/roumik.jpg',
+    img: '/assets-optimized/winners/roumik.webp',
     number: '13',
   },
   {
@@ -186,7 +186,7 @@ const WINNERS = [
     frameColor: '#eeff00',
     glowColor: '#eeff00',
     tagline: 'Free Bird',
-    img: '/assets/winners/sujal.jpg',
+    img: '/assets-optimized/winners/sujal.webp',
     number: '14',
   },
   
@@ -200,7 +200,7 @@ const WINNERS = [
     frameColor: '#00f7ff',
     glowColor: '#00f7ff',
     tagline: 'One path one way',
-    img: '/assets/winners/aneswa.jpg',
+    img: '/assets-optimized/winners/aneswa.webp',
     number: '15',
   },
 
@@ -214,7 +214,7 @@ const WINNERS = [
     frameColor: '#00f7ff',
     glowColor: '#00f7ff',
     tagline: 'One path one way',
-    img: '/assets/winners/sahim.jpg',
+    img: '/assets-optimized/winners/sahim.webp',
     number: '16',
   },
 
@@ -228,7 +228,13 @@ function useDragScroll() {
 
   const cancelRaf = () => { if (drag.current.raf) cancelAnimationFrame(drag.current.raf); };
 
-  const momentum = useCallback(() => {
+  function wrapScroll(node) {
+    const q = node.scrollWidth / 4;
+    if (node.scrollLeft < q) node.scrollLeft += q * 2;
+    if (node.scrollLeft > q * 3) node.scrollLeft -= q * 2;
+  }
+
+  function momentum() {
     const el = drag.current; const node = ref.current;
     if (!node) return;
     el.vel *= 0.92;
@@ -236,13 +242,7 @@ function useDragScroll() {
     node.scrollLeft += el.vel;
     wrapScroll(node);
     el.raf = requestAnimationFrame(momentum);
-  }, []);
-
-  const wrapScroll = (node) => {
-    const q = node.scrollWidth / 4;
-    if (node.scrollLeft < q) node.scrollLeft += q * 2;
-    if (node.scrollLeft > q * 3) node.scrollLeft -= q * 2;
-  };
+  }
 
   const onDown = useCallback((e) => {
     const node = ref.current; if (!node) return;
@@ -263,13 +263,13 @@ function useDragScroll() {
     d.lastX = x; d.lastT = now;
   }, []);
 
-  const onUp = useCallback(() => {
+  function onUp() {
     const d = drag.current; const node = ref.current;
     if (!d.active) return;
     d.active = false;
     if (node) node.style.cursor = 'grab';
     d.raf = requestAnimationFrame(momentum);
-  }, [momentum]);
+  }
 
   useEffect(() => {
     const node = ref.current; if (!node) return;
@@ -361,6 +361,9 @@ export default function Winners() {
                     alt={w.name}
                     className="wn-photo"
                     draggable="false"
+                    loading="lazy"
+                    fetchPriority="low"
+                    decoding="async"
                     onError={e => {
                       e.currentTarget.style.display = 'none';
                       e.currentTarget.parentNode.querySelector('.wn-ph').style.display = 'flex';
@@ -427,7 +430,7 @@ export default function Winners() {
         <div className="wn-bb-r" />
       </div>
       <Floatchar
-  src="/assets/chars/peter.png"
+  src="/assets-optimized/chars/peter.webp"
   alt="Miles Morales"
   size={200}
   bottom="80%"

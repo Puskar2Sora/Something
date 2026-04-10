@@ -83,7 +83,7 @@ const Navbar = () => {
           </div>
           <div className="drawer-head-theme">✦ BEYOND THE VEIL ✦</div>
 <Floatchar
-        src="/assets/chars/spidy.png"
+        src="/assets-optimized/chars/spidy.webp"
         alt="Villain"
         size={400}
         top="190%"

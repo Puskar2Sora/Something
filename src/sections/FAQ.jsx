@@ -45,7 +45,7 @@ const FAQ = () => {
     
       <div className="faq-dot-bg" />
 <Floatchar
-  src="/assets/chars/edith.png"
+  src="/assets-optimized/chars/edith.webp"
   alt="Miles Morales"
   size={100}
   bottom="84%"

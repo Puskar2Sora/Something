@@ -1,35 +1,71 @@
-import Navbar from "./components/Navbar";
-import Hero from "./sections/Hero";
-import Events from "./sections/Events";
-import Venue from "./sections/Venue";
-import Footer from "./sections/Footer";
-import Gallery from './sections/Gallery';
-import FAQ from './sections/FAQ';
-import About from './sections/About';
+import React, { lazy, useMemo, useState } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './sections/Hero';
 import Intro from './components/Intro.jsx';
-import Winners from './components/Winners.jsx';
-import MessageFromLeaders from './sections/Messagefromleaders';
+import LazySection from './components/LazySection.jsx';
 
-import "./App.css";
+import './App.css';
+
+const About = lazy(() => import('./sections/About'));
+const Events = lazy(() => import('./sections/Events'));
+const Gallery = lazy(() => import('./sections/Gallery'));
+const Winners = lazy(() => import('./components/Winners.jsx'));
+const Venue = lazy(() => import('./sections/Venue'));
+const MessageFromLeaders = lazy(() => import('./sections/Messagefromleaders'));
+const FAQ = lazy(() => import('./sections/FAQ'));
+const Footer = lazy(() => import('./sections/Footer'));
+
+function shouldPlayIntro() {
+  if (typeof window === 'undefined') return false;
+
+  const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
+  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+  const slowConnection = connection?.saveData || /(^|-)2g$/.test(connection?.effectiveType || '');
+  const alreadySeen = sessionStorage.getItem('lithium:intro-seen') === '1';
+
+  return !reducedMotion && !slowConnection && !alreadySeen;
+}
 
 function App() {
+  const [showIntro, setShowIntro] = useState(() => shouldPlayIntro());
+  const sectionFallback = useMemo(() => <div className="section-skeleton" aria-hidden="true" />, []);
+
+  const handleIntroDone = () => {
+    sessionStorage.setItem('lithium:intro-seen', '1');
+    setShowIntro(false);
+  };
 
   return (
-    
     <div className="realm-container">
-      <Intro />
+      {showIntro && <Intro onDone={handleIntroDone} />}
       <Navbar />
       <main>
         <Hero />
-        <About/>
-        <Events />
-        <Gallery />
-        <Winners />
-        <Venue />
-        <MessageFromLeaders />
+        <LazySection fallback={sectionFallback} minHeight={520}>
+          <About />
+        </LazySection>
+        <LazySection fallback={sectionFallback} minHeight={560}>
+          <Events />
+        </LazySection>
+        <LazySection fallback={sectionFallback} minHeight={720}>
+          <Gallery />
+        </LazySection>
+        <LazySection fallback={sectionFallback} minHeight={760}>
+          <Winners />
+        </LazySection>
+        <LazySection fallback={sectionFallback} minHeight={760}>
+          <Venue />
+        </LazySection>
+        <LazySection fallback={sectionFallback} minHeight={720}>
+          <MessageFromLeaders />
+        </LazySection>
       </main>
-      <FAQ />
-      <Footer />
+      <LazySection fallback={sectionFallback} minHeight={560}>
+        <FAQ />
+      </LazySection>
+      <LazySection fallback={sectionFallback} minHeight={520}>
+        <Footer />
+      </LazySection>
     </div>
   );
 }
