@@ -26,6 +26,9 @@ const LOAD_STEPS = [
   { pct: 100, label: 'ACCESS GRANTED',            delay: 280  },
 ];
 
+const LOAD_STEP_SPEED_MULTIPLIER = 0.8;
+const LOAD_COMPLETE_HOLD_MS = 1800;
+
 const CHARS = ['🕷️','🏴‍☠️','🧙','🦸','🦹','⚔️','🧛','🤖'];
 
 export default function Intro({ onDone = () => {} }) {
@@ -140,10 +143,13 @@ export default function Intro({ onDone = () => {} }) {
           targetRef.current = step.pct;
           setPct(step.pct);
           setLabel(step.label);
-        }, elapsed += Math.max(120, Math.round(step.delay * 0.4))));
+        }, elapsed += Math.max(200, Math.round(step.delay * LOAD_STEP_SPEED_MULTIPLIER))));
       });
 
-      const totalDelay = LOAD_STEPS.reduce((a, s) => a + Math.max(120, Math.round(s.delay * 0.4)), 0) + profile.phaseDelay;
+      const totalDelay =
+        LOAD_STEPS.reduce((a, s) => a + Math.max(200, Math.round(s.delay * LOAD_STEP_SPEED_MULTIPLIER)), 0) +
+        profile.phaseDelay +
+        LOAD_COMPLETE_HOLD_MS;
       register(setTimeout(() => setPhase('slam'), totalDelay));
     }, 420));
 
