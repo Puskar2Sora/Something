@@ -7,11 +7,9 @@
   position: relative;
   margin-top: -34px;
   background:
-    radial-gradient(ellipse 120% 82% at 50% 0%, rgba(13, 0, 46, 0.82) 0%, transparent 60%),
-    radial-gradient(ellipse 105% 64% at 50% 100%, rgba(26, 0, 10, 0.52) 0%, transparent 60%),
     radial-gradient(circle at 18% 22%, rgba(45, 70, 120, 0.1) 0%, transparent 30%),
     radial-gradient(circle at 78% 18%, rgba(34, 78, 136, 0.08) 0%, transparent 28%),
-    linear-gradient(180deg, #06001a 0%, #060018 52%, #0c1020 100%);
+    linear-gradient(180deg, #090b11 0%, #0b0d14 52%, #0e1220 100%);
   overflow: hidden;
   padding: 136px 0 90px;
   min-height: 100vh;
@@ -140,22 +138,11 @@
    LEFT — TEXT CONTENT
 ════════════════════════════════════ */
 .ab-left {
-  position: relative;
-  padding-top: 168px;
   display: flex; flex-direction: column; gap: 28px;
   opacity: 0; transform: translateX(-50px);
   transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.34,1.2,0.64,1);
 }
 .ab-left.ab-left-in { opacity: 1; transform: translateX(0); }
-
-.ab-logo-fc {
-  top: 0;
-  left: calc(50% - 120px);
-  right: auto;
-  width: 240px !important;
-  z-index: 1 !important;
-  opacity: 0.95;
-}
 
 /* Eyebrow */
 .ab-eyebrow { display: flex; align-items: center; gap: 14px; }
@@ -312,7 +299,7 @@
 .ab-btn-o { background: transparent; color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.2); }
 .ab-btn-o:hover { border-color: rgba(255,230,0,0.5); color: #FFE600; }
 .ab-btn-arrow {
-  font-size: 10px; background: var(--bg-night-panel-strong); color: #FFE600;
+  font-size: 10px; background: #0a0a0a; color: #FFE600;
   width: 20px; height: 20px; border-radius: 50%;
   display: flex; align-items: center; justify-content: center; flex-shrink: 0;
 }
@@ -367,7 +354,7 @@
 .ab-badge-core {
   position: relative;
   width: 200px; height: 200px;
-  background: var(--bg-night-panel);
+  background: rgba(4,2,18,0.96);
   border: 1.5px solid rgba(255,230,0,0.25);
   border-radius: 4px;
   display: flex; align-items: center; justify-content: center;
@@ -491,7 +478,7 @@
 .ab-oc-inner {
   display: flex; flex-direction: column;
   align-items: center; gap: 2px;
-  background: var(--bg-night-panel);
+  background: rgba(4,2,18,0.92);
   border: 1.5px solid rgba(255,230,0,0.2);
   padding: 6px 8px;
   transition: border-color 0.3s, transform 0.3s;
@@ -587,14 +574,7 @@
     gap: 56px;
     padding: 0 28px;
   }
-  .ab-left { padding-top: 168px; }
   .ab-right { order: -1; }
-  .ab-logo-fc {
-    top: -26px;
-    left: calc(50% - 105px);
-    width: 210px !important;
-    opacity: 0.9;
-  }
   .ab-badge-wrap { width: 280px; height: 280px; }
   .ab-badge-core { width: 170px; height: 170px; }
   .ab-orbit-char { transform:
@@ -608,14 +588,6 @@
 @media (max-width: 600px) {
   .ab-section { padding: 70px 0 60px; }
   .ab-inner { padding: 0 20px; gap: 40px; }
-  .ab-left { padding-top: 154px; }
-  .ab-logo-fc {
-    top: -36px;
-    left: calc(50% - 85px);
-    width: 180px !important;
-    opacity: 0.95;
-    z-index: 1 !important;
-  }
   .ab-badge-wrap { width: 240px; height: 240px; }
   .ab-badge-core { width: 145px; height: 145px; }
   .ab-badge-yr { font-size: 38px; }

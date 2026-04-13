@@ -5,7 +5,7 @@
 /* ── ROOT ── */
 .ft {
   position: relative;
-  background: var(--bg-night-soft);
+  background: #020008;
   overflow: hidden;
 }
 
@@ -258,7 +258,7 @@
 }
 .ft-tw-screen {
   display: flex; align-items: center; gap: 2px;
-  background: rgba(12, 4, 30, 0.55);
+  background: rgba(0,0,0,0.5);
   border: 1px solid rgba(0,212,255,0.2);
   padding: 6px 18px;
   min-width: 250px; justify-content: center;
@@ -291,7 +291,7 @@
 .ft-mini-card {
   position: relative;
   width: 200px;
-  background: var(--bg-night-panel);
+  background: rgba(4,2,18,0.95);
   border: 1px solid rgba(0,212,255,0.3);
   overflow: hidden;
   flex-shrink: 0;
@@ -556,7 +556,7 @@
   bottom: calc(100% + 12px);
   left: 50%;
   transform: translateX(-50%);
-  background: var(--bg-night-panel-strong);
+  background: #0a0a0a;
   border: 2px solid #FFE600;
   box-shadow: 3px 3px 0 #FFE600;
   padding: 5px 12px;
@@ -785,7 +785,7 @@
   content: '';
   position: absolute;
   inset: 1.5px;
-  background: var(--bg-night-panel-strong);
+  background: rgba(4, 2, 16, 0.97);
   border-radius: 2px;
   z-index: -1;
 }

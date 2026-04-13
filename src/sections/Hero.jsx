@@ -30,34 +30,21 @@ const Hero = () => {
       return;
     }
 
-    // Desktop: direct transform updates avoid RAF restart lag and layout writes.
-    const moveCursor = (x, y) => {
-      el.style.opacity = '1';
-      el.style.transform = `translate3d(${x}px, ${y}px, 0) translate(-50%, -50%)`;
-    };
-
+    // Desktop: zero-lag cursor via direct DOM — no React re-render
+    let rafId;
     const onMove = (e) => {
-      moveCursor(e.clientX, e.clientY);
-    };
-
-    const onLeave = () => {
-      el.style.opacity = '0';
-    };
-
-    const onEnter = (e) => {
-      el.style.opacity = '1';
-      moveCursor(e.clientX, e.clientY);
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        el.style.left = e.clientX + 'px';
+        el.style.top  = e.clientY + 'px';
+      });
     };
 
     document.body.style.cursor = 'none';
-    window.addEventListener('pointermove', onMove, { passive: true });
-    window.addEventListener('pointerleave', onLeave, { passive: true });
-    window.addEventListener('pointerenter', onEnter, { passive: true });
-
+    window.addEventListener('mousemove', onMove, { passive: true });
     return () => {
-      window.removeEventListener('pointermove', onMove);
-      window.removeEventListener('pointerleave', onLeave);
-      window.removeEventListener('pointerenter', onEnter);
+      window.removeEventListener('mousemove', onMove);
+      cancelAnimationFrame(rafId);
       document.body.style.cursor = '';
     };
   }, []);

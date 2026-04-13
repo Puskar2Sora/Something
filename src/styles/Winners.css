@@ -6,7 +6,7 @@
 /* ── Section wrapper ── */
 .wn-section {
   position: relative;
-  background: var(--bg-night-soft);
+  background: #0a0a0a;
   padding: 64px 0 56px;
   overflow: hidden;
 }
@@ -224,7 +224,7 @@
 .wn-card {
   position: relative;
   flex: 0 0 260px;         /* Standard card width across screens */
-  background: var(--bg-night-panel);
+  background: #111111;
   border: 2px solid var(--fc);
   border-radius: 6px;
   overflow: hidden;
@@ -286,7 +286,7 @@
 .wn-frame {
   position: relative;
   aspect-ratio: 3.2 / 3.8;
-  background: var(--bg-night-panel-strong);
+  background: #0d0d0d;
   overflow: hidden;
 }
 
@@ -313,8 +313,8 @@
   gap: 8px;
   background: linear-gradient(
     160deg,
-    color-mix(in srgb, var(--fc) 8%, #13072e) 0%,
-    #050118 100%
+    color-mix(in srgb, var(--fc) 8%, #111) 0%,
+    #0a0a0a 100%
   );
 }
 .wn-ph-crown {
@@ -355,7 +355,7 @@
   position: absolute;
   bottom: 0; left: 0; right: 0;
   height: 45%;
-  background: linear-gradient(to top, rgba(8, 2, 24, 0.94) 0%, transparent 100%);
+  background: linear-gradient(to top, #111 0%, transparent 100%);
   pointer-events: none;
   z-index: 3;
 }
@@ -407,7 +407,7 @@
   width: 34px;
   height: 34px;
   border-radius: 50%;
-  background: rgba(10, 3, 26, 0.82);
+  background: rgba(10,10,10,0.82);
   border: 2px solid var(--fc);
   display: flex;
   align-items: center;
@@ -422,7 +422,7 @@
   position: relative;
   z-index: 2;
   padding: 14px 14px 16px;
-  background: var(--bg-night-panel-strong);
+  background: #111;
   border-top: 2px solid var(--fc);
 }
 
