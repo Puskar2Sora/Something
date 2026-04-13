@@ -22,6 +22,7 @@ import '../styles/Floatchar.css';
 export default function FloatChar({
   src,
   alt = 'character',
+  className = '',
   size = 140,
   top,
   bottom,
@@ -36,7 +37,7 @@ export default function FloatChar({
 }) {
   return (
     <div
-      className={`fc-root fc-anim-${animation}`}
+      className={`fc-root fc-anim-${animation} ${className}`.trim()}
       style={{
         width:           size,
         top,
