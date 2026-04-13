@@ -7,8 +7,8 @@
   --c: #00D4FF;
   --m: #FF2D87;
   --g: #00FF88;
-  --bg: var(--bg-night-soft);
-  --bg2: var(--bg-night-panel);
+  --bg: #07070d;
+  --bg2: #10101a;
   --border: rgba(255, 230, 0, 0.18);
   --text: #f0f0f0;
   --muted: rgba(240, 240, 240, 0.45);
@@ -156,7 +156,7 @@
   align-items: center;
   gap: 10px;
   padding: 10px 16px;
-  background: rgba(10, 3, 26, 0.58);
+  background: rgba(0,0,0,0.5);
   border-bottom: 1px solid rgba(255,255,255,0.06);
   font-family: 'Courier New', monospace;
   font-size: 0.6rem;
@@ -171,7 +171,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
-  background: var(--bg-night-panel-strong);
+  background: #000;
   overflow: hidden;
 }
 

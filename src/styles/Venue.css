@@ -9,8 +9,8 @@
   --c: #00D4FF;
   --m: #FF2D87;
   --g: #00FF88;
-  --bg: var(--bg-night-soft);
-  --bg2: var(--bg-night-panel);
+  --bg: #0a0a0f;
+  --bg2: #111118;
   --border: rgba(255,230,0,0.25);
   --text: #f0f0f0;
   --muted: rgba(240,240,240,0.5);
@@ -411,7 +411,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  background: var(--bg-night-panel-strong);
+  background: #000;
   padding: 10px 16px;
   font-family: 'Courier New', monospace;
   font-size: 0.65rem;
@@ -470,7 +470,7 @@
   font-size: 0.62rem;
   color: var(--muted);
   border-top: 1px solid var(--border);
-  background: var(--bg-night-panel-strong);
+  background: #000;
   letter-spacing: 0.05em;
   white-space: nowrap;
   overflow: hidden;
@@ -484,7 +484,7 @@
   margin-top: 48px;
   border-top: 2px solid var(--y);
   border-bottom: 2px solid var(--y);
-  background: var(--bg-night-panel-strong);
+  background: #000;
   overflow: hidden;
   padding: 10px 0;
 }

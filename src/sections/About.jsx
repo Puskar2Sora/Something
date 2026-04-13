@@ -97,15 +97,6 @@ export default function About() {
         {/* ════ LEFT COLUMN — WRITING ════ */}
         <div className={`ab-left ${visible ? 'ab-left-in' : ''}`}>
 
-          <Floatchar
-            className="ab-logo-fc"
-            src="/assets/chars/logo.png"
-            alt="Miles Morales"
-            size={350}
-            animation="float"
-            glowColor="#FF2D87"
-          />
-
           {/* Eyebrow */}
           <div className="ab-eyebrow">
             <span className="ab-ey-line" />
@@ -136,6 +127,16 @@ export default function About() {
   </h2>
   <div className="ab-title-sub">LITHIUM 2K26</div>
 </div>
+
+<Floatchar
+  src="/assets/chars/logo.png"
+  alt="Miles Morales"
+  size={350}
+  bottom="15%"
+  right="-120%"
+  animation="float"
+  glowColor="#FF2D87"
+/>
 
           {/* Animated text paragraphs */}
           <div className="ab-text-block">
