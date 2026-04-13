@@ -6,9 +6,9 @@
   position: relative;
   min-height: 100vh;
   background:
-    radial-gradient(circle at 18% 18%, rgba(16, 23, 40, 0.18) 0%, transparent 32%),
-    radial-gradient(circle at 82% 22%, rgba(15, 31, 49, 0.14) 0%, transparent 30%),
-    linear-gradient(135deg, #0d0e16 0%, #0b0e17 48%, #090d15 100%);
+    radial-gradient(ellipse 120% 80% at 50% 0%,   #0d002e 0%, transparent 60%),
+    radial-gradient(ellipse 100% 60% at 50% 100%, #1a000a 0%, transparent 60%),
+    #04001a;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -37,14 +37,17 @@
 /* ---- Custom Spider Cursor (desktop only) ---- */
 .spider-cursor {
   position: fixed;
+  top: 0;
+  left: 0;
   pointer-events: none;
   z-index: 99999;
   font-size: 32px;
   transform: translate(-50%, -50%);
-  /* NO transition — RAF handles smoothness, transition adds lag */
+  opacity: 0;
   user-select: none;
-  will-change: left, top;
+  will-change: transform;
   filter: drop-shadow(0 0 6px rgba(255,45,135,0.6));
+  backface-visibility: hidden;
 }
 
 /* Hide cursor on touch devices */
@@ -258,7 +261,7 @@
 
 .btn-arrow {
   font-size: 12px;
-  background: #0a0a0a;
+  background: var(--bg-night-panel-strong);
   color: #FFE600;
   width: 24px;
   height: 24px;
@@ -282,7 +285,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 260px;
-  background: #0a0a0a;
+  background: var(--bg-night-panel-strong);
   border: 3px solid #ffffff;
   box-shadow: 8px 8px 0 #00D4FF;
   z-index: 5;
@@ -381,7 +384,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 6px 14px;
-  background: #0a0a0a;
+  background: var(--bg-night-panel);
   border: 2.5px solid;
   box-shadow: 3px 3px 0 currentColor;
   animation: floatTag 3s ease-in-out infinite alternate;

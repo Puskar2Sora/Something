@@ -10,6 +10,18 @@
   --cyan: #00D4FF;
   --pink: #FF2D87;
   --green: #00FF88;
+  --bg-night-base: #04001a;
+  --bg-night:
+    radial-gradient(ellipse 120% 80% at 50% 0%, #0d002e 0%, transparent 60%),
+    radial-gradient(ellipse 100% 60% at 50% 100%, #1a000a 0%, transparent 60%),
+    #04001a;
+  --bg-night-soft:
+    radial-gradient(ellipse 130% 88% at 50% 0%, rgba(13, 0, 46, 0.86) 0%, transparent 62%),
+    radial-gradient(ellipse 110% 72% at 50% 100%, rgba(26, 0, 10, 0.72) 0%, transparent 60%),
+    linear-gradient(180deg, #050019 0%, #040014 50%, #060019 100%);
+  --bg-night-panel: linear-gradient(180deg, rgba(19, 7, 48, 0.96) 0%, rgba(9, 2, 24, 0.98) 100%);
+  --bg-night-panel-strong: linear-gradient(180deg, rgba(15, 5, 38, 0.98) 0%, rgba(5, 1, 18, 1) 100%);
+  --bg-night-overlay: rgba(12, 4, 30, 0.78);
   --border: 3px solid #0a0a0a;
   --border-thick: 4px solid #0a0a0a;
   --shadow: 5px 5px 0px #0a0a0a;
@@ -25,7 +37,7 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font-body);
-  background: var(--black);
+  background: var(--bg-night);
   color: var(--white);
   overflow-x: hidden;
   cursor: none; /* custom cursor */
@@ -75,8 +87,7 @@ body {
   min-height: inherit;
   background:
     linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)),
-    radial-gradient(circle at top, rgba(255, 230, 0, 0.07), transparent 38%),
-    #0a0a0a;
+    var(--bg-night-soft);
   content-visibility: auto;
   contain-intrinsic-size: 520px;
 }
