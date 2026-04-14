@@ -5,7 +5,7 @@
 .comic-hero {
     position: relative;
     min-height: 100vh;
-    background: #0a0a0a;
+    background: #02052d;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -59,7 +59,7 @@
     right: -5%;
     width: 55%;
     height: 130%;
-    background: #111111;
+    background: #020532;
     transform: skewX(-8deg);
     z-index: 0;
     border-left: 4px solid #ffe600;
