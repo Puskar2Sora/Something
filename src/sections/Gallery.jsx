@@ -6,7 +6,7 @@ import Floatchar from '../components/Floatchar';
 const PHOTOS = [
   { 
     src: new URL('../assets-optimized/pic/img1.webp', import.meta.url).href, 
-    caption: 'The Whole Grommers', 
+    caption: 'Groomers', 
     year: '2K25', 
     tag: 'Grand Opening', 
     color: '#E8192C', 
@@ -235,7 +235,9 @@ export default function Gallery() {
         alt="Villain"
         size={300}
         top="61%"
+        animation="none"
         left="45%"
+        glowColor="#dc250897"
       />
           </section>
     

@@ -55,6 +55,34 @@ const WINNERS = [
     img: '/assets-optimized/winners/Ayushman.webp',
     number: '04',
   },
+
+  {
+    id: 7,
+    title: 'Ms Personality',
+    name: 'Tanisa Naskar',
+    instagram: '@1234',
+    year: '2K25',
+    crown: '💞',
+    frameColor: '#00ff0d',
+    glowColor: '#3cff00',
+    tagline: 'Personality is the key',
+    img: '/assets-optimized/winners/tanisa.webp',
+    number: '07',
+  },
+
+  {
+    id: 6,
+    title: 'Mr. Personality',
+    name: 'Atanu karmakar ',
+    instagram: '@arghhhaa',
+    year: '2K25',
+    crown: '🔥',
+    frameColor: '#00FF88',
+    glowColor: '#00FF88',
+    tagline: 'Built Different',
+    img: '/assets-optimized/winners/Atanu.webp',
+    number: '06',
+  },
   
   {
     id: 5,
@@ -69,32 +97,7 @@ const WINNERS = [
     img: '/assets-optimized/winners/palak.webp',
     number: '05',
   },
-  {
-    id: 6,
-    title: 'Mr. Personality',
-    name: 'Atanu karmakar ',
-    instagram: '@arghhhaa',
-    year: '2K25',
-    crown: '🔥',
-    frameColor: '#00FF88',
-    glowColor: '#00FF88',
-    tagline: 'Built Different',
-    img: '/assets-optimized/winners/Atanu.webp',
-    number: '06',
-  },
-  {
-    id: 7,
-    title: 'Ms Personality',
-    name: 'Tanisa Naskar',
-    instagram: '@1234',
-    year: '2K25',
-    crown: '💞',
-    frameColor: '#00ff0d',
-    glowColor: '#3cff00',
-    tagline: 'Personality is the key',
-    img: '/assets-optimized/winners/tanisa.webp',
-    number: '07',
-  },
+
 {
     id: 8,
     title: ' Mr. Charming',
@@ -108,6 +111,7 @@ const WINNERS = [
     img: '/assets-optimized/winners/parthib.webp',
     number: '08',
   },
+
 
   {
     id: 9,

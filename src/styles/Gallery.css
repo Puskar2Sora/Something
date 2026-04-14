@@ -62,7 +62,7 @@
 
 .gl-eyebrow {
   font-family: 'Nunito', sans-serif;
-  font-size: 10px;
+  font-size: 15px;
   font-weight: 900;
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -73,7 +73,7 @@
   font-family: 'Bangers', cursive;
   font-size: clamp(72px, 13vw, 130px);
   color: #0a0a0a;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.05em;
   line-height: 0.85;
   margin: 0;
   transform: skewX(-4deg);
@@ -85,8 +85,8 @@
   background: #E8192C;
   color: #fff;
   font-family: 'Nunito', sans-serif;
-  font-size: 11px;
-  font-weight: 900;
+  font-size: 15px;
+  font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   padding: 6px 18px;

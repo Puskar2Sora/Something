@@ -78,10 +78,8 @@ export default function About() {
 
   return (
     <section id="about" className="ab-section" ref={sectionRef}>
-
       {/* ── DOT TEXTURE ── */}
-      <div className="ab-dots" />
-
+     
       {/* ── DIAGONAL SLASH ── */}
       
       {/* ── FLOATING PARTICLES ── */}
@@ -91,7 +89,7 @@ export default function About() {
         ))}
       </div>
 
-
+      
       <div className="ab-inner">
 
         {/* ════ LEFT COLUMN — WRITING ════ */}
@@ -99,9 +97,14 @@ export default function About() {
 
           {/* Eyebrow */}
           <div className="ab-eyebrow">
+            <br/>
             <span className="ab-ey-line" />
+            <br/>
             <span className="ab-ey-txt" style={{ marginLeft: '20px' }}>✦ Who We Are ✦</span>
+            <br/>
+            
             <span className="ab-ey-line ab-ey-r" />
+            <br/>
           </div>
 
           {/* Section title */}
@@ -127,23 +130,49 @@ export default function About() {
   </h2>
   <div className="ab-title-sub">LITHIUM 2K26</div>
 </div>
-
-<Floatchar
-  src="/assets/chars/logo.png"
-  alt="Miles Morales"
-  size={350}
-  bottom="15%"
-  right="-120%"
-  animation="float"
-  glowColor="#FF2D87"
-/>
-
           {/* Animated text paragraphs */}
           <div className="ab-text-block">
             <p className="ab-para ab-p1" style={{ '--di': 0 }}>
               <span className="ab-drop-cap">L</span>
               ITHIUM is the Fresher's Welcome event of{' '}
               <strong>Techno Bengal Institute of Technology</strong> —
+              a celebration where creativity breaks every boundary and
+              characters from every universe collide in one electric night.
+            </p>
+            <p className="ab-para ab-p2" style={{ '--di': 1 }}>
+              The theme <strong>Beyond The Veil</strong> invites you to step
+              through the membrane between worlds. Wear any face. Embody any
+              legend. Whether you arrive as a pirate, a sorcerer, a cyborg,
+              or the legendary Spider-Man — every universe is welcome here.
+            </p>
+          </div>
+        </div>
+
+
+
+
+
+<div className={`ab-left ${visible ? 'ab-left-in' : ''}`}>
+
+ 
+  <h2 className="ab-tit" style={{ margin: 0 }}>
+    {'THEME'.split('').map((ch, i) => (
+      <span
+        key={i}
+        className="ab-title-c"
+        style={{ '--ti': i, display: 'inline-block' }}
+      >
+        {ch}
+      </span>
+    ))}
+  </h2>
+  <div className="ab-title-su">Beyond The Veil</div>
+
+          {/* Animated text paragraphs */}
+          <div className="ab-text-block">
+            <p className="ab-para ab-p1" style={{ '--di': 0 }}>
+              ITHIUM is the Fresher's Welcome event of{' '}
+              —
               a celebration where creativity breaks every boundary and
               characters from every universe collide in one electric night.
             </p>

@@ -101,7 +101,7 @@
 /* ── Header ───────────────────────────────────── */
 .v2-header {
   text-align: center;
-  margin-bottom: 56px;
+  margin-bottom: 45px;
 }
 
 .v2-eyebrow {
@@ -110,7 +110,7 @@
   justify-content: center;
   gap: 12px;
   font-family: 'Courier New', monospace;
-  font-size: 0.7rem;
+  font-size: 1 rem;
   letter-spacing: 0.3em;
   color: var(--c);
   text-transform: uppercase;

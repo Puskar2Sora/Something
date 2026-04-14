@@ -52,14 +52,7 @@ const Venue = () => {
       <div className="v2-grain" />
       <div className="v2-grid-bg" />
 
-      {/* ── TICKER — full bleed, outside inner container ── */}
-      <div className="v2-ticker v2-ticker--top">
-        <div className="v2-ticker-track">
-          {Array(8).fill('✦ LITHIUM 2K26  ·  BEYOND THE VEIL  ·  MAY 7  2026  ·  KOLKATA  ·  BD AUDITORIUM  ').map((t, i) => (
-            <span key={i}>{t}</span>
-          ))}
-        </div>
-      </div>
+     
 
       <div className={`v2-inner ${visible ? 'v2-inner--visible' : ''}`}>
 
@@ -118,8 +111,6 @@ const Venue = () => {
           <div className="v2-right">
             <div className="v2-map-wrap">
               <div className="v2-map-header">
-                <span className="v2-map-dot" />
-                <span>LIVE MAP FEED</span>
                 <span className="v2-map-coords">22.5939°N · 88.4067°E</span>
               </div>
               <div className="v2-map-frame">
@@ -133,11 +124,7 @@ const Venue = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-                <div className="v2-map-corner v2-map-corner--tl" />
-                <div className="v2-map-corner v2-map-corner--tr" />
-                <div className="v2-map-corner v2-map-corner--bl" />
-                <div className="v2-map-corner v2-map-corner--br" />
-              </div>
+                              </div>
               <div className="v2-map-footer">
                 <span>📍 HCV4+HM5, BD Block, Sector 1, Bidhannagar</span>
               </div>
@@ -145,15 +132,7 @@ const Venue = () => {
           </div>
         </div>
       </div>
-
-      {/* ── TICKER BOTTOM — full bleed, outside inner container ── */}
-      <div className="v2-ticker v2-ticker--bottom">
-        <div className="v2-ticker-track v2-ticker-track--reverse">
-          {Array(8).fill('✦ LITHIUM 2K26  ·  BEYOND THE VEIL  ·  MAY 7  2026  ·  KOLKATA  ·  BD AUDITORIUM  ').map((t, i) => (
-            <span key={i}>{t}</span>
-          ))}
-        </div>
-      </div>
+      
     </section>
   );
 };
