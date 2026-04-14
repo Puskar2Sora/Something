@@ -1,22 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/Intro.css';
 
-const getIntroProfile = () => {
-  if (typeof window === 'undefined') {
-    return { skip: false, particleCount: 90, phaseDelay: 450 };
-  }
-
-  const reducedMotion = window.matchMedia?.('(prefers-reduced-motion: reduce)').matches;
-  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  const constrained = reducedMotion || connection?.saveData || /(^|-)2g$/.test(connection?.effectiveType || '');
-
-  return {
-    skip: constrained,
-    particleCount: constrained ? 45 : 90,
-    phaseDelay: constrained ? 180 : 450,
-  };
-};
-
 const LOAD_STEPS = [
   { pct: 18, label: 'INITIALISING UNIVERSE...',  delay: 300  },
   { pct: 40, label: 'TEARING THE VEIL...',        delay: 450  },
@@ -26,12 +10,9 @@ const LOAD_STEPS = [
   { pct: 100, label: 'ACCESS GRANTED',            delay: 280  },
 ];
 
-const LOAD_STEP_SPEED_MULTIPLIER = 0.8;
-const LOAD_COMPLETE_HOLD_MS = 1800;
-
 const CHARS = ['🕷️','🏴‍☠️','🧙','🦸','🦹','⚔️','🧛','🤖'];
 
-export default function Intro({ onDone = () => {} }) {
+export default function Intro({ onDone }) {
   const canvasRef   = useRef(null);
   const [pct, setPct]         = useState(0);
   const [label, setLabel]     = useState('');
@@ -44,11 +25,8 @@ export default function Intro({ onDone = () => {} }) {
 
   /* ─── Particle canvas ─── */
   useEffect(() => {
-    const profile = getIntroProfile();
     const canvas = canvasRef.current;
-    if (!canvas || profile.skip) return undefined;
-
-    const ctx = canvas.getContext('2d', { alpha: true });
+    const ctx    = canvas.getContext('2d');
     let W, H, particles = [], raf;
 
     const resize = () => {
@@ -58,40 +36,37 @@ export default function Intro({ onDone = () => {} }) {
     resize();
     window.addEventListener('resize', resize);
 
-    const createParticle = (init = true) => ({
-      x: Math.random() * W,
-      y: init ? Math.random() * H : H + 10,
-      vx: (Math.random() - 0.5) * 0.6,
-      vy: -(Math.random() * 1.2 + 0.4),
-      r: Math.random() * 1.8 + 0.4,
-      alpha: Math.random() * 0.7 + 0.2,
-      color: ['#FFE600', '#E8192C', '#00D4FF', '#FF2D87', '#fff'][Math.floor(Math.random() * 5)],
-    });
+    class Particle {
+      constructor() { this.reset(true); }
+      reset(init = false) {
+        this.x     = Math.random() * W;
+        this.y     = init ? Math.random() * H : H + 10;
+        this.vx    = (Math.random() - 0.5) * 0.6;
+        this.vy    = -(Math.random() * 1.2 + 0.4);
+        this.r     = Math.random() * 1.8 + 0.4;
+        this.alpha = Math.random() * 0.7 + 0.2;
+        this.color = ['#FFE600','#E8192C','#00D4FF','#FF2D87','#fff'][Math.floor(Math.random()*5)];
+      }
+      update() {
+        this.x += this.vx; this.y += this.vy;
+        this.alpha -= 0.003;
+        if (this.alpha <= 0 || this.y < -10) this.reset();
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.globalAlpha = this.alpha;
+        ctx.fill();
+      }
+    }
 
-    const resetParticle = (particle, init = false) => Object.assign(particle, createParticle(init));
-    const updateParticle = (particle) => {
-      particle.x += particle.vx;
-      particle.y += particle.vy;
-      particle.alpha -= 0.003;
-      if (particle.alpha <= 0 || particle.y < -10) resetParticle(particle);
-    };
-    const drawParticle = (particle) => {
-      ctx.beginPath();
-      ctx.arc(particle.x, particle.y, particle.r, 0, Math.PI * 2);
-      ctx.fillStyle = particle.color;
-      ctx.globalAlpha = particle.alpha;
-      ctx.fill();
-    };
-
-    for (let i = 0; i < profile.particleCount; i++) particles.push(createParticle(true));
+    for (let i = 0; i < 160; i++) particles.push(new Particle());
 
     const loop = () => {
       ctx.clearRect(0, 0, W, H);
       ctx.globalAlpha = 1;
-      particles.forEach((particle) => {
-        updateParticle(particle);
-        drawParticle(particle);
-      });
+      particles.forEach(p => { p.update(); p.draw(); });
       raf = requestAnimationFrame(loop);
     };
     loop();
@@ -120,41 +95,31 @@ export default function Intro({ onDone = () => {} }) {
 
   /* ─── Sequencer ─── */
   useEffect(() => {
-    const profile = getIntroProfile();
+    // Phase 1: logo reveal after 200ms
+    const t0 = setTimeout(() => setPhase('reveal'), 200);
 
-    if (profile.skip) {
-      onDone();
-      return undefined;
-    }
-
-    const timers = [];
-    const register = (timer) => {
-      timers.push(timer);
-      return timer;
-    };
-
-    register(setTimeout(() => setPhase('reveal'), 80));
-
-    register(setTimeout(() => {
+    // Phase 2: start loading after logo animation finishes (1.2s)
+    const t1 = setTimeout(() => {
       setPhase('loading');
       let elapsed = 0;
-      LOAD_STEPS.forEach((step) => {
-        register(setTimeout(() => {
+      const timers = LOAD_STEPS.map(step => {
+        const t = setTimeout(() => {
           targetRef.current = step.pct;
           setPct(step.pct);
           setLabel(step.label);
-        }, elapsed += Math.max(200, Math.round(step.delay * LOAD_STEP_SPEED_MULTIPLIER))));
+        }, elapsed += step.delay);
+        return t;
       });
 
-      const totalDelay =
-        LOAD_STEPS.reduce((a, s) => a + Math.max(200, Math.round(s.delay * LOAD_STEP_SPEED_MULTIPLIER)), 0) +
-        profile.phaseDelay +
-        LOAD_COMPLETE_HOLD_MS;
-      register(setTimeout(() => setPhase('slam'), totalDelay));
-    }, 420));
+      // Phase 3: slam exit after all steps + 700ms hold
+      const totalDelay = LOAD_STEPS.reduce((a, s) => a + s.delay, 0) + 700;
+      const tExit = setTimeout(() => setPhase('slam'), totalDelay);
 
-    return () => { timers.forEach(clearTimeout); };
-  }, [onDone]);
+      return () => { timers.forEach(clearTimeout); clearTimeout(tExit); };
+    }, 1200);
+
+    return () => { clearTimeout(t0); clearTimeout(t1); };
+  }, []);
 
   /* ─── Slam → call onDone ─── */
   useEffect(() => {
