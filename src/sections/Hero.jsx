@@ -102,15 +102,11 @@ const Hero = () => {
             <h2 className="comic-theme-title">BEYOND<br />THE VEIL</h2>
           </div>
 
-          <p className="comic-hero-sub">
-           Great Power Comes with , <br />
-            <strong>Great Responsibility</strong>
-          </p>
 
 
           {/* CTAs */}
           <div className="comic-hero-cta">
-            <a href="#events" className="comic-btn comic-btn-yellow">
+            <a href="#about" className="comic-btn comic-btn-yellow">
               <span className="btn-arrow">▶</span>
               Enter the Multiverse
             </a>

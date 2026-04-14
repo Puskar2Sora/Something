@@ -319,7 +319,7 @@ export default function Winners() {
         <div className="wn-title-block">
           <h2 className="wn-title-main">OUR LEGENDARY</h2>
           <div className="wn-title-row2">
-            <h2 className="wn-title-accent">GROMMERS</h2>
+            <h2 className="wn-title-accent">GROOMERS</h2>
             <span className="wn-classified">#LEGENDS</span>
           </div>
         </div>

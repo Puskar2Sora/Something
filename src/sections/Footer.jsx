@@ -180,20 +180,6 @@ export default function Footer() {
             INFO GRID
         ════════════════════════════ */}
         <div className="ft-grid">
-          {/* Navigate */}
-          <div className="ft-col">
-            <div className="ft-col-hd">
-              <span className="ft-col-hd-bar" />
-              NAVIGATE
-            </div>
-            {NAV.map(l => (
-              <a key={l.label} href={l.href} className="ft-navlink">
-                <span className="ft-navlink-arrow">›</span>
-                {l.label}
-              </a>
-            ))}
-          </div>
-
           {/* Event details */}
           <div className="ft-col ft-col-event">
             <div className="ft-col-hd">

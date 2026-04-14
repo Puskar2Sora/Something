@@ -57,12 +57,12 @@
   opacity: 1;
   transform: translateY(0);
 }
-
+  
 .wn-eyebrow {
   display: inline-block;
-  font-size: 10px;
+  font-size: 13px;
   font-weight: 800;
-  letter-spacing: 5px;
+  letter-spacing: 4px;
   color: #FFE600;
   text-transform: uppercase;
   margin-bottom: 12px;
@@ -79,7 +79,7 @@
 }
 
 .wn-title-main {
-  font-size: clamp(44px, 11vw, 88px);
+  font-size: clamp(35px, 11vw, 88px);
   font-weight: 900;
   color: #ffffff;
   letter-spacing: -2px;
