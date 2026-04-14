@@ -201,7 +201,7 @@ export default function Footer() {
               </div>
             ))}
           </div>
-
+<br/>
           {/* Connect */}
           <div className="ft-col">
             <div className="ft-col-hd">
