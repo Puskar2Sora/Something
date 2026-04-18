@@ -65,7 +65,7 @@ const Hero = () => {
       <Floatchar
         src="/assets/chars/techno.png"
         alt="Techno"
-        size={43}
+        size={53}
         bottom="89%"
         right="50%"
         animation="none"
@@ -74,7 +74,7 @@ const Hero = () => {
       <Floatchar
         src="/assets/chars/bit.png"
         alt="TBIT"
-        size={44}
+        size={54}
         bottom="89%"
         right="75%"
         animation="none"
