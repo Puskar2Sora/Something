@@ -65,20 +65,20 @@ const Hero = () => {
       <Floatchar
         src="/assets/chars/techno.png"
         alt="Techno"
-        size={53}
-        bottom="89%"
+        size={55}
+        bottom="88%"
         right="50%"
         animation="none"
-        glowColor="#790a1b"
+        glowColor="#f30629"
       />
       <Floatchar
         src="/assets/chars/bit.png"
         alt="TBIT"
-        size={54}
-        bottom="89%"
+        size={56}
+        bottom="88%"
         right="75%"
         animation="none"
-        glowColor="#FF2D87"
+        glowColor="#fffcfc"
       />
       <br />
       {/* Spider-Man cursor — desktop only, zero-lag via RAF */}
