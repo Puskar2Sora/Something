@@ -50,6 +50,7 @@ const Events = () => {
 
       <div className="comic-events-inner">
         {/* Heading */}
+  
         <div className="comic-section-header">
           <span className="comic-section-label">✦ Line-Up ✦</span>
           <div className="comic-section-title-wrap">

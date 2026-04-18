@@ -433,15 +433,6 @@ export default function Winners() {
         <span className="wn-bb-txt">✦ SWIPE TO SCROLL ✦</span>
         <div className="wn-bb-r" />
       </div>
-      <Floatchar
-  src="/assets-optimized/chars/peter.webp"
-  alt="Miles Morales"
-  size={150}
-  bottom="80%"
-  right="66%"
-  animation="float"
-  glowColor="#FF2D87"
-/>
     </section>
   );
 }
