@@ -36,11 +36,11 @@
 
 .comic-section-label {
   font-family: 'Nunito', sans-serif;
-  font-size: 11px;
+  font-size: 15px;
   font-weight: 900;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: #0a0a0a;
+  color: #131313c8;
   opacity: 0.5;
 }
 

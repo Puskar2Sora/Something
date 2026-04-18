@@ -56,12 +56,9 @@ const Events = () => {
             <h2 className="comic-section-title">EVENT</h2>
             <div className="comic-classified-badge">
               <h2 className="comic-section-title-2">HIGHLIGHTS</h2>
-              <span className="classified-tag">CLASSIFIED INTEL</span>
+              <span className="classified-tag">Start Vibing</span>
             </div>
           </div>
-          <p className="comic-section-sub">
-            Six realms. One night. Choose your character.
-          </p>
         </div>
 
         {/* Cards */}
@@ -78,18 +75,6 @@ const Events = () => {
           ))}
         </div>
       </div>
-
-      {/* Spider-Man peeking from corner */}
-      <div className="events-spiderman">🕷️</div>
-            <Floatchar
-        src="/assets-optimized/chars/fall.webp"
-        alt="Villain"
-        size={350}
-        top="-10%"
-        left="0.5%"
-        animation="float"
-        glowColor="#FF2D87"
-      />
     </section>
   );
 };

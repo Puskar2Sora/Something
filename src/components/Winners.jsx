@@ -436,9 +436,9 @@ export default function Winners() {
       <Floatchar
   src="/assets-optimized/chars/peter.webp"
   alt="Miles Morales"
-  size={200}
+  size={150}
   bottom="80%"
-  right="65%"
+  right="60%"
   animation="float"
   glowColor="#FF2D87"
 />
