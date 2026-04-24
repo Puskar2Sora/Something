@@ -1,136 +1,138 @@
-/* ========================================
-   EVENTS — Yellow Comic Panel Style
-   ======================================== */
+/* ══════════════════════════════════════════════════════
+   DREAMSCAPE — Royal Events Section
+   Parchment · dark gold titles · fleur-de-lis ornament
+══════════════════════════════════════════════════════ */
 
-.comic-events-section {
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@700;900&display=swap');
+
+/* ── Section wrapper ── */
+.royal-events-section {
   position: relative;
-  background: #FFE600;
+  background: #F5F0E8;
   padding: 100px 0 80px;
   overflow: hidden;
 }
 
+/* Subtle dot texture (matches title-section parchment) */
 .events-dot-bg {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(0,0,0,0.12) 1.5px, transparent 1.5px);
-  background-size: 20px 20px;
+  background-image: radial-gradient(circle, rgba(154,123,47,0.08) 1px, transparent 1px);
+  background-size: 22px 22px;
   pointer-events: none;
 }
 
-.comic-events-inner {
+/* ── Inner container ── */
+.royal-events-inner {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 48px;
 }
 
-/* ---- Section Header ---- */
-.comic-section-header {
-  margin-bottom: 60px;
+/* ── Header ── */
+.royal-section-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
   text-align: center;
+  margin-bottom: 0;
 }
 
-.comic-section-label {
-  font-family: 'Nunito', sans-serif;
-  font-size: 15px;
-  font-weight: 900;
-  letter-spacing: 0.3em;
+.ab-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ab-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50% 0 50% 0;
+  background: rgba(212,120,138,0.35);
+  left: calc(var(--pi) * 5.3% + 2%);
+  top: -10px;
+  animation: petalFall calc(8s + var(--pi) * 0.8s) linear calc(var(--pi) * 0.6s) infinite;
+}
+
+.royal-section-label {
+  font-family: 'Cinzel', serif;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.45em;
   text-transform: uppercase;
-  color: #131313c8;
-  opacity: 0.5;
+  color: #9A7B2F;
+  opacity: 0.6;
 }
 
-.comic-section-title-wrap {
+.royal-title-stack {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0;
 }
 
-.comic-section-title {
-  font-family: 'Bangers', cursive;
-  font-size: clamp(64px, 12vw, 120px);
-  color: #0a0a0a;
-  letter-spacing: 0.06em;
-  line-height: 0.9;
-  margin: 0;
-  /* Italic skew like dropout hacks */
-  transform: skewX(-4deg);
-  display: block;
-  text-shadow: 4px 4px 0 rgba(0,0,0,0.15);
-}
-
-.comic-classified-badge {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.comic-section-title-2 {
-  font-family: 'Bangers', cursive;
-  font-size: clamp(64px, 12vw, 120px);
-  color: #0a0a0a;
-  letter-spacing: 0.06em;
-  line-height: 0.9;
-  margin: 0;
-  transform: skewX(-4deg);
-  display: block;
-  text-shadow: 4px 4px 0 rgba(0,0,0,0.15);
-}
-
-.classified-tag {
-  background: #E8192C;
-  color: #fff;
-  font-family: 'Nunito', sans-serif;
-  font-size: 13px;
+.royal-title-1,
+.royal-title-2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(44px, 9vw, 88px);
   font-weight: 900;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  padding: 6px 20px;
-  border: 3px solid #0a0a0a;
-  box-shadow: 3px 3px 0 #0a0a0a;
-  margin-top: 4px;
+  color: #7A5C0A;
+  letter-spacing: 0.05em;
+  line-height: 0.88;
+  margin: 0;
+  text-shadow: 1px 2px 0 rgba(0, 0, 0, 0.07);
 }
 
-.comic-section-sub {
-  font-family: 'Nunito', sans-serif;
-  font-size: 18px;
+.royal-badge {
+  display: inline-block;
+  background: #1C1108;
+  color: #F5F0E8;
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
   font-weight: 700;
-  color: rgba(0,0,0,0.6);
-  margin: 8px 0 0;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  padding: 8px 32px;
+  margin-top: 10px;
+  border: 1px solid rgba(122, 92, 10, 0.25);
 }
 
-/* ---- Grid ---- */
-.comic-events-grid {
+/* ── Section ornament divider ── */
+.events-ornament {
+  display: block;
+  width: 100%;
+  max-width: 460px;
+  height: 44px;
+  margin: 32px auto 44px;
+  opacity: 0.8;
+}
+
+/* ── Cards grid ── */
+.royal-events-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
 }
 
-/* ---- Spider-Man corner ---- */
-.events-spiderman {
-  position: absolute;
-  bottom: 24px;
-  right: 48px;
-  font-size: 48px;
-  animation: spiderPeek 3s ease-in-out infinite alternate;
-  filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.3));
-  z-index: 5;
-}
-@keyframes spiderPeek {
-  from { transform: translateY(0) rotate(-8deg); }
-  to   { transform: translateY(-14px) rotate(8deg); }
-}
-
+/* ── Responsive ── */
 @media (max-width: 960px) {
-  .comic-events-grid { grid-template-columns: repeat(2, 1fr); }
+  .royal-events-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
+
 @media (max-width: 600px) {
-  .comic-events-grid { grid-template-columns: 1fr; }
-  .comic-events-inner { padding: 0 20px; }
+  .royal-events-grid {
+    grid-template-columns: 1fr;
+  }
+  .royal-events-inner {
+    padding: 0 20px;
+  }
+  .royal-events-section {
+    padding: 60px 0 60px;
+  }
 }

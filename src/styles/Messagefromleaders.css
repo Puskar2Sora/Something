@@ -1,38 +1,36 @@
-/* ════════════════════════════════════════════════════
-   MESSAGE FROM LEADERS — Lithium 2K26 Comic Theme
-   ════════════════════════════════════════════════════ */
+/* ════════════════════════════════════════════════════════
+   DREAMSCAPE — Message From Leaders
+   Royal proclamation · candlelit video cards
+════════════════════════════════════════════════════════ */
 
 .mfl-section {
-  --y: #FFE600;
-  --c: #00D4FF;
-  --m: #FF2D87;
-  --g: #00FF88;
-  --bg: #07070d;
-  --bg2: #10101a;
-  --border: rgba(255, 230, 0, 0.18);
-  --text: #f0f0f0;
-  --muted: rgba(240, 240, 240, 0.45);
+  --accent: #E8C070;
+  --c: #D4788A;
+  --m: #B8A0D8;
+  --bg: #1A0F08;
+  --bg2: #221408;
+  --border: rgba(201,151,58,0.18);
+  --text: #FAF6EF;
+  --muted: rgba(250,246,239,0.45);
 
   position: relative;
   background: var(--bg);
   min-height: 100vh;
   padding: 90px 24px 70px;
   overflow: hidden;
-  font-family: 'Bangers', 'Impact', sans-serif;
+  font-family: 'Cinzel', serif;
 }
 
 .mfl-slash-accent {
   position: absolute;
-  top: -60px;
-  right: -80px;
-  width: 500px;
-  height: 500px;
-  background: linear-gradient(135deg, transparent 45%, rgba(255,45,135,0.06) 50%, transparent 55%);
+  top: -60px; right: -80px;
+  width: 500px; height: 500px;
+  background: linear-gradient(135deg, transparent 45%, rgba(201,151,58,0.04) 50%, transparent 55%);
   transform: rotate(-15deg);
   pointer-events: none;
 }
 
-/* ── Floatchar responsive wrappers ─────────────── */
+/* ── Floatchar wrappers ── */
 .mfl-floatchar { position: absolute; pointer-events: none; z-index: 0; }
 .mfl-floatchar--desktop { display: block; }
 .mfl-floatchar--mobile  { display: none;  }
@@ -42,7 +40,7 @@
   .mfl-floatchar--mobile  { display: block; }
 }
 
-/* ── Inner Wrapper ──────────────────────────────── */
+/* ── Inner ── */
 .mfl-inner {
   position: relative;
   max-width: 1160px;
@@ -52,12 +50,9 @@
   transform: translateY(50px);
   transition: opacity 0.9s ease, transform 0.9s ease;
 }
-.mfl-inner--visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.mfl-inner--visible { opacity: 1; transform: translateY(0); }
 
-/* ── Header ─────────────────────────────────────── */
+/* ── Header ── */
 .mfl-header { text-align: center; margin-bottom: 56px; }
 
 .mfl-eyebrow {
@@ -65,25 +60,26 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  font-family: 'Courier New', monospace;
-  font-size: 0.65rem;
-  letter-spacing: 0.35em;
-  color: var(--m);
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  color: var(--c);
   text-transform: uppercase;
   margin-bottom: 16px;
 }
 
 .mfl-dot {
-  width: 6px; height: 6px;
-  background: var(--m);
+  width: 5px; height: 5px;
+  background: var(--c);
   border-radius: 50%;
-  display: inline-block;
-  animation: mflBlink 1.4s step-end infinite;
+  animation: blink 1.4s step-end infinite;
 }
 .mfl-dot:last-child { animation-delay: 0.7s; }
-@keyframes mflBlink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+@keyframes blink {
+  0%,100% { opacity: 1; }
+  50%      { opacity: 0; }
 }
 
 .mfl-title {
@@ -93,30 +89,32 @@
   line-height: 0.9;
   margin: 0 0 20px;
 }
+
 .mfl-title-line1 {
-  font-size: clamp(3rem, 9vw, 7rem);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2.5rem, 7vw, 5.5rem);
+  font-weight: 900;
   color: var(--text);
-  -webkit-text-stroke: 2px rgba(255,255,255,0.15);
   letter-spacing: 0.08em;
   display: block;
-  filter: drop-shadow(4px 4px 0 #000);
-}
-.mfl-title-line2 {
-  font-size: clamp(3.5rem, 11vw, 8.5rem);
-  color: var(--y);
-  -webkit-text-stroke: 3px #000;
-  letter-spacing: 0.05em;
-  display: block;
-  paint-order: stroke fill;
-  filter: drop-shadow(6px 6px 0 #000) drop-shadow(0 0 40px rgba(255,230,0,0.25));
-  animation: mflTitlePulse 4s ease-in-out infinite;
-}
-@keyframes mflTitlePulse {
-  0%, 100% { filter: drop-shadow(6px 6px 0 #000) drop-shadow(0 0 30px rgba(255,230,0,0.2)); }
-  50%       { filter: drop-shadow(6px 6px 0 #000) drop-shadow(0 0 60px rgba(255,230,0,0.45)); }
+  filter: drop-shadow(3px 3px 0 rgba(0,0,0,0.6));
 }
 
-/* ── Cards Grid ─────────────────────────────────── */
+.mfl-title-line2 {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(3rem, 9vw, 7rem);
+  font-weight: 900;
+  color: transparent;
+  background: linear-gradient(135deg, #F2DFA0, #E8C070, #C9973A);
+  -webkit-background-clip: text;
+  background-clip: text;
+  letter-spacing: 0.05em;
+  display: block;
+  filter: drop-shadow(5px 5px 0 rgba(0,0,0,0.6)) drop-shadow(0 0 40px rgba(201,151,58,0.2));
+  animation: goldenGlow 4s ease-in-out infinite;
+}
+
+/* ── Cards Grid ── */
 .mfl-cards-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -124,49 +122,47 @@
   margin-bottom: 60px;
 }
 
-/* ── Single Card ────────────────────────────────── */
+/* ── Card ── */
 .mfl-card {
-  --accent: #FFE600;
-  --glow: rgba(255,230,0,0.2);
+  --accent: #E8C070;
+  --glow: rgba(201,151,58,0.18);
 
   position: relative;
   background: var(--bg2);
-  border: 1.5px solid rgba(255,255,255,0.08);
-  border-top: 3px solid var(--accent);
+  border: 1px solid rgba(201,151,58,0.12);
+  border-top: 2px solid var(--accent);
   overflow: hidden;
 
   opacity: 0;
   transform: translateY(40px) scale(0.97);
-  animation: mflCardIn 0.6s cubic-bezier(0.34,1.56,0.64,1) forwards;
+  animation: mflCardIn 0.6s cubic-bezier(0.34,1.4,0.64,1) forwards;
   animation-play-state: paused;
   transition: box-shadow 0.4s, transform 0.3s;
 }
+
 .mfl-inner--visible .mfl-card { animation-play-state: running; }
+
 @keyframes mflCardIn {
   to { opacity: 1; transform: translateY(0) scale(1); }
 }
+
 .mfl-card:hover {
   box-shadow: 0 0 40px var(--glow), 0 8px 32px rgba(0,0,0,0.5);
   transform: translateY(-4px);
 }
 
-/* ── Card Top Bar ── */
-.mfl-card-topbar {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 16px;
-  background: rgba(0,0,0,0.5);
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-  font-family: 'Courier New', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.25em;
+/* Gold filigree top line glow */
+.mfl-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  filter: blur(3px);
+  opacity: 0.6;
 }
-.mfl-card-badge { font-size: 1rem; }
-.mfl-card-role  { color: var(--accent); font-weight: bold; }
-.mfl-card-id    { margin-left: auto; color: var(--muted); }
 
-/* ── Video Wrap ── */
+/* ── Video ── */
 .mfl-video-wrap {
   position: relative;
   width: 100%;
@@ -175,16 +171,13 @@
   overflow: hidden;
 }
 
-/* ✅ CLEAN VIDEO — zero blur, zero filter */
 .mfl-video {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
   display: block;
-  /* No filter property at all */
 }
 
-/* ── Centered Play Overlay ── */
+/* Overlay */
 .mfl-video-overlay {
   position: absolute;
   inset: 0;
@@ -193,117 +186,102 @@
   align-items: center;
   justify-content: center;
   gap: 14px;
-  background: rgba(0, 0, 0, 0.48);
+  background: rgba(10,5,2,0.5);
   cursor: pointer;
   z-index: 2;
   transition: background 0.25s;
 }
-.mfl-video-overlay:hover { background: rgba(0, 0, 0, 0.32); }
+.mfl-video-overlay:hover { background: rgba(10,5,2,0.35); }
 
-/* Comic-style play button */
 .mfl-play-btn {
-  width: 72px;
-  height: 72px;
-  background: var(--accent);
-  border: 3px solid #000;
-  box-shadow: 5px 5px 0 #000;
+  width: 68px; height: 68px;
+  background: linear-gradient(135deg, #E8C070, #C9973A);
+  border: 2px solid rgba(139,101,32,0.3);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.5), 0 0 20px rgba(201,151,58,0.3);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 .mfl-video-overlay:hover .mfl-play-btn {
-  transform: scale(1.12);
-  box-shadow: 7px 7px 0 #000;
-  background: #fff;
+  transform: scale(1.1);
+  box-shadow: 6px 6px 0 rgba(0,0,0,0.6), 0 0 30px rgba(201,151,58,0.5);
 }
 .mfl-video-overlay:active .mfl-play-btn {
-  transform: translate(3px, 3px);
-  box-shadow: 2px 2px 0 #000;
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.4);
 }
-.mfl-play-svg {
-  width: 32px;
-  height: 32px;
-  display: block;
-  /* triangle is positioned slightly right for optical centering */
-  margin-left: 4px;
-}
+
+.mfl-play-svg { width: 28px; height: 28px; display: block; margin-left: 4px; }
 
 .mfl-video-label {
-  font-family: 'Courier New', monospace;
-  font-size: 0.6rem;
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  font-weight: 700;
   letter-spacing: 0.35em;
-  color: var(--accent);
-  text-shadow: 0 0 10px var(--accent);
-  animation: mflBlink 1.2s step-end infinite;
+  text-transform: uppercase;
+  color: rgba(201,151,58,0.7);
+  animation: blink 1.3s step-end infinite;
 }
 
-/* ── Pause FAB — bottom-right corner while playing ── */
 .mfl-pause-fab {
   position: absolute;
-  bottom: 12px;
-  right: 12px;
+  bottom: 12px; right: 12px;
   z-index: 3;
-  width: 48px;
-  height: 48px;
-  background: var(--accent);
-  border: 2px solid #000;
-  box-shadow: 4px 4px 0 #000;
+  width: 44px; height: 44px;
+  background: linear-gradient(135deg, #E8C070, #C9973A);
+  border: 1px solid rgba(139,101,32,0.3);
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+  transition: transform 0.15s, box-shadow 0.15s;
 }
 .mfl-pause-fab:hover {
-  transform: scale(1.1);
-  background: #fff;
-  box-shadow: 5px 5px 0 #000;
-}
-.mfl-pause-fab:active {
-  transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0 #000;
-}
-.mfl-pause-svg {
-  width: 22px;
-  height: 22px;
-  display: block;
+  transform: scale(1.08);
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.5);
 }
 
-/* Frame corner brackets */
+.mfl-pause-svg { width: 20px; height: 20px; display: block; }
+
+/* Frame corners */
 .mfl-frame-corner {
   position: absolute;
   width: 16px; height: 16px;
-  border-color: var(--accent);
+  border-color: rgba(201,151,58,0.5);
   border-style: solid;
   z-index: 2;
   pointer-events: none;
 }
-.mfl-frame-corner--tl { top: 6px;    left: 6px;   border-width: 2px 0 0 2px; }
-.mfl-frame-corner--tr { top: 6px;    right: 6px;  border-width: 2px 2px 0 0; }
-.mfl-frame-corner--bl { bottom: 6px; left: 6px;   border-width: 0 0 2px 2px; }
-.mfl-frame-corner--br { bottom: 6px; right: 6px;  border-width: 0 2px 2px 0; }
+.mfl-frame-corner--tl { top: 6px; left: 6px;   border-width: 2px 0 0 2px; }
+.mfl-frame-corner--tr { top: 6px; right: 6px;  border-width: 2px 2px 0 0; }
+.mfl-frame-corner--bl { bottom: 6px; left: 6px;  border-width: 0 0 2px 2px; }
+.mfl-frame-corner--br { bottom: 6px; right: 6px; border-width: 0 2px 2px 0; }
 
-/* ── Card Info ── */
+/* Info */
 .mfl-card-info { padding: 16px 20px 14px; }
+
 .mfl-card-name {
-  font-size: 1.25rem;
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
   color: var(--text);
   letter-spacing: 0.06em;
-  line-height: 1.1;
-}
-.mfl-card-dept {
-  font-family: 'Courier New', monospace;
-  font-size: 0.6rem;
-  letter-spacing: 0.15em;
-  color: var(--accent);
-  margin-top: 5px;
-  text-transform: uppercase;
+  line-height: 1.2;
 }
 
-/* ── Card Bottom Bar ── */
+.mfl-card-dept {
+  font-family: 'IM Fell English', serif;
+  font-size: 12px;
+  font-style: italic;
+  color: rgba(201,151,58,0.6);
+  margin-top: 5px;
+}
+
+/* Bottom bar */
 .mfl-card-bottombar {
-  height: 3px;
+  height: 2px;
   background: linear-gradient(90deg, var(--accent), transparent);
   transform: scaleX(0);
   transform-origin: left;
@@ -311,17 +289,8 @@
 }
 .mfl-card:hover .mfl-card-bottombar { transform: scaleX(1); }
 
-/* ── Responsive ─────────────────────────────────── */
+/* ── Responsive ── */
 @media (max-width: 860px) {
   .mfl-cards-grid { grid-template-columns: 1fr; gap: 24px; }
-  .mfl-section    { padding: 70px 16px 50px; }
-}
-@media (max-width: 480px) {
-  .mfl-title-line2  { -webkit-text-stroke: 2px #000; }
-  .mfl-play-btn     { width: 56px; height: 56px; }
-  .mfl-play-svg     { width: 24px; height: 24px; }
-  .mfl-pause-fab    { width: 40px; height: 40px; bottom: 8px; right: 8px; }
-  .mfl-pause-svg    { width: 18px; height: 18px; }
-  .mfl-card-info    { padding: 12px 14px 10px; }
-  .mfl-card-topbar  { padding: 8px 14px; }
+  .mfl-section { padding: 70px 16px 50px; }
 }

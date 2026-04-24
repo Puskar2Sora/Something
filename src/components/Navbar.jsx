@@ -50,7 +50,7 @@ const Navbar = () => {
           <span className="logo-l">L</span>
           <div className="logo-text-wrap">
             <span className="logo-main">ITHIUM</span>
-            <span className="logo-sub">2K26 · BEYOND THE VEIL</span>
+            <span className="logo-sub">2K26 · DREAMSCAPE</span>
           </div>
         </div>
 

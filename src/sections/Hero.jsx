@@ -1,192 +1,150 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../styles/Hero.css";
-import StarField from "../components/Starfield";
-import Spiderhang from "../components/Spiderhang";
 import Floatchar from "../components/Floatchar";
 
 const FLOATING_TAGS = [
-  { text: "DRAMA", x: "7%", y: "10%", rotate: "-8deg", color: "#FFE600" },
-  { text: "DANCE", x: "73%", y: "10%", rotate: "6deg", color: "#00D4FF" },
-  { text: "MUSIC", x: "1%", y: "48%", rotate: "-5deg", color: "#FF2D87" },
-  { text: "BAND", x: "79%", y: "44%", rotate: "4deg", color: "#00FF88" },
-  { text: "FASHION", x: "9%", y: "82%", rotate: "-4deg", color: "#FFFFFF" },
-  { text: "DJ NIGHT", x: "63%", y: "82%", rotate: "7deg", color: "#FFE600" },
+  { text: "DRAMA",    x: "5%",  y: "18%",  rotate: "-6deg",  delay: "0s"   },
+  { text: "DANCE",    x: "74%", y: "14%",  rotate: "5deg",   delay: "0.4s" },
+  { text: "MUSIC",    x: "2%",  y: "52%",  rotate: "-4deg",  delay: "0.8s" },
+  { text: "FASHION",  x: "76%", y: "52%",  rotate: "6deg",   delay: "1.2s" },
+  { text: "BAND",     x: "10%", y: "82%",  rotate: "-3deg",  delay: "0.2s" },
+  { text: "DJ NIGHT", x: "64%", y: "82%",  rotate: "4deg",   delay: "1.0s" },
 ];
 
-const STAGE_MARKERS = [
-  { text: "+", x: "22%", y: "30%", size: "2.1rem", opacity: 0.6 },
-  { text: "+", x: "56%", y: "44%", size: "1.6rem", opacity: 0.45 },
-  { text: "+", x: "35%", y: "74%", size: "2rem", opacity: 0.55 },
-  { text: "×", x: "74%", y: "74%", size: "1.45rem", opacity: 0.42 },
-  { text: "+", x: "52%", y: "82%", size: "1.35rem", opacity: 0.5 },
-];
+const ORNAMENTS = ["✦","◆","⚜","✦","◆","⚜","✦","◆"];
 
-const isTouchDevice = () =>
-  typeof window !== "undefined" &&
-  ("ontouchstart" in window || navigator.maxTouchPoints > 0);
-
-const Hero = () => {
-  const cursorRef = useRef(null);
+export default function Hero() {
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const el = cursorRef.current;
-    if (!el) return;
-
-    if (isTouchDevice()) {
-      // On mobile: hide cursor, show floating sticker instead
-      el.style.display = "none";
-      return;
-    }
-
-    // Desktop: zero-lag cursor via direct DOM — no React re-render
-    let rafId;
-    const onMove = (e) => {
-      cancelAnimationFrame(rafId);
-      rafId = requestAnimationFrame(() => {
-        el.style.left = e.clientX + "px";
-        el.style.top = e.clientY + "px";
-      });
-    };
-
-    document.body.style.cursor = "none";
-    window.addEventListener("mousemove", onMove, { passive: true });
-    return () => {
-      window.removeEventListener("mousemove", onMove);
-      cancelAnimationFrame(rafId);
-      document.body.style.cursor = "";
-    };
+    const t = setTimeout(() => setVisible(true), 100);
+    return () => clearTimeout(t);
   }, []);
 
   return (
-    <section id="home" className="comic-hero">
-      <Spiderhang />
+    <section id="home" className="royal-hero">
 
-      <StarField />
-      <Floatchar
+
+
+      <div className="wn-dot-bg" />
+      <div className="wn-slash-left" />
+      <div className="wn-slash-right" />
+      <div className="wn-horizon" />
+      {/* Parchment dot texture */}
+      <div className="rh-texture" />
+
+      {/* Diagonal warm light beam */}
+      <div className="rh-beam" />
+
+      {/* Floating ambient orbs */}
+     
+      {/* Ornamental floating particles */}
+      <div className="rh-particles" aria-hidden="true">
+        {ORNAMENTS.map((o, i) => (
+          <span key={i} className="rh-petal" style={{ '--pi': i }}>{o}</span>
+        ))}
+      </div>
+
+      {/* Institute logos */}
+      
+      {/* ═══ MAIN GRID ═══ */}
+      <div className={`rh-inner ${visible ? 'rh-visible' : ''}`}>
+
+        {/* ── LEFT ── */}
+        <div className="rh-left">
+
+          {/* Crest eyebrow */}
+         <Floatchar
         src="/assets/chars/techno.png"
         alt="Techno"
-        size={55}
-        bottom="88%"
-        right="50%"
+        size={58}
+        bottom="85%"
+        right="30%"
         animation="none"
-        glowColor="#f30629"
+        glowColor="#FAF6EF"
       />
       <Floatchar
         src="/assets/chars/bit.png"
         alt="TBIT"
-        size={56}
-        bottom="88%"
-        right="75%"
+        size={58}
+        bottom="85%"
+        right="60%"
         animation="none"
-        glowColor="#fffcfc"
+        glowColor="#FAF6EF"
       />
-      <br />
-      {/* Spider-Man cursor — desktop only, zero-lag via RAF */}
-      <div ref={cursorRef} className="spider-cursor">
-        🕷️
-      </div>
 
-      {/* Dot texture overlay */}
-      <div className="hero-dot-overlay" />
-
-      {/* Diagonal slash background */}
-      <div className="hero-slash" />
-
-      {/* Left Content */}
-      <div className="comic-hero-inner">
-        <div className="comic-hero-left">
-          {/* Eyebrow badge */}
-
-          {/* Main Title */}
-          <h1 className="comic-hero-title">
-            <span className="title-line-1">LITHIUM</span>
-            <span className="title-line-2">
-              <span className="title-2k">2K</span>
-              <span className="title-26">26</span>
-            </span>
-          </h1>
-
-          {/* Theme */}
-          <div className="comic-theme-wrap">
-            <span className="comic-theme-label">THEME</span>
-            <h2 className="comic-theme-title">
-              BEYOND
-              <br />
-              THE VEIL
-            </h2>
+          {/* Main title */}
+          <div className="rh-title-block">
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <span className="rh-ey-txt">⚜ Techno Bengal Institute of Technology ⚜</span>
+            <br/>
+            <div className="rh-title-year">
+            <span className="rh-yr-2k">LITHIUM - </span>
+<br/>
+              <span className="rh-yr-2k">2K</span>
+              <span className="rh-yr-26">26</span>
+            </div>
           </div>
 
-          <p className="comic-hero-sub">
-            Great Power Comes with , <br />
-            <strong>Great Responsibility</strong>
-          </p>
+          {/* Ornamental divider */}
+          <div className="rh-divider">
+            <span className="rh-div-line" />
+            <span className="rh-div-gem">◆</span>
+            <span className="rh-div-line" />
+          </div>
+
+          {/* Theme */}
+          <div className="rh-theme-block">
+            <span className="rh-theme-label">✦ Royal Theme ✦</span>
+            <h2 className="rh-theme-name">DREAMSCAPE</h2>
+          </div>
 
           {/* CTAs */}
-          <div className="comic-hero-cta">
-            <a href="#about" className="comic-btn comic-btn-yellow">
-              <span className="btn-arrow">▶</span>
-              Enter the Multiverse
+          <div className="rh-cta">
+            <a href="#about" className="rh-btn rh-btn-gold">
+              <span className="rh-btn-icon">⚜</span>
+              Enter the Kingdom
             </a>
-            <a href="#venue" className="comic-btn comic-btn-outline">
+            <a href="#venue" className="rh-btn rh-btn-ghost">
               Event Details
             </a>
           </div>
         </div>
 
-        {/* Right: Event logo + floating chips */}
-        <div className="comic-hero-right">
-          <div className="hero-logo-stage" aria-label="Lithium 2K26 event logo">
-            <div className="hero-logo-glow hero-logo-glow-a" />
-            <div className="hero-logo-glow hero-logo-glow-b" />
-            <div className="hero-logo-ring" />
-            {STAGE_MARKERS.map((marker, i) => (
-              <span
-                key={i}
-                className="hero-stage-marker"
-                style={{
-                  left: marker.x,
-                  top: marker.y,
-                  fontSize: marker.size,
-                  opacity: marker.opacity,
-                }}
-              >
-                {marker.text}
-              </span>
-            ))}
+        {/* ── RIGHT — Logo Stage ── */}
+        <div className="rh-right">
+
+
+          {/* Logo medallion */}
+          <div className="rh-medallion">
+            <div className="rh-medallion-ring rh-ring-outer" />
+            <div className="rh-medallion-ring rh-ring-mid" />
+            <div className="rh-medallion-ring rh-ring-inner" />
+            <div className="rh-medallion-glow" />
+
+            {/* Logo */}
             <img
-              className="hero-logo-art"
+              className="rh-logo-img"
               src="/assets/chars/logoo.png"
-              alt="Lithium 2026 Beyond the Veil logo"
+              alt="Lithium 2026 logo"
               loading="eager"
               fetchPriority="high"
-              decoding="async"
             />
           </div>
-
-          {/* Floating event tags */}
-          {FLOATING_TAGS.map((tag, i) => (
-            <div
-              key={tag.text}
-              className="comic-float-tag"
-              style={{
-                left: tag.x,
-                top: tag.y,
-                "--tag-rotate": tag.rotate,
-                "--tag-color": tag.color,
-                animationDelay: `${i * 0.4}s`,
-              }}
-            >
-              {tag.text}
-            </div>
-          ))}
-
-          {/* Spider-Man character sticker */}
         </div>
+
       </div>
 
-      {/* Bottom scroll hint */}
+      {/* Bottom crest band */}
+      <div className="rh-footer-band">
+        <span className="rh-fb-line" />
+        <span className="rh-fb-text">✦ FRESHER'S WELCOME 2026 ✦ DREAMSCAPE ✦</span>
+        <span className="rh-fb-line" />
+      </div>
+
     </section>
   );
-};
-
-export default Hero;
+}

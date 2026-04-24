@@ -1,6 +1,7 @@
-/* ================================================
-   FLOAT CHAR — Reusable floating character image
-   ================================================ */
+/* ════════════════════════════════════════════════════════
+   DREAMSCAPE — FloatChar
+   Enchanted floating characters · golden glow
+════════════════════════════════════════════════════════ */
 
 .fc-root {
   position: absolute;
@@ -15,44 +16,48 @@
   object-fit: contain;
 }
 
-/* ── ANIMATION: float (gentle up-down) ── */
+/* ── float (gentle enchanted drift) ── */
 .fc-anim-float {
-  animation: fcFloat 3.5s ease-in-out infinite alternate;
-}
-@keyframes fcFloat {
-  from { transform: translateY(0px) rotate(-3deg); }
-  to   { transform: translateY(-18px) rotate(3deg); }
+  animation: fcFloat 3.8s ease-in-out infinite alternate;
 }
 
-/* ── ANIMATION: swing (pendulum left-right) ── */
+@keyframes fcFloat {
+  from { transform: translateY(0px) rotate(-2deg); }
+  to   { transform: translateY(-18px) rotate(2deg); }
+}
+
+/* ── swing (silken pendulum) ── */
 .fc-anim-swing {
   transform-origin: top center;
-  animation: fcSwing 3.2s ease-in-out infinite alternate;
-}
-@keyframes fcSwing {
-  from { transform: rotate(-14deg); }
-  to   { transform: rotate(14deg);  }
+  animation: fcSwing 3.4s ease-in-out infinite alternate;
 }
 
-/* ── ANIMATION: bob (small bounce, stays put) ── */
-.fc-anim-bob {
-  animation: fcBob 2.2s ease-in-out infinite alternate;
+@keyframes fcSwing {
+  from { transform: rotate(-12deg); }
+  to   { transform: rotate(12deg); }
 }
+
+/* ── bob ── */
+.fc-anim-bob {
+  animation: fcBob 2.4s ease-in-out infinite alternate;
+}
+
 @keyframes fcBob {
   from { transform: translateY(0px) scale(1); }
-  to   { transform: translateY(-10px) scale(1.04); }
+  to   { transform: translateY(-10px) scale(1.03); }
 }
 
-/* ── ANIMATION: pulse (breathe in-out) ── */
+/* ── pulse (magical breathing) ── */
 .fc-anim-pulse {
-  animation: fcPulse 2.8s ease-in-out infinite alternate;
-}
-@keyframes fcPulse {
-  from { transform: scale(1) rotate(-2deg); }
-  to   { transform: scale(1.08) rotate(2deg); }
+  animation: fcPulse 3s ease-in-out infinite alternate;
 }
 
-/* Flip support */
-.fc-root[style*="scaleX(-1)"] .fc-img {
-  transform: scaleX(-1);
+@keyframes fcPulse {
+  from { transform: scale(1) rotate(-1.5deg); }
+  to   { transform: scale(1.07) rotate(1.5deg); }
+}
+
+/* ── none ── */
+.fc-anim-none {
+  animation: none;
 }

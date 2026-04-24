@@ -1,12 +1,11 @@
-/* ================================================
-   GALLERY — Comic Polaroid Fan Carousel
-   Bright yellow · Vibrant · Loud
-   ================================================ */
+/* ════════════════════════════════════════════════════════
+   DREAMSCAPE — Gallery
+   Enchanted portrait gallery · gilded frames · warm ivory
+════════════════════════════════════════════════════════ */
 
-/* ── SECTION ── */
 .gl-section {
   position: relative;
-  background: #FFE600;
+  background: #F2EBD9;
   padding: 90px 0 70px;
   overflow: hidden;
   min-height: 100vh;
@@ -15,31 +14,28 @@
   align-items: center;
 }
 
-/* ── DOT TEXTURE ── */
 .gl-dots {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(0,0,0,0.1) 1.5px, transparent 1.5px);
-  background-size: 20px 20px;
+  background-image: radial-gradient(circle, rgba(139,101,32,0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
   pointer-events: none;
   z-index: 0;
 }
 
-/* ── DIAGONAL ACCENT STRIPE ── */
+/* Diagonal warm accent */
 .gl-stripe {
   position: absolute;
-  top: -10%;
-  right: -5%;
-  width: 45%;
-  height: 130%;
-  background: rgba(255,255,255,0.06);
+  top: -10%; right: -5%;
+  width: 40%; height: 130%;
+  background: rgba(201,151,58,0.04);
   transform: skewX(-8deg);
   pointer-events: none;
   z-index: 0;
-  border-left: 3px solid rgba(0,0,0,0.08);
+  border-left: 1px solid rgba(201,151,58,0.06);
 }
 
-/* ── HEADER ── */
+/* ── Header ── */
 .gl-header {
   position: relative;
   z-index: 5;
@@ -54,44 +50,40 @@
   flex-wrap: wrap;
 }
 
-.gl-header-left {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
+.gl-header-left { display: flex; flex-direction: column; gap: 6px; }
 
 .gl-eyebrow {
-  font-family: 'Nunito', sans-serif;
-  font-size: 15px;
-  font-weight: 900;
-  letter-spacing: 0.3em;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: rgba(0,0,0,0.4);
+  color: rgba(139,101,32,0.5);
 }
 
 .gl-title {
-  font-family: 'Bangers', cursive;
-  font-size: clamp(72px, 13vw, 130px);
-  color: #0a0a0a;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(56px, 10vw, 110px);
+  font-weight: 900;
+  color: #2A1810;
   letter-spacing: 0.05em;
   line-height: 0.85;
   margin: 0;
-  transform: skewX(-4deg);
-  text-shadow: 5px 5px 0 rgba(0,0,0,0.12);
+  text-shadow: 3px 4px 0 rgba(0,0,0,0.06);
 }
 
 .gl-title-badge {
   display: inline-block;
-  background: #E8192C;
-  color: #fff;
-  font-family: 'Nunito', sans-serif;
-  font-size: 15px;
+  background: #C9973A;
+  color: #FAF6EF;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.22em;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   padding: 6px 18px;
-  border: 2.5px solid #0a0a0a;
-  box-shadow: 3px 3px 0 #0a0a0a;
+  border: 1px solid rgba(139,101,32,0.3);
+  box-shadow: 3px 3px 0 rgba(139,101,32,0.18);
   width: fit-content;
 }
 
@@ -109,36 +101,30 @@
 }
 
 .gl-cnum {
-  font-family: 'Bangers', cursive;
-  font-size: 52px;
-  color: #0a0a0a;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: #2A1810;
   letter-spacing: 0.04em;
   line-height: 1;
-  text-shadow: 3px 3px 0 rgba(0,0,0,0.15);
 }
 
-.gl-csep {
-  font-family: 'Bangers', cursive;
-  font-size: 28px;
-  color: rgba(0,0,0,0.3);
-}
-
-.gl-ctot {
-  font-family: 'Bangers', cursive;
-  font-size: 28px;
-  color: rgba(0,0,0,0.3);
-  letter-spacing: 0.04em;
+.gl-csep, .gl-ctot {
+  font-family: 'Cinzel', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: rgba(42,24,16,0.3);
 }
 
 .gl-sub {
-  font-family: 'Nunito', sans-serif;
+  font-family: 'IM Fell English', serif;
   font-size: 13px;
-  font-weight: 700;
-  color: rgba(0,0,0,0.45);
+  font-style: italic;
+  color: rgba(42,24,16,0.4);
   margin: 0;
 }
 
-/* ── CAROUSEL STAGE ── */
+/* ── Stage ── */
 .gl-stage {
   position: relative;
   z-index: 5;
@@ -149,11 +135,9 @@
   justify-content: center;
   cursor: grab;
   user-select: none;
-  -webkit-user-select: none;
 }
 .gl-stage:active { cursor: grabbing; }
 
-/* ── FAN CONTAINER ── */
 .gl-fan {
   position: relative;
   width: 320px;
@@ -163,191 +147,174 @@
   justify-content: center;
 }
 
-/* ── INDIVIDUAL CARD ── */
+/* ── Card ── */
 .gl-card {
   position: absolute;
-  width: 450px;
+  width: 440px;
   cursor: pointer;
   will-change: transform;
 }
 
 .gl-card-active { cursor: default; }
 
-/* ── POLAROID FRAME ── */
+/* Gilded frame polaroid */
 .gl-polaroid {
-  border: 3px solid #0a0a0a;
+  border: 2px solid rgba(139,101,32,0.3);
   box-shadow:
-    6px 6px 0 #0a0a0a,
-    0 20px 40px rgba(0,0,0,0.25);
+    5px 5px 0 rgba(139,101,32,0.15),
+    0 20px 50px rgba(42,24,16,0.2),
+    inset 0 1px 0 rgba(255,255,255,0.5);
   display: flex;
   flex-direction: column;
   overflow: hidden;
   transition: box-shadow 0.3s ease;
+  position: relative;
+}
+
+/* Gold corner accents on active card */
+.gl-card-active .gl-polaroid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border: 2px solid rgba(201,151,58,0.3);
+  z-index: 10;
+  pointer-events: none;
 }
 
 .gl-card-active .gl-polaroid {
   box-shadow:
-    8px 8px 0 #0a0a0a,
-    0 30px 60px rgba(0,0,0,0.35);
+    6px 8px 0 rgba(139,101,32,0.18),
+    0 30px 70px rgba(42,24,16,0.25);
 }
 
-/* Top tag strip */
 .gl-card-tag {
-  font-family: 'Nunito', sans-serif;
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 0.22em;
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   padding: 8px 14px;
-  border-bottom: 2.5px solid rgba(0,0,0,0.2);
-  background: rgba(0,0,0,0.08);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  background: rgba(0,0,0,0.05);
 }
 
-/* Photo area */
 .gl-photo-area {
   width: 100%;
   aspect-ratio: 4 / 3;
   position: relative;
   overflow: hidden;
-  border-bottom: 2.5px solid rgba(0,0,0,0.15);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
 }
 
 .gl-photo-area img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
   display: block;
   pointer-events: none;
   transition: transform 0.5s ease;
 }
-.gl-card-active .gl-photo-area img {
-  transform: scale(1.04);
-}
+.gl-card-active .gl-photo-area img { transform: scale(1.03); }
 
-/* Placeholder */
 .gl-placeholder {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  background: rgba(0,0,0,0.08);
+  background: rgba(139,101,32,0.06);
   position: relative;
-}
-.gl-placeholder::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(0,0,0,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.04) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-.gl-ph-ico {
-  font-size: 44px;
-  opacity: 0.25;
-  position: relative;
-  z-index: 1;
-}
-.gl-ph-num {
-  font-family: 'Bangers', cursive;
-  font-size: 44px;
-  letter-spacing: 0.1em;
-  opacity: 0.2;
-  line-height: 1;
-  position: relative;
-  z-index: 1;
 }
 
-/* Glint sweep on active */
+.gl-ph-ico { font-size: 40px; opacity: 0.2; }
+
+.gl-ph-num {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 40px;
+  letter-spacing: 0.1em;
+  opacity: 0.15;
+  line-height: 1;
+}
+
+.gl-real-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; }
+
 .gl-glint {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    135deg,
-    transparent 30%,
-    rgba(255,255,255,0.25) 50%,
-    transparent 70%
-  );
-  animation: glintSweep 3s ease-in-out infinite;
+  background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.2) 50%, transparent 70%);
+  animation: glintSweep 4s ease-in-out infinite;
   pointer-events: none;
 }
+
 @keyframes glintSweep {
   0%,100% { transform: translateX(-120%) translateY(-120%); }
   50%     { transform: translateX(120%) translateY(120%); }
 }
 
-/* Caption strip */
 .gl-caption-strip {
-  padding: 12px 14px 14px;
+  padding: 12px 16px 16px;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
+
 .gl-caption {
-  font-family: 'Bangers', cursive;
-  font-size: 22px;
-  letter-spacing: 0.06em;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 18px;
+  letter-spacing: 0.05em;
   line-height: 1;
   display: block;
 }
+
 .gl-year {
-  font-family: 'Nunito', sans-serif;
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 0.2em;
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
   text-transform: uppercase;
   display: block;
+  opacity: 0.5;
 }
 
-/* Card shadow */
 .gl-card-shadow {
   height: 20px;
-  background: radial-gradient(ellipse at 50% 0%, rgba(0,0,0,0.22) 0%, transparent 70%);
-  margin-top: -4px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(42,24,16,0.15) 0%, transparent 70%);
   filter: blur(4px);
   pointer-events: none;
 }
 
-/* ── SIDE ARROW BUTTONS ── */
+/* ── Side Buttons ── */
 .gl-side-btn {
   position: absolute;
   top: 50%;
   transform: translateY(-60%);
-  width: 52px;
-  height: 52px;
+  width: 48px; height: 48px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 30px;
-  font-weight: 750;
+  font-size: 26px;
   cursor: pointer;
-  transition: all 0.5s ease;
+  transition: all 0.25s ease;
   z-index: 20;
-  background: #0a0a0a;
-  color: #FFE600;
-  border: 2.5px solid #0a0a0a;
-  box-shadow: 5px 4px 0 rgba(0,0,0,0.3);
+  background: #2A1810;
+  color: #E8C070;
+  border: 1px solid rgba(201,151,58,0.3);
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.3);
   line-height: 1;
 }
+
 .gl-side-btn:hover {
-  transform: translateY(-50%) scale(1.1);
-  box-shadow: 6px 6px 0 rgba(0,0,0,0.4);
-  background: #FFE600;
-  color: #0a0a0a;
-}
-.gl-side-btn:active {
-  transform: translateY(-50%) scale(0.96);
-  box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+  transform: translateY(-50%) scale(1.08);
+  background: #C9973A;
+  color: #FAF6EF;
+  box-shadow: 4px 4px 0 rgba(0,0,0,0.4);
 }
 
-.gl-side-l { left: calc(50% - 260px); }
-.gl-side-r { right: calc(50% - 260px); }
+.gl-side-l { left: calc(50% - 270px); }
+.gl-side-r { right: calc(50% - 270px); }
 
-/* ── BOTTOM INFO + CONTROLS ── */
+/* ── Bottom ── */
 .gl-bottom {
   position: relative;
   z-index: 5;
@@ -362,115 +329,62 @@
   margin-top: 32px;
 }
 
-/* Info block */
-.gl-info {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
+.gl-info { display: flex; align-items: center; gap: 14px; }
+
 .gl-info-color {
-  width: 40px;
-  height: 40px;
-  border: 2.5px solid #0a0a0a;
-  box-shadow: 3px 3px 0 #0a0a0a;
+  width: 36px; height: 36px;
+  border: 1px solid rgba(139,101,32,0.2);
+  box-shadow: 2px 2px 0 rgba(139,101,32,0.1);
   flex-shrink: 0;
   transition: background 0.4s ease;
 }
-.gl-info-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
+
+.gl-info-text { display: flex; flex-direction: column; gap: 2px; }
+
 .gl-info-caption {
-  font-family: 'Bangers', cursive;
-  font-size: 22px;
-  letter-spacing: 0.06em;
-  color: #0a0a0a;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 18px;
+  letter-spacing: 0.05em;
+  color: #2A1810;
   line-height: 1;
-  transition: all 0.3s ease;
-}
-.gl-info-tag {
-  font-family: 'Nunito', sans-serif;
-  font-size: 9px;
-  font-weight: 900;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.45);
 }
 
-/* Dot nav */
-.gl-nav-dots {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: center;
+.gl-info-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(42,24,16,0.4);
 }
+
+/* Dots */
+.gl-nav-dots { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+
 .gl-dot {
-  width: 10px;
-  height: 10px;
+  width: 9px; height: 9px;
   border-radius: 50%;
-  background: rgba(0,0,0,0.18);
-  border: 2px solid rgba(0,0,0,0.25);
+  background: rgba(42,24,16,0.15);
+  border: 1px solid rgba(42,24,16,0.2);
   cursor: pointer;
   transition: all 0.25s ease;
   padding: 0;
 }
-.gl-dot:hover {
-  background: rgba(0,0,0,0.4);
-  transform: scale(1.2);
-}
-.gl-dot-active {
-  transform: scale(1.35) !important;
-  border-color: #0a0a0a !important;
-  box-shadow: 2px 2px 0 rgba(0,0,0,0.3);
-}
 
-/* Swipe hint */
-.gl-hint {
-  font-family: 'Nunito', sans-serif;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 0.28em;
-  text-transform: uppercase;
-  color: rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.gl-hint-arrow { font-size: 14px; }
+.gl-dot:hover { background: rgba(42,24,16,0.35); transform: scale(1.2); }
+.gl-dot-active { transform: scale(1.35) !important; border-color: #2A1810 !important; box-shadow: 1px 1px 0 rgba(0,0,0,0.2); }
 
-/* ── SPIDER ── */
-.gl-spider {
-  position: absolute;
-  bottom: 24px;
-  right: 44px;
-  font-size: 44px;
-  animation: glSpider 3s ease-in-out infinite alternate;
-  filter: drop-shadow(2px 2px 0 rgba(0,0,0,0.3));
-  z-index: 5;
-  pointer-events: none;
-}
-@keyframes glSpider {
-  from { transform: translateY(0) rotate(-8deg); }
-  to   { transform: translateY(-14px) rotate(8deg); }
-}
-
-/* ── RESPONSIVE ── */
 @media (max-width: 900px) {
   .gl-header { padding: 0 24px; flex-direction: column; align-items: flex-start; }
-  .gl-header-right { align-items: flex-start; }
   .gl-bottom { padding: 0 24px; }
   .gl-side-l { left: 8px; }
   .gl-side-r { right: 8px; }
 }
 
 @media (max-width: 600px) {
-  .gl-fan { width: 260px; }
-  .gl-card { width: 240px; }
-  .gl-stage { height: 380px; }
+  .gl-fan { width: 240px; }
+  .gl-card { width: 230px; }
+  .gl-stage { height: 360px; }
   .gl-section { padding: 70px 0 50px; }
-  .gl-title { font-size: 72px; }
-  .gl-side-btn { width: 40px; height: 40px; font-size: 22px; }
-  .gl-side-l { left: 4px; }
-  .gl-side-r { right: 4px; }
+  .gl-side-btn { width: 38px; height: 38px; font-size: 20px; }
 }

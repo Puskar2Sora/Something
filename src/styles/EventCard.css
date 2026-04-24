@@ -1,83 +1,173 @@
-/* ========================================
-   EVENT CARD — Comic Panel Style
-   ======================================== */
+/* ══════════════════════════════════════════════════════
+   DREAMSCAPE — Royal Event Card
+   Parchment frame · fleur-de-lis crown · image slots
+══════════════════════════════════════════════════════ */
 
-.comic-event-card {
-  background: var(--card-bg, #fff);
-  border: 3px solid #0a0a0a;
-  box-shadow: 6px 6px 0 #0a0a0a;
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Cinzel+Decorative:wght@700;900&family=IM+Fell+English:ital@1&display=swap');
+
+/* ── Card shell ── */
+.royal-card {
+  position: relative;
+  background: #FAF6EE;
+  border: 1.5px solid rgba(154, 123, 47, 0.35);
   display: flex;
   flex-direction: column;
-  cursor: pointer;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
   overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.royal-card:hover {
+  transform: translateY(-5px);
+  box-shadow:
+    0 16px 40px rgba(122, 92, 10, 0.13),
+    0 0 0 1px rgba(154, 123, 47, 0.4);
+}
+
+/* ── Corner ornaments ── */
+.corner-svg { display: block; width: 18px; height: 18px; }
+.co { position: absolute; width: 18px; height: 18px; z-index: 10; }
+.co-tl { top: 0;    left: 0; }
+.co-tr { top: 0;    right: 0;  transform: scaleX(-1); }
+.co-bl { bottom: 0; left: 0;  transform: scaleY(-1); }
+.co-br { bottom: 0; right: 0; transform: scale(-1, -1); }
+
+/* ── Side border rules ── */
+.side-rule {
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 2px;
+  z-index: 4;
+  pointer-events: none;
+}
+.side-l { left: 0; }
+.side-r { right: 0; }
+
+/* ══ TOP IMAGE FRAME ══ */
+.frame-top {
   position: relative;
+  width: 100%;
+  height: 70px;
+  background: #EDE8DC;
+  border-bottom: 1px solid rgba(154, 123, 47, 0.18);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-
-
-.comic-event-card:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 10px 10px 0 #0a0a0a;
+.bg-crown {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 80%;
 }
 
-/* ---- Header ---- */
-.comic-card-header {
-  background: #0a0a0a;
-  padding: 12px 18px;
+/* Image placeholder box — replace with <img> in production */
+
+
+.ph-icon { font-size: 24px; line-height: 1; }
+
+/* When you swap in a real image */
+.frame-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Bottom filigree overlay on top frame */
+.frame-filigree {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%; height: 32px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+/* ══ CONTENT ZONE ══ */
+.card-tag-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 3px solid #0a0a0a;
+  padding: 11px 16px 8px;
+  border-bottom: 1px solid rgba(154, 123, 47, 0.08);
 }
 
-.comic-card-tag {
-  font-family: 'Nunito', sans-serif;
-  font-size: 10px;
-  font-weight: 900;
-  letter-spacing: 0.2em;
+.card-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 7.5px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--card-accent, #FFE600);
 }
 
-.comic-card-icon {
-  font-size: 28px;
-  line-height: 1;
+.card-num {
+  font-family: 'Cinzel', serif;
+  font-size: 9px;
+  color: rgba(122, 92, 10, 0.3);
+  letter-spacing: 0.15em;
 }
 
-/* ---- Title bar ---- */
-.comic-card-title-bar {
-  padding: 16px 18px 8px;
-  border-bottom: 2px solid #0a0a0a;
+.card-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 13.5px;
+  font-weight: 900;
+  color: #1C1108;
+  letter-spacing: 0.03em;
+  line-height: 1.25;
+  padding: 12px 16px 6px;
 }
 
-.comic-card-title {
-  font-family: 'Bangers', cursive;
-  font-size: 26px;
-  letter-spacing: 0.06em;
-  color: #0a0a0a;
-  margin: 0;
-  line-height: 1;
-}
-
-/* ---- Body ---- */
-.comic-card-body {
-  padding: 16px 18px 20px;
+.card-desc {
+  font-family: 'IM Fell English', serif;
+  font-size: 13px;
+  font-style: italic;
+  color: rgba(60, 35, 10, 0.62);
+  line-height: 1.72;
+  padding: 2px 16px 14px;
   flex: 1;
 }
 
-.comic-card-desc {
-  font-family: 'Nunito', sans-serif;
-  font-size: 15px;
-  font-weight: 600;
-  color: #1a1a1a;
-  line-height: 1.6;
-  margin: 0;
+/* ══ BOTTOM IMAGE FRAME ══ */
+.frame-bot {
+  position: relative;
+  width: 100%;
+  height: 44px;
+  border-top: 1px solid rgba(154, 123, 47, 0.18);
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #EDE8DC;
 }
 
-/* ---- Bottom accent ---- */
-.comic-card-foot {
-  height: 8px;
-  background: var(--card-accent, #FFE600);
-  border-top: 2px solid #0a0a0a;
-} 
+/* When you swap in a real image */
+.bot-frame-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  z-index: 1;
+}
+
+.bot-ph {
+  position: relative;
+  z-index: 2;
+  font-family: 'Cinzel', serif;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(154, 123, 47, 0.5);
+}
+
+/* ── Responsive ── */
+@media (max-width: 500px) {
+  .card-title { font-size: 12px; }
+  .card-desc  { font-size: 12px; }
+  .frame-top  { height: 90px; }
+}
