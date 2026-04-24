@@ -107,7 +107,6 @@ export default function Hero() {
           </div>
         </div>
 
-      </div>
 
       {/* Bottom crest band */}
       <div className="rh-footer-band">
