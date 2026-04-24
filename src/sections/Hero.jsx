@@ -84,7 +84,6 @@ export default function Hero() {
               Event Details
             </a>
           </div>
-        </div>
 
         {/* ── RIGHT — Logo Stage ── */}
         <div className="rh-right">
