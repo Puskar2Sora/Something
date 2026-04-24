@@ -22,39 +22,11 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="royal-hero">
+    <section id="home" className="comic-hero">
+      <Spiderhang />
 
-
-
-      <div className="wn-dot-bg" />
-      <div className="wn-slash-left" />
-      <div className="wn-slash-right" />
-      <div className="wn-horizon" />
-      {/* Parchment dot texture */}
-      <div className="rh-texture" />
-
-      {/* Diagonal warm light beam */}
-      <div className="rh-beam" />
-
-      {/* Floating ambient orbs */}
-     
-      {/* Ornamental floating particles */}
-      <div className="rh-particles" aria-hidden="true">
-        {ORNAMENTS.map((o, i) => (
-          <span key={i} className="rh-petal" style={{ '--pi': i }}>{o}</span>
-        ))}
-      </div>
-
-      {/* Institute logos */}
-      
-      {/* ═══ MAIN GRID ═══ */}
-      <div className={`rh-inner ${visible ? 'rh-visible' : ''}`}>
-
-        {/* ── LEFT ── */}
-        <div className="rh-left">
-
-          {/* Crest eyebrow */}
-         <Floatchar
+      <StarField />
+      <Floatchar
         src="/assets/chars/techno.png"
         alt="Techno"
         size={58}
@@ -64,7 +36,7 @@ export default function Hero() {
         glowColor="#FAF6EF"
       />
       <Floatchar
-        src="/assets/chars/bit.png"
+        src="/assets/chars/techno.png"
         alt="TBIT"
         size={58}
         bottom="85%"
@@ -147,4 +119,6 @@ export default function Hero() {
 
     </section>
   );
-}
+};
+
+export default Hero;
