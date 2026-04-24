@@ -23,10 +23,8 @@ export default function Hero() {
 
   return (
     <section id="home" className="comic-hero">
-      <Spiderhang />
-
-      <StarField />
-      <Floatchar
+      
+    <Floatchar
         src="/assets/chars/techno.png"
         alt="Techno"
         size={58}
