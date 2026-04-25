@@ -22,38 +22,65 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="comic-hero">
-      
-    <Floatchar
-        src="/assets/chars/techno.png"
-        alt="Techno"
-        size={58}
-        bottom="85%"
-        right="30%"
-        animation="none"
-        glowColor="#FAF6EF"
-      />
+    <section id="home" className="royal-hero">
+
+      {/* Parchment dot texture */}
+      <div className="rh-texture" />
+
+      {/* Diagonal warm light beam */}
+      <div className="rh-beam" />
+
+      {/* Floating ambient orbs */}
+      <div className="rh-orb rh-orb-a" />
+      <div className="rh-orb rh-orb-b" />
+      <div className="rh-orb rh-orb-c" />
+
+      {/* Ornamental floating particles */}
+      <div className="rh-particles" aria-hidden="true">
+        {ORNAMENTS.map((o, i) => (
+          <span key={i} className="rh-petal" style={{ '--pi': i }}>{o}</span>
+        ))}
+      </div>
+
+      {/* Institute logos */}
       <Floatchar
         src="/assets/chars/techno.png"
-        alt="TBIT"
-        size={58}
-        bottom="85%"
-        right="60%"
+        alt="Techno"
+        size={60}
+        bottom="86%"
+        right="25%"
         animation="none"
-        glowColor="#FAF6EF"
+        glowColor="#efede9"
       />
+      <Floatchar
+        src="/assets/chars/bit.png"
+        alt="TBIT"
+        size={60}
+        bottom="86%"
+        right="55%"
+        animation="none"
+        glowColor="#f7f6f6"
+      />
+
+      {/* ═══ MAIN GRID ═══ */}
+      <div className={`rh-inner ${visible ? 'rh-visible' : ''}`}>
+
+        {/* ── LEFT ── */}
+        <div className="rh-left">
+
+          {/* Crest eyebrow */}
+          <br/>
+          <div className="rh-eyebrow">
+            <span className="rh-ey-line" />
+            <span className="rh-ey-txt">⚜ Techno Bengal Institute of Technology ⚜</span>
+            <span className="rh-ey-line" />
+          </div>
 
           {/* Main title */}
           <div className="rh-title-block">
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-            <span className="rh-ey-txt">⚜ Techno Bengal Institute of Technology ⚜</span>
-            <br/>
             <div className="rh-title-year">
-            <span className="rh-yr-2k">LITHIUM - </span>
-<br/>
+              <span className="rh-yr-2k">LITHIUM </span>
+              <br/>
               <span className="rh-yr-2k">2K</span>
               <span className="rh-yr-26">26</span>
             </div>
@@ -82,6 +109,7 @@ export default function Hero() {
               Event Details
             </a>
           </div>
+        </div>
 
         {/* ── RIGHT — Logo Stage ── */}
         <div className="rh-right">
@@ -105,6 +133,7 @@ export default function Hero() {
           </div>
         </div>
 
+      </div>
 
       {/* Bottom crest band */}
       <div className="rh-footer-band">
@@ -115,4 +144,4 @@ export default function Hero() {
 
     </section>
   );
-};
+}
