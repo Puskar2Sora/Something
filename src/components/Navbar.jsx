@@ -47,12 +47,12 @@ const Navbar = () => {
 
         {/* Logo — always visible */}
         <div className="btv-logo-mark">
-          <span className="logo-l">L</span>
-          <div className="logo-text-wrap">
-            <span className="logo-main">ITHIUM</span>
-            <span className="logo-sub">2K26 · DREAMSCAPE</span>
-          </div>
-        </div>
+  <span className="ab-drop-cap">L</span>
+  <div className="logo-text-wrap">
+    <span className="logo-main">ITHIUM</span>
+    <span className="logo-sub">2K26 · DREAMSCAPE</span>
+  </div>
+</div>
 
         {/* Hamburger */}
         <button

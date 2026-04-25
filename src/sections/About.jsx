@@ -139,12 +139,7 @@ export default function About() {
               a celebration where creativity breaks every boundary and
               characters from every universe collide in one electric night.
             </p>
-            <p className="ab-para ab-p2" style={{ '--di': 1 }}>
-              The theme <strong>Beyond The Veil</strong> invites you to step
-              through the membrane between worlds. Wear any face. Embody any
-              legend. Whether you arrive as a pirate, a sorcerer, a cyborg,
-              or the legendary Spider-Man — every universe is welcome here.
-            </p>
+            
           </div>
         </div>
 
@@ -166,23 +161,17 @@ export default function About() {
       </span>
     ))}
   </h2>
-  <div className="ab-title-su">Beyond The Veil</div>
+  <br/>
+  <div className="ab-title-su">DREAMSCAPE</div>
 
           {/* Animated text paragraphs */}
           <div className="ab-text-block">
-            <p className="ab-para ab-p1" style={{ '--di': 0 }}>
-              ITHIUM is the Fresher's Welcome event of{' '}
-              —
-              a celebration where creativity breaks every boundary and
-              characters from every universe collide in one electric night.
-            </p>
-            <p className="ab-para ab-p2" style={{ '--di': 1 }}>
-              The theme <strong>Beyond The Veil</strong> invites you to step
+           <p className="ab-para ab-p2" style={{ '--di': 1 }}>
+              The theme <strong>DREAMSCAPE</strong> invites you to step
               through the membrane between worlds. Wear any face. Embody any
               legend. Whether you arrive as a pirate, a sorcerer, a cyborg,
               or the legendary Spider-Man — every universe is welcome here.
-            </p>
-          </div>
+            </p></div>
         </div>
 
         

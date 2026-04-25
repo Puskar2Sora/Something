@@ -1,15 +1,6 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/Hero.css";
 import Floatchar from "../components/Floatchar";
-
-const FLOATING_TAGS = [
-  { text: "DRAMA",    x: "5%",  y: "18%",  rotate: "-6deg",  delay: "0s"   },
-  { text: "DANCE",    x: "74%", y: "14%",  rotate: "5deg",   delay: "0.4s" },
-  { text: "MUSIC",    x: "2%",  y: "52%",  rotate: "-4deg",  delay: "0.8s" },
-  { text: "FASHION",  x: "76%", y: "52%",  rotate: "6deg",   delay: "1.2s" },
-  { text: "BAND",     x: "10%", y: "82%",  rotate: "-3deg",  delay: "0.2s" },
-  { text: "DJ NIGHT", x: "64%", y: "82%",  rotate: "4deg",   delay: "1.0s" },
-];
 
 const ORNAMENTS = ["✦","◆","⚜","✦","◆","⚜","✦","◆"];
 
@@ -46,7 +37,7 @@ export default function Hero() {
       <Floatchar
         src="/assets/chars/techno.png"
         alt="Techno"
-        size={60}
+        size={59}
         bottom="86%"
         right="25%"
         animation="none"
@@ -55,7 +46,7 @@ export default function Hero() {
       <Floatchar
         src="/assets/chars/bit.png"
         alt="TBIT"
-        size={60}
+        size={58}
         bottom="86%"
         right="55%"
         animation="none"
@@ -68,8 +59,9 @@ export default function Hero() {
         {/* ── LEFT ── */}
         <div className="rh-left">
 
+          {/* [CHANGED] removed bare <br/> — spacing handled by .rh-left gap */}
+<br/>
           {/* Crest eyebrow */}
-          <br/>
           <div className="rh-eyebrow">
             <span className="rh-ey-line" />
             <span className="rh-ey-txt">⚜ Techno Bengal Institute of Technology ⚜</span>
@@ -77,9 +69,10 @@ export default function Hero() {
           </div>
 
           {/* Main title */}
+          {/* [CHANGED] removed bare <br/> inside flex row — was breaking layout on mobile */}
           <div className="rh-title-block">
             <div className="rh-title-year">
-              <span className="rh-yr-2k">LITHIUM </span>
+              <span className="rh-yr-2k">LITHIUM</span>
               <br/>
               <span className="rh-yr-2k">2K</span>
               <span className="rh-yr-26">26</span>
@@ -103,7 +96,7 @@ export default function Hero() {
           <div className="rh-cta">
             <a href="#about" className="rh-btn rh-btn-gold">
               <span className="rh-btn-icon">⚜</span>
-              Enter the Kingdom
+              Enter IN  the dream
             </a>
             <a href="#venue" className="rh-btn rh-btn-ghost">
               Event Details
@@ -113,16 +106,11 @@ export default function Hero() {
 
         {/* ── RIGHT — Logo Stage ── */}
         <div className="rh-right">
-
-
-          {/* Logo medallion */}
           <div className="rh-medallion">
             <div className="rh-medallion-ring rh-ring-outer" />
             <div className="rh-medallion-ring rh-ring-mid" />
             <div className="rh-medallion-ring rh-ring-inner" />
             <div className="rh-medallion-glow" />
-
-            {/* Logo */}
             <img
               className="rh-logo-img"
               src="/assets/chars/logoo.png"

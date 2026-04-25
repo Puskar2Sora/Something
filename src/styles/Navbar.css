@@ -44,6 +44,23 @@
   background-clip: text;
   filter: drop-shadow(0 0 12px rgba(201,151,58,0.5));
 }
+.ab-drop-cap {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 60px;
+  font-weight:800;
+  line-height: 5;           /* was 0.75 — caused vertical misalignment */
+  color: #C9973A;
+  text-shadow: 2px 2px 0 rgba(139,101,32,0.2);
+  display: flex;            /* was float:left — breaks inside flex parent */
+  align-items: center;      /* vertically centres the L with the text block */
+  flex-shrink: 0;           /* prevents it from squishing */
+}
+.btv-logo-mark {
+  display: flex;
+  align-items: center;
+  gap: 2px;       /* tight gap between L and ITHIUM */
+}
+
 
 .logo-text-wrap {
   display: flex;
@@ -60,6 +77,7 @@
   color: #f19b06;
   text-shadow: 0 0 10px rgba(250,246,239,0.2);
 }
+
 
 .logo-sub {
   font-family: 'Cinzel', serif;
