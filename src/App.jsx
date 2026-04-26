@@ -25,15 +25,16 @@ function shouldPlayIntro() {
 
   return !reducedMotion && !slowConnection && !alreadySeen;
 }
+let _introPlayedThisSession = false;
 
 function App() {
   const [showIntro, setShowIntro] = useState(() => shouldPlayIntro());
   const sectionFallback = useMemo(() => <div className="section-skeleton" aria-hidden="true" />, []);
 
-  const handleIntroDone = () => {
-    sessionStorage.setItem('lithium:intro-seen', '1');
-    setShowIntro(false);
-  };
+ const handleIntroDone = () => {
+  _introPlayedThisSession = true; // ← in-memory only, cleared on refresh
+  setShowIntro(false);
+};
 
   return (
     <div className="realm-container">

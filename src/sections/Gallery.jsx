@@ -1,6 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react';
 import '../styles/Gallery.css';
-import Floatchar from '../components/Floatchar';
 
 
 const PHOTOS = [
@@ -9,48 +8,48 @@ const PHOTOS = [
     caption: 'Groomers', 
     year: '2K25', 
     tag: 'Grand Opening', 
-    color: '#E8192C', 
-    bg: '#e6bf11' 
+    color: '#C9973A', 
+    bg: '#efebd8' 
   },
   { 
     src: new URL('../assets-optimized/pic/img2.webp', import.meta.url).href, 
     caption: 'Dance Performance', 
     year: '2K25', 
     tag: 'On Stage', 
-    color: '#fff', 
-    bg: '#E8192C' 
+    color: '#C9973A', 
+    bg: '#efebd8' 
   },
   { 
     src: new URL('../assets-optimized/pic/img3.webp', import.meta.url).href, 
     caption: 'Ultra Music', 
     year: '2K25', 
     tag: 'Spider Sence', 
-    color: '#0a0a0a', 
-    bg: '#00D4FF' 
+    color: '#C9973A', 
+    bg: '#efebd8' 
   },
   { 
     src: new URL('../assets-optimized/pic/img4.webp', import.meta.url).href, 
     caption: 'Cultural', 
     year: '2K25', 
     tag: 'Performance', 
-    color: '#fff', 
-    bg: '#FF2D87' 
+    color: '#C9973A', 
+    bg: '#efebd8' 
   },
   { 
     src: new URL('../assets-optimized/pic/img5.webp', import.meta.url).href, 
     caption: 'The RoadMap', 
     year: '2K24', 
     tag: 'Follow Them', 
-    color: '#0a0a0a', 
-    bg: '#00FF88' 
+    color: '#C9973A', 
+    bg: '#efebd8' 
   },
   { 
     src: new URL('../assets-optimized/pic/img6.webp', import.meta.url).href, 
     caption: 'Host', 
     year: '2K25', 
     tag: 'Night Events', 
-    color: '#FFE600', 
-    bg: '#0a0a0a' 
+    color: '#C9973A', 
+    bg: '#efebd8' 
   },
 ];
 
@@ -230,15 +229,7 @@ export default function Gallery() {
         </div>
 
       </div>
-          <Floatchar
-        src="/assets-optimized/chars/zotopia.webp"
-        alt="Villain"
-        size={300}
-        top="61%"
-        animation="none"
-        left="45%"
-        glowColor="#dc250897"
-      />
+          
           </section>
     
   );

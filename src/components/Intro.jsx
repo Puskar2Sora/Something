@@ -10,8 +10,8 @@ const LOAD_STEPS = [
   { pct: 100, label: '✦  ENTER THE REALM  ✦',          delay: 290  },
 ];
 
-// Lantern emojis — rising toward the sky like in Tangled
-const LANTERNS = ['🏮', '🕯️', '🏮', '✨', '🏮', '🕯️', '🏮', '✨'];
+// Royal parchment ornaments — floating on ivory background
+const ORNAMENTS = ['⚜', '◆', '✦', '⚜', '◆', '✦', '⚜', '◆'];
 
 export default function Intro({ onDone }) {
   const canvasRef   = useRef(null);
@@ -24,7 +24,7 @@ export default function Intro({ onDone }) {
   const dispRef   = useRef(0);
   const rafRef    = useRef(null);
 
-  /* ─── Particle canvas — gold dust & sparks ─── */
+  /* ─── Particle canvas — gold dust & parchment sparks ─── */
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx    = canvas.getContext('2d');
@@ -42,24 +42,24 @@ export default function Intro({ onDone }) {
       reset(init = false) {
         this.x     = Math.random() * W;
         this.y     = init ? Math.random() * H : H + 10;
-        this.vx    = (Math.random() - 0.5) * 0.5;
-        this.vy    = -(Math.random() * 1.5 + 0.5);
+        this.vx    = (Math.random() - 0.5) * 0.4;
+        this.vy    = -(Math.random() * 1.2 + 0.3);
         this.r     = Math.random() * 2 + 0.5;
-        this.alpha = Math.random() * 0.8 + 0.15;
-        // Gold dust, amber sparks, silver stars
+        this.alpha = Math.random() * 0.5 + 0.10;
+        // Warm ivory palette — gold dust, amber, maroon rose, cream
         this.color = [
-          '#FFD166', '#F2D580', '#D4A843',
-          '#FFF5C8', '#E8A840', '#C97BA8',
-          '#ffffff',
-        ][Math.floor(Math.random() * 7)];
-        this.twinkle = Math.random() > 0.7;
+          '#C9973A', '#E8C76A', '#8B6410',
+          '#D4788A', '#9B2D40', '#F2EAD5',
+          '#EDD4A0', '#C9973A',
+        ][Math.floor(Math.random() * 8)];
+        this.twinkle = Math.random() > 0.65;
         this.twinkleSpeed = Math.random() * 0.05 + 0.02;
         this.twinkleOffset = Math.random() * Math.PI * 2;
       }
       update() {
         this.x += this.vx;
         this.y += this.vy;
-        this.alpha -= 0.002;
+        this.alpha -= 0.0015;
         if (this.alpha <= 0 || this.y < -10) this.reset();
       }
       draw(t) {
@@ -85,7 +85,7 @@ export default function Intro({ onDone }) {
       }
     }
 
-    for (let i = 0; i < 200; i++) particles.push(new Particle());
+    for (let i = 0; i < 180; i++) particles.push(new Particle());
 
     let t = 0;
     const loop = () => {
@@ -121,10 +121,8 @@ export default function Intro({ onDone }) {
 
   /* ─── Sequencer ─── */
   useEffect(() => {
-    // Logo reveal
     const t0 = setTimeout(() => setPhase('reveal'), 200);
 
-    // Loading begins after logo animation
     const t1 = setTimeout(() => {
       setPhase('loading');
       let elapsed = 0;
@@ -159,46 +157,100 @@ export default function Intro({ onDone }) {
 
   return (
     <div className={`intro ${isSlam ? 'intro-slam' : ''}`}>
+
       {/* Gold dust particle canvas */}
       <canvas ref={canvasRef} className="intro-canvas" />
 
-      {/* Background layers */}
+      {/* ── Background layers — warm ivory parchment ── */}
       <div className="intro-bg-base" />
       <div className="intro-grid" />
+      <div className="intro-beam" />
       <div className="intro-vignette" />
 
-      {/* Ambient glow orbs */}
+      {/* Warm ambient glow orbs */}
       <div className="intro-orb orb-purple" />
       <div className="intro-orb orb-orange" />
       <div className="intro-orb orb-cyan" />
 
-      {/* Rising lanterns */}
-      <div className="intro-bg-chars">
-        {LANTERNS.map((c, i) => (
+      {/* Floating royal ornaments — on parchment */}
+      <div className="intro-bg-chars" aria-hidden="true">
+        {ORNAMENTS.map((c, i) => (
           <span key={i} className={`bg-char bg-char-${i}`}>{c}</span>
         ))}
       </div>
 
-      {/* Kingdom silhouette */}
+      {/* Parchment kingdom silhouette */}
       <div className="intro-kingdom" />
 
       {/* ═══ MAIN CONTENT ═══ */}
       <div className={`intro-content ${isReveal ? 'content-visible' : ''}`}>
 
-        {/* Royal proclamation eyebrow */}
+        {/* Royal proclamation eyebrow — big, letter-by-letter animated */}
         <div className="intro-eyebrow">
-          <span className="eyebrow-line" />
-          <span className="eyebrow-text">✦ TECHNO BENGAL INSTITUTE OF TECHNOLOGY PRESENTS ✦</span>
-          <span className="eyebrow-line" />
+
+          {/* Top filigree rule */}
+          <div className="eyebrow-rule">
+            <span className="eyebrow-line" />
+            <span className="eyebrow-gem">⚜</span>
+            <span className="eyebrow-line" />
+          </div>
+
+          {/* Institute name — each letter drops in individually */}
+          <div className="eyebrow-text-wrap">
+            <div className="eyebrow-text">
+              {['TECHNO', 'BENGAL', 'INSTITUTE', 'OF', 'TECHNOLOGY'].map((word, wi) => {
+                const prevLetters = ['TECHNO', 'BENGAL', 'INSTITUTE', 'OF', 'TECHNOLOGY']
+                  .slice(0, wi)
+                  .reduce((acc, w) => acc + w.length, 0) + wi;
+                return (
+                  <span key={wi} className="eyebrow-word">
+                    {word.split('').map((ch, ci) => (
+                      <span
+                        key={ci}
+                        className="ey-ch"
+                        style={{ '--li': prevLetters + ci }}
+                      >{ch}</span>
+                    ))}
+                  </span>
+                );
+              })}
+            </div>
+            <div className="eyebrow-sub">✦ Presents ✦</div>
+          </div>
+
+          {/* Bottom thin rule */}
+          <div className="eyebrow-rule eyebrow-rule-bottom">
+            <span className="eyebrow-line" />
+            <span className="eyebrow-gem" style={{ fontSize: '9px', animation: 'none', opacity: 0.5 }}>◆</span>
+            <span className="eyebrow-line" />
+          </div>
+
         </div>
 
+        {/* Main title block — matches Hero title style */}
+        <div className="intro-title-block">
+          <div className="intro-title-year">LITHIUM</div>
+          <div className="intro-title-sub">2K26</div>
+        </div>
 
+        {/* Ornamental divider — matches Hero divider */}
+        <div className="intro-divider">
+          <span className="intro-div-line" />
+          <span className="intro-div-gem">◆</span>
+          <span className="intro-div-line" />
+        </div>
 
-        {/* Theme decree */}
+        {/* Theme decree — DREAMSCAPE in fantasy royal style */}
         <div className="intro-theme">
-          <span className="theme-dash" />
-          <span className="theme-text">DREAMSCAPE</span>
-          <span className="theme-dash" />
+
+
+          {/* DREAMSCAPE — each letter individually animated */}
+          <div className="theme-text">
+            {'DREAMSCAPE'.split('').map((ch, i) => (
+              <span key={i} className="ds-ch" style={{ '--di': i }}>{ch}</span>
+            ))}
+          </div>
+
         </div>
 
         {/* ═══ LOADER ═══ */}
@@ -230,15 +282,17 @@ export default function Intro({ onDone }) {
 
           {/* Status label */}
           <div className="loader-status">
-            <span className={`status-dot ${pct === 100 ? 'dot-green' : ''}`} />
             <span className="status-text">{label}</span>
           </div>
+
         </div>
       </div>
+
 
       {/* Royal curtain slam panels */}
       <div className={`slam-panel slam-top ${isSlam ? 'slam-active' : ''}`} />
       <div className={`slam-panel slam-bot ${isSlam ? 'slam-active' : ''}`} />
+
     </div>
   );
 }
