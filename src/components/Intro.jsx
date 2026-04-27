@@ -194,10 +194,10 @@ export default function Intro({ onDone }) {
             <span className="eyebrow-gem">⚜</span>
             <span className="eyebrow-line" />
           </div>
-
+<br/>
           {/* Institute name — each letter drops in individually */}
-          <div className="eyebrow-text-wrap">
-            <div className="eyebrow-text">
+          <div className="rh-title-block">
+            <div className="rh-title-block">
               {['TECHNO', 'BENGAL', 'INSTITUTE', 'OF', 'TECHNOLOGY'].map((word, wi) => {
                 const prevLetters = ['TECHNO', 'BENGAL', 'INSTITUTE', 'OF', 'TECHNOLOGY']
                   .slice(0, wi)
@@ -215,6 +215,7 @@ export default function Intro({ onDone }) {
                 );
               })}
             </div>
+            <br/>
             <div className="eyebrow-sub">✦ Presents ✦</div>
           </div>
 
@@ -228,10 +229,15 @@ export default function Intro({ onDone }) {
         </div>
 
         {/* Main title block — matches Hero title style */}
-        <div className="intro-title-block">
-          <div className="intro-title-year">LITHIUM</div>
-          <div className="intro-title-sub">2K26</div>
-        </div>
+         <div className="rh-title-block">
+            <div className="rh-title-year">
+              <span className="rh-yr-2k">LITHIUM</span>
+              <br/>
+              <span className="rh-yr-2k">2K</span>
+              <span className="rh-yr-26">26</span>
+            </div>
+          </div>
+
 
         {/* Ornamental divider — matches Hero divider */}
         <div className="intro-divider">
@@ -243,12 +249,11 @@ export default function Intro({ onDone }) {
         {/* Theme decree — DREAMSCAPE in fantasy royal style */}
         <div className="intro-theme">
 
-
-          {/* DREAMSCAPE — each letter individually animated */}
-          <div className="theme-text">
-            {'DREAMSCAPE'.split('').map((ch, i) => (
-              <span key={i} className="ds-ch" style={{ '--di': i }}>{ch}</span>
-            ))}
+<div className="rh-title-block">
+            <div className="rh-title-year">
+              <span className="rh-theme-name">DREAMSCAPE</span>
+              <br/>
+            </div>
           </div>
 
         </div>
@@ -257,8 +262,8 @@ export default function Intro({ onDone }) {
         <div className={`intro-loader ${isLoading ? 'loader-visible' : ''}`}>
 
           {/* Royal counter */}
-          <div className="loader-counter">
-            <span className="counter-number">{String(counter).padStart(2, '0')}</span>
+          <div className="rh-theme-name">
+            <span className="rh-theme-name">{String(counter).padStart(2, '0')}</span>
             <span className="counter-pct">%</span>
           </div>
 
@@ -280,11 +285,7 @@ export default function Intro({ onDone }) {
             </div>
           </div>
 
-          {/* Status label */}
-          <div className="loader-status">
-            <span className="status-text">{label}</span>
-          </div>
-
+        
         </div>
       </div>
 

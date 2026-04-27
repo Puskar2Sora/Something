@@ -472,6 +472,31 @@
   gap: 10px;
 }
 
+.rh-yr-2k { color: var(--rh-ink); text-shadow: 2px 3px 0 rgba(0,0,0,0.06), 0 0 30px rgba(42,24,16,0.08); }
+.rh-yr-26  { color: var(--rh-maroon); text-shadow: 2px 3px 0 rgba(107,26,42,0.12), 0 0 25px rgba(201,151,58,0.2); }
+.rh-title-block { display: flex; flex-direction: column; gap: 4px; line-height: 0.88; }
+.rh-title-year {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(30px, 8vw, 90px); /* [CHANGED] floor was 28px → 24px */
+  letter-spacing: 0.24em;            /* [CHANGED] was 0.34em — less overflow on mobile */
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;                   /* [CHANGED] now wraps instead of clipping */
+  gap: 4px;
+}
+
+.rh-theme-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(22px, 3.5vw, 54px); /* [CHANGED] floor was 28px → 22px */
+  font-weight: 900;
+  color: var(--rh-maroon);
+  letter-spacing: 0.08em;
+  line-height: 1;
+  margin: 0;
+  word-break: break-word;            /* [CHANGED] safety net on very narrow screens */
+  text-shadow: 1px 2px 0 rgba(107,26,42,0.1), 0 0 40px rgba(201,151,58,0.12);
+}
+
 /* Thin decorative rule above DREAMSCAPE */
 .theme-rule {
   display: flex;

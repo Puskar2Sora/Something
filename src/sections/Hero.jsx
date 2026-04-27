@@ -37,7 +37,7 @@ export default function Hero() {
       <Floatchar
         src="/assets/chars/techno.png"
         alt="Techno"
-        size={59}
+        size={55}
         bottom="86%"
         right="25%"
         animation="none"
@@ -46,7 +46,7 @@ export default function Hero() {
       <Floatchar
         src="/assets/chars/bit.png"
         alt="TBIT"
-        size={58}
+        size={54}
         bottom="86%"
         right="55%"
         animation="none"
