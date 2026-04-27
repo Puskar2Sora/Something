@@ -216,12 +216,13 @@ export default function Intro({ onDone }) {
     })}
   </div>
   <div className="eyebrow-rule eyebrow-rule--bottom" />
+  <br/>
+  <div className="eyebrow-sub">✦ Presents ✦</div>
 </div>
 
 
         </div>
 
-<br/>
         {/* Main title block — matches Hero title style */}
          <div className="rh-title-block">
             <div className="rh-title-year">
