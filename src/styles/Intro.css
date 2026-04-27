@@ -315,8 +315,13 @@
   50%  { transform: rotate(180deg) scale(1.3); opacity: 1; }
   100% { transform: rotate(360deg) scale(1); opacity: 0.75; }
 }
+.eyebrow-text {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
 
-/* The big institute text */
 .eyebrow-text-wrap {
   display: flex;
   flex-direction: column;
@@ -324,24 +329,17 @@
   gap: 4px;
 }
 
-/* Each letter is individually animated via --li CSS var */
-.eyebrow-text {
-  display: flex;
-  gap: 0;
-  flex-wrap: nowrap;
-  justify-content: center;
-}
-
 .eyebrow-word {
   display: flex;
   gap: 0;
-  margin: 0 clamp(4px, 0.8vw, 10px);
+  margin: 0 clamp(3px, 0.6vw, 10px);
+  white-space: nowrap;
 }
 
 .ey-ch {
   display: inline-block;
   font-family: 'Cinzel', serif;
-  font-size: clamp(13px, 2.2vw, 22px);
+  font-size: clamp(10px, 2.8vw, 22px);
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -357,7 +355,6 @@
   animation-delay: calc(0.35s + var(--li) * 0.045s), calc(var(--li) * 0.04s + 1.5s);
   filter: drop-shadow(0 0 6px rgba(201,151,58,0.20));
 }
-
 @keyframes eyLetterDrop {
   0%   { opacity: 0; transform: translateY(-22px) scale(0.7) rotateX(60deg); }
   70%  { transform: translateY(3px) scale(1.06) rotateX(0deg); }
@@ -372,9 +369,9 @@
 /* Sub-label beneath the institute name */
 .eyebrow-sub {
   font-family: 'IM Fell English', serif;
-  font-size: clamp(9px, 1.4vw, 13px);
+  font-size: clamp(14px, 1.4vw, 18px);
   font-style: italic;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.28em;
   color: rgba(107,26,42,0.55);
   opacity: 0;
   animation: fadeSlideDown 0.6s ease calc(0.35s + 36 * 0.045s + 0.3s) both;
@@ -968,7 +965,7 @@
 
 /* ── Responsive ── */
 @media (max-width: 600px) {
-  .eyebrow-text { font-size: 6px; letter-spacing: 0.2em; }
+  .eyebrow-text { font-size: 5px; letter-spacing: 0.2em; }
   .intro-kingdom { height: 100px; }
   .intro-kingdom::before { height: 90px; }
   .intro-footer-band { padding: 12px 20px; }

@@ -219,15 +219,10 @@ export default function Intro({ onDone }) {
             <div className="eyebrow-sub">✦ Presents ✦</div>
           </div>
 
-          {/* Bottom thin rule */}
-          <div className="eyebrow-rule eyebrow-rule-bottom">
-            <span className="eyebrow-line" />
-            <span className="eyebrow-gem" style={{ fontSize: '9px', animation: 'none', opacity: 0.5 }}>◆</span>
-            <span className="eyebrow-line" />
-          </div>
 
         </div>
 
+<br/>
         {/* Main title block — matches Hero title style */}
          <div className="rh-title-block">
             <div className="rh-title-year">
