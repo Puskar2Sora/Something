@@ -335,25 +335,38 @@
   margin: 0 clamp(3px, 0.6vw, 10px);
   white-space: nowrap;
 }
-
 .ey-ch {
   display: inline-block;
-  font-family: 'Cinzel', serif;
-  font-size: clamp(10px, 2.8vw, 22px);
+  font-family: 'Cormorant Garamond', 'Cinzel', serif;
+  font-size: clamp(14px, 3.8vw, 32px);
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: transparent;
-  background: linear-gradient(145deg,
-    #8B6410 0%, #C9973A 30%, #E8C76A 50%, #C9973A 70%, #8B6410 100%);
+
+  /* ── solid fallback first, then gradient on top ── */
+  color: #E8C76A;
+  background: linear-gradient(
+    160deg,
+    #362709 0%,
+    #0c0903 25%,
+    #db6516 45%,
+    #1d1a06 50%,
+    #141204 55%,
+    #1f1503 75%,
+    #281d07 100%
+  );
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   background-clip: text;
+
   opacity: 0;
   animation:
-    eyLetterDrop 0.5s cubic-bezier(0.34,1.8,0.64,1) forwards,
-    eyGoldPulse  4s ease-in-out calc(var(--li) * 0.04s + 1.5s) infinite;
-  animation-delay: calc(0.35s + var(--li) * 0.045s), calc(var(--li) * 0.04s + 1.5s);
-  filter: drop-shadow(0 0 6px rgba(201,151,58,0.20));
+    eyLetterDrop 0.55s cubic-bezier(0.34, 1.8, 0.64, 1) forwards,
+    eyGoldPulse   5s ease-in-out calc(var(--li) * 0.04s + 1.8s) infinite;
+  animation-delay: calc(0.4s + var(--li) * 0.05s), calc(var(--li) * 0.04s + 1.8s);
+  filter:
+    drop-shadow(0 0 8px rgba(240, 200, 80, 0.55))
+    drop-shadow(0 2px 12px rgba(180, 120, 20, 0.35));
 }
 @keyframes eyLetterDrop {
   0%   { opacity: 0; transform: translateY(-22px) scale(0.7) rotateX(60deg); }
@@ -366,10 +379,14 @@
   50%     { filter: drop-shadow(0 0 10px rgba(201,151,58,0.50)) drop-shadow(0 0 20px rgba(107,26,42,0.12)); }
 }
 
+
+
+
+
 /* Sub-label beneath the institute name */
 .eyebrow-sub {
   font-family: 'IM Fell English', serif;
-  font-size: clamp(14px, 1.4vw, 18px);
+  font-size: clamp(14px, 1.4vw, 15px);
   font-style: italic;
   letter-spacing: 0.28em;
   color: rgba(107,26,42,0.55);

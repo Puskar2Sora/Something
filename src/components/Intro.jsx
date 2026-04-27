@@ -194,30 +194,29 @@ export default function Intro({ onDone }) {
             <span className="eyebrow-gem">⚜</span>
             <span className="eyebrow-line" />
           </div>
-
-          {/* Institute name — each letter drops in individually */}
-          <div className="eyebrow-text-wrap">
-            <div className="eyebrow-text">
-              {['TECHNO', 'BENGAL', 'INSTITUTE', 'OF', 'TECHNOLOGY'].map((word, wi) => {
-                const prevLetters = ['TECHNO', 'BENGAL', 'INSTITUTE', 'OF', 'TECHNOLOGY']
-                  .slice(0, wi)
-                  .reduce((acc, w) => acc + w.length, 0) + wi;
-                return (
-                  <span key={wi} className="eyebrow-word">
-                    {word.split('').map((ch, ci) => (
-                      <span
-                        key={ci}
-                        className="ey-ch"
-                        style={{ '--li': prevLetters + ci }}
-                      >{ch}</span>
-                    ))}
-                  </span>
-                );
-              })}
-            </div>
-            <br/>
-            <div className="eyebrow-sub">✦ Presents ✦</div>
-          </div>
+{/* Institute name — each letter drops in individually */}
+<div className="eyebrow-text-wrap">
+  <div className="eyebrow-rule eyebrow-rule--top" />
+  <div className="eyebrow-text">
+    {['TECHNO', 'BENGAL', 'INSTITUTE', 'OF', 'TECHNOLOGY'].map((word, wi) => {
+      const prevLetters = ['TECHNO', 'BENGAL', 'INSTITUTE', 'OF', 'TECHNOLOGY']
+        .slice(0, wi)
+        .reduce((acc, w) => acc + w.length, 0) + wi;
+      return (
+        <span key={wi} className="eyebrow-word">
+          {word.split('').map((ch, ci) => (
+            <span
+              key={ci}
+              className="ey-ch"
+              style={{ '--li': prevLetters + ci }}
+            >{ch}</span>
+          ))}
+        </span>
+      );
+    })}
+  </div>
+  <div className="eyebrow-rule eyebrow-rule--bottom" />
+</div>
 
 
         </div>
