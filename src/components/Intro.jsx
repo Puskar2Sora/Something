@@ -194,10 +194,10 @@ export default function Intro({ onDone }) {
             <span className="eyebrow-gem">⚜</span>
             <span className="eyebrow-line" />
           </div>
-<br/>
+
           {/* Institute name — each letter drops in individually */}
-          <div className="rh-title-block">
-            <div className="rh-title-block">
+          <div className="eyebrow-text-wrap">
+            <div className="eyebrow-text">
               {['TECHNO', 'BENGAL', 'INSTITUTE', 'OF', 'TECHNOLOGY'].map((word, wi) => {
                 const prevLetters = ['TECHNO', 'BENGAL', 'INSTITUTE', 'OF', 'TECHNOLOGY']
                   .slice(0, wi)
@@ -263,7 +263,7 @@ export default function Intro({ onDone }) {
 
           {/* Royal counter */}
           <div className="rh-theme-name">
-            <span className="rh-theme-name">{String(counter).padStart(2, '0')}</span>
+            <span className="counter-number">{String(counter).padStart(2, '0')}</span>
             <span className="counter-pct">%</span>
           </div>
 

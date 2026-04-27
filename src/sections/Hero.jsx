@@ -41,7 +41,7 @@ export default function Hero() {
         bottom="86%"
         right="25%"
         animation="none"
-        glowColor="#efede9"
+        glowColor="#fefefd00"
       />
       <Floatchar
         src="/assets/chars/bit.png"
@@ -50,7 +50,7 @@ export default function Hero() {
         bottom="86%"
         right="55%"
         animation="none"
-        glowColor="#f7f6f6"
+        glowColor="#f7f6f600"
       />
 
       {/* ═══ MAIN GRID ═══ */}
