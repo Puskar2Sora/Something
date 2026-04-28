@@ -57,7 +57,7 @@ const METEORS = Array.from({ length: 10 }, (_, i) => ({
   color:    ['rgba(255,255,255,0.85)', 'rgba(255,230,0,0.8)', 'rgba(0,212,255,0.8)', 'rgba(255,45,135,0.75)'][i % 4],
 }));
 
-const PHRASE = 'BEYOND THE VEIL';
+const PHRASE = 'DREAMSCAPE';
 
 export default function Footer() {
   const [hovered, setHovered]   = useState(null);
@@ -127,22 +127,8 @@ export default function Footer() {
       <div className="ft-nb ft-nb2" />
       <div className="ft-nb ft-nb3" />
 
-      {/* ── ANIMATED TOP BORDER ── */}
-      <div className="ft-topbar">
-        <div className="ft-topbar-track" />
-        <div className="ft-topbar-glow" />
-      </div>
 
       <div className="ft-inner">
-<Floatchar
-  src="/assets-optimized/chars/miles.webp"
-  alt="Miles Morales"
-  size={350}
-  bottom="70%"
-  right="53%"
-  animation="float"
-  glowColor="#FF2D87"
-/>
 
         {/* ════════════════════════════
             BRAND HERO
@@ -152,12 +138,14 @@ export default function Footer() {
             {/* Eyebrow */}
             
             {/* Main wordmark */}
-            <h2 className="ft-wordmark">LITHIUM</h2>
-
-            <div className="ft-year-row">
-              <span className="ft-yr-2k">2K</span>
-              <span className="ft-yr-26">26</span>
+             <div className="rh-title-block">
+            <div className="rh-title-year">
+              <span className="rh-yr-2k">LITHIUM</span>
+              <br/>
+              <span className="rh-yr-2k">2K</span>
+              <span className="rh-yr-26">26</span>
             </div>
+          </div>
 
             {/* Typewriter theme */}
             <div className="ft-tw">
@@ -170,7 +158,7 @@ export default function Footer() {
 
             {/* Tagline */}
             <p className="ft-tagline">
-              Step into any universe.<br />Wear any face. Become the legend.
+              Escape From The Dream<br />Face The Reality.
             </p>
           </div>
         </div>
@@ -201,7 +189,7 @@ export default function Footer() {
               </div>
             ))}
           </div>
-<br/>
+
           {/* Connect */}
           <div className="ft-col">
             <div className="ft-col-hd">
@@ -235,7 +223,7 @@ export default function Footer() {
             <div className="ft-divider">
           <div className="ft-div-l" />
           <div className="ft-div-badge">
-            <span className="ft-div-badge-txt">BEYOND THE VEIL</span>
+            <span className="ft-div-badge-txt">DREAMSCAPE</span>
           </div>
           <div className="ft-div-r" />
         </div>

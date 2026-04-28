@@ -10,7 +10,7 @@ const WINNERS = [
   { id: 6,  title: 'Mr. Personality',   name: 'Atanu Karmakar',       instagram: '@arghhhaa',             year: '2K25', fc: '#4AB888', gc: 'rgba(74,184,136,0.55)',  tagline: 'Built Different',         img: '/assets-optimized/winners/Atanu.webp',           crown: '', num: '06' },
   { id: 7,  title: 'Ms. Personality',   name: 'Tanisa Naskar',        instagram: '@tanisa_naskar',        year: '2K25', fc: '#4AB888', gc: 'rgba(74,184,136,0.55)',  tagline: 'Personality is the Key',  img: '/assets-optimized/winners/tanisa.webp',          crown: '', num: '07' },
   { id: 8,  title: 'Mr. Charming',      name: 'Parthib Mandal',       instagram: '@parthib_mondal',       year: '2K25', fc: '#6B9EE8', gc: 'rgba(107,158,232,0.55)', tagline: 'Charm Beyond Measure',    img: '/assets-optimized/winners/parthib.webp',         crown: '', num: '08' },
-  { id: 9,  title: 'Ms. Charming',      name: 'Khushi Yadav',         instagram: '@_khushi.__08',         year: '2K25', fc: '#6B9EE8', gc: 'rgba(107,158,232,0.55)', tagline: 'Light in Every Room',     img: '/assets-optimized/winners/khushi.webp',          crown: '', num: '09' },
+  { id: 9,  title: '',      name: 'Khushi Yadav',         instagram: '@_khushi.__08',         year: '2K25', fc: '#6B9EE8', gc: 'rgba(107,158,232,0.55)', tagline: 'Light in Every Room',     img: '/assets-optimized/winners/khushi.webp',          crown: '', num: '09' },
   { id: 10, title: '',        name: 'Nargis Sultana',       instagram: '@_nargissultana._',     year: '2K25', fc: '#E87850', gc: 'rgba(232,120,80,0.55)',  tagline: 'Dare to Match My Vibe?',  img: '/assets-optimized/winners/nargis.webp',          crown: '', num: '10' },
   { id: 11, title: '',        name: 'Ankit Das',            instagram: '@tan_duri_chicken',     year: '2K25', fc: '#E87850', gc: 'rgba(232,120,80,0.55)',  tagline: 'Dare to Match My Vibe?',  img: '/assets-optimized/winners/Ankit Das.webp',       crown: '', num: '11' },
   { id: 12, title: '',        name: 'Monalisa Sen',         instagram: '@_misss_sen_',          year: '2K25', fc: '#A87DD8', gc: 'rgba(168,125,216,0.55)', tagline: "Let's Stay Together",     img: '/assets-optimized/winners/mona.webp',            crown: '', num: '12' },
@@ -192,7 +192,7 @@ export default function Winners() {
           <span className="wn-ey-txt">⚜ Hall of Fame · 2K25 ⚜</span>
           <span className="wn-ey-line" />
         </div>
-        <h2 className="wn-h-main">OUR LEGENDARY</h2>
+        <h2 className="wn-h-main">OUR &nbsp; LEGENDARY</h2>
         <h2 className="wn-h-accent">GROOMERS</h2>
       </div>
 
@@ -202,8 +202,8 @@ export default function Winners() {
           {[...Array(4)].map((_, i) => (
             <span key={i} className="wn-ticker-seg">
               ⚜ MR. FRESHER &nbsp;·&nbsp; MS. FRESHER &nbsp;·&nbsp; BEST COUPLE &nbsp;·&nbsp;
-              MR. CHARMING &nbsp;·&nbsp; MS. GRACEFUL &nbsp;·&nbsp; STYLE ICON &nbsp;·&nbsp;
-              ROYAL PAIR &nbsp;·&nbsp; STAR OF THE NIGHT &nbsp;
+              MR. CHARMING &nbsp;·&nbsp; MS. GRACEFUL &nbsp;·&nbsp; MR. PERSONALITY &nbsp;·&nbsp;
+              MS. PERSONALITY &nbsp;·&nbsp;
             </span>
           ))}
         </div>

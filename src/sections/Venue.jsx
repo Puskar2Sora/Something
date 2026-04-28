@@ -1,23 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react';
 import '../styles/Venue.css';
-import Floatchar from '../components/Floatchar';
 
 const DETAILS = [
   {
-    icon: '',
-    label: 'VENUE',
+    icon: '⚑',
+    label: 'Venue',
     value: 'Laban Hrad Mancha',
     sub: 'BD Auditorium, HCV4+HM5, BD Block\nSector 1, Bidhannagar, Kolkata – 700064',
   },
   {
-    icon: '',
-    label: 'DATE',
-    value: 'May 7, 2026',
-    sub: 'Thursday',
+    icon: '◈',
+    label: 'Date',
+    value: '1st June, 2026',
+    sub: 'Monday',
   },
   {
-    icon: '',
-    label: 'TIME',
+    icon: '◉',
+    label: 'Time',
     value: '2:00 PM',
     sub: 'Doors open at 12:00 PM',
   },
@@ -26,72 +25,125 @@ const DETAILS = [
 const Venue = () => {
   const sectionRef = useRef(null);
   const [visible, setVisible] = useState(false);
-  const [glitch, setGlitch] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => { if (entry.isIntersecting) setVisible(true); },
-      { threshold: 0.15 }
+      { threshold: 0.1 }
     );
     if (sectionRef.current) observer.observe(sectionRef.current);
     return () => observer.disconnect();
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setGlitch(true);
-      setTimeout(() => setGlitch(false), 400);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <section id="venue" className="v2-venue" ref={sectionRef}>
-      {/* Background layers */}
-      <div className="v2-scanlines" />
-      <div className="v2-grain" />
-      <div className="v2-grid-bg" />
+    <section id="venue" className="ryl-venue" ref={sectionRef}>
 
-     
+      {/* Background texture layers */}
+      <div className="ryl-bg-radial" />
+      <div className="ryl-bg-vignette" />
+      <div className="ryl-bg-lines" />
 
-      <div className={`v2-inner ${visible ? 'v2-inner--visible' : ''}`}>
+      {/* Ornamental corner pieces */}
+      <div className="ryl-corner ryl-corner--tl">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 4 L4 40 M4 4 L40 4" stroke="url(#cg)" strokeWidth="1.2"/>
+          <path d="M4 4 L20 20" stroke="url(#cg)" strokeWidth="0.8" strokeDasharray="2 3"/>
+          <circle cx="4" cy="4" r="2.5" fill="#C9973A"/>
+          <circle cx="40" cy="4" r="1.2" fill="#C9973A" opacity="0.5"/>
+          <circle cx="4" cy="40" r="1.2" fill="#C9973A" opacity="0.5"/>
+          <defs>
+            <linearGradient id="cg" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#C9973A"/>
+              <stop offset="100%" stopColor="#C9973A" stopOpacity="0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div className="ryl-corner ryl-corner--tr">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M76 4 L76 40 M76 4 L40 4" stroke="url(#cgr)" strokeWidth="1.2"/>
+          <path d="M76 4 L60 20" stroke="url(#cgr)" strokeWidth="0.8" strokeDasharray="2 3"/>
+          <circle cx="76" cy="4" r="2.5" fill="#C9973A"/>
+          <defs>
+            <linearGradient id="cgr" x1="80" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#C9973A"/>
+              <stop offset="100%" stopColor="#C9973A" stopOpacity="0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div className="ryl-corner ryl-corner--bl">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 76 L4 40 M4 76 L40 76" stroke="url(#cgb)" strokeWidth="1.2"/>
+          <circle cx="4" cy="76" r="2.5" fill="#C9973A"/>
+          <defs>
+            <linearGradient id="cgb" x1="0" y1="80" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#C9973A"/>
+              <stop offset="100%" stopColor="#C9973A" stopOpacity="0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <div className="ryl-corner ryl-corner--br">
+        <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M76 76 L76 40 M76 76 L40 76" stroke="url(#cgbr)" strokeWidth="1.2"/>
+          <circle cx="76" cy="76" r="2.5" fill="#C9973A"/>
+          <defs>
+            <linearGradient id="cgbr" x1="80" y1="80" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+              <stop offset="0%" stopColor="#C9973A"/>
+              <stop offset="100%" stopColor="#C9973A" stopOpacity="0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <div className={`ryl-inner ${visible ? 'ryl-inner--visible' : ''}`}>
 
         {/* ── HEADER ── */}
-        <br/>
-        <header className="v2-header">
-          <div className="v2-eyebrow">
-            <span className="v2-dot" />
-            <span>MISSION COORDINATES</span>
-            <span className="v2-dot" />
-          </div>
-
-          {/* Full-width title */}
-          <h2
-            className={`v2-title ${glitch ? 'v2-title--glitch' : ''}`}
-            data-text="THE PORTAL"
-          >
-            THE PORTAL
+        <header className="ryl-header">
+          {/* Top ornament */}
+          
+          <h2 className="ryl-title">
+            <span className="ryl-title-the">The</span>
+            <span className="ryl-title-main">Grand Portal</span>
           </h2>
+
+          <p className="ryl-subtitle">Where the journey begins</p>
+
+          {/* Bottom ornament */}
+          <div className="ryl-ornament ryl-ornament--bottom">
+            <span className="ryl-orn-line" />
+            <span className="ryl-orn-motif">❧</span>
+            <span className="ryl-orn-line" />
+          </div>
         </header>
 
-        {/* ── BODY GRID ── */}
-        <div className="v2-body">
+        {/* ── BODY ── */}
+        <div className="ryl-body">
 
           {/* LEFT: Detail Cards */}
-          <div className="v2-left">
+          <div className="ryl-left">
             {DETAILS.map((d, i) => (
               <div
                 key={i}
-                className="v2-card"
-                style={{ animationDelay: `${i * 0.12}s` }}
+                className="ryl-card"
+                style={{ '--ci': i }}
               >
-                <div className="v2-card-icon">{d.icon}</div>
-                <div className="v2-card-content">
-                  <div className="v2-card-label">{d.label}</div>
-                  <div className="v2-card-value">{d.value}</div>
-                  <div className="v2-card-sub">{d.sub}</div>
+                {/* Top border accent */}
+                <div className="ryl-card-accent" />
+
+                <div className="ryl-card-icon-wrap">
+                  <span className="ryl-card-icon">{d.icon}</span>
                 </div>
-                <div className="v2-card-bar" />
+
+                <div className="ryl-card-body">
+                  <span className="ryl-card-label">{d.label}</span>
+                  <span className="ryl-card-value">{d.value}</span>
+                  <span className="ryl-card-sub">{d.sub}</span>
+                </div>
+
+                {/* Hover shimmer */}
+                <div className="ryl-card-shimmer" />
               </div>
             ))}
 
@@ -99,21 +151,29 @@ const Venue = () => {
               href="https://maps.google.com/?q=Laban+Hrad+Mancha+BD+Auditorium+Bidhannagar+Kolkata"
               target="_blank"
               rel="noreferrer"
-              className="v2-cta"
+              className="ryl-cta"
             >
-              <span className="v2-cta-icon">▶</span>
-              <span>GET DIRECTIONS</span>
-              <span className="v2-cta-arrow">→</span>
+              <span className="ryl-cta-inner">
+                <span className="ryl-cta-icon">✦</span>
+                <span className="ryl-cta-text">Obtain Directions</span>
+                <span className="ryl-cta-arrow">→</span>
+              </span>
+              <div className="ryl-cta-glow" />
             </a>
           </div>
 
           {/* RIGHT: Map */}
-          <div className="v2-right">
-            <div className="v2-map-wrap">
-              <div className="v2-map-header">
-                <span className="v2-map-coords">22.5939°N · 88.4067°E</span>
+          <div className="ryl-right">
+            <div className="ryl-map-wrap">
+
+              {/* Map header */}
+              <div className="ryl-map-header">
+                <span className="ryl-map-title">Location</span>
+                <span className="ryl-map-coords">22.5939° N &nbsp;·&nbsp; 88.4067° E</span>
               </div>
-              <div className="v2-map-frame">
+
+              {/* Map frame with ornamental overlay */}
+              <div className="ryl-map-frame">
                 <iframe
                   title="Venue Map"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3683.6776506!2d88.4041463!3d22.5938914!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a027ae41b153381%3A0x6ae8be3071e5d785!2sLaban%20Hrad%20Mancha%20BD%20Auditorium!5e0!3m2!1sen!2sin!4v1712160000000"
@@ -124,15 +184,19 @@ const Venue = () => {
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
                 />
-                              </div>
-              <div className="v2-map-footer">
-                <span>📍 HCV4+HM5, BD Block, Sector 1, Bidhannagar</span>
+                {/* Map overlay frame corners */}
+                <div className="ryl-map-overlay" />
+              </div>
+
+              {/* Map footer */}
+              <div className="ryl-map-footer">
+                <span className="ryl-map-pin">◈</span>
+                <span>HCV4+HM5, BD Block, Sector I, Bidhannagar, Kolkata</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
     </section>
   );
 };

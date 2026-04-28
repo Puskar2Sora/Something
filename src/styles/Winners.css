@@ -69,16 +69,16 @@
   background: linear-gradient(90deg, transparent, rgba(201,151,58,0.45), transparent);
 }
 .wn-ey-txt {
-  font-family: 'Cinzel', serif; font-size: 9px; font-weight: 700;
-  letter-spacing: 0.4em; color: rgba(201,151,58,0.65);
+  font-family: 'Cinzel', serif; font-size: 12px; font-weight: 800;
+  letter-spacing: 0.5em; color: rgba(201,151,58,0.65);
   text-transform: uppercase; white-space: nowrap;
 }
 
 .wn-h-main {
   font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(22px, 5.5vw, 62px); font-weight: 900;
+  font-size: clamp(25px, 6.5vw, 80px); font-weight: 900;
   color: var(--wn-cream); letter-spacing: 0.05em; margin: 0;
-  text-shadow: 2px 3px 0 rgba(0,0,0,0.6);
+  text-shadow: 2px 3px 0 rgba(10, 10, 10, 0.147);
 }
 .wn-h-accent {
   font-family: 'Cinzel Decorative', serif;
