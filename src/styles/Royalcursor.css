@@ -64,3 +64,15 @@
 .rc-dot.rc-press .rc-diamond polygon:first-child {
   stroke: #8B3030;
 }
+
+@media (pointer: coarse) {
+  .rc-ring,
+  .rc-dot {
+    display: none !important;
+  }
+
+  /* restore default cursor on touch devices */
+  *, *::before, *::after {
+    cursor: auto !important;
+  }
+}
