@@ -319,7 +319,7 @@
 
 .rh-logo-img {
   position: relative; z-index: 3;
-  width: min(80%, 400px); height: auto; object-fit: contain;
+  width: min(100%, 400px); height: auto; object-fit: contain;
   filter: drop-shadow(0 0 18px rgba(201,151,58,0.28)) drop-shadow(0 0 50px rgba(107,26,42,0.12)) drop-shadow(0 12px 20px rgba(42,24,16,0.12));
   animation: logoLevitate 6s ease-in-out infinite alternate;
 }
