@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import "../styles/RoyalCursor.css";
+import "../styles/Royalcursor.css";
 export default function RoyalCursor() {
   const dotRef  = useRef(null);
   const ringRef = useRef(null);

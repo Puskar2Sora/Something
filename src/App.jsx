@@ -3,7 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import Intro from './components/Intro.jsx';
 import LazySection from './components/LazySection.jsx';
-import RoyalCursor from "./components/RoyalCursor";
+import RoyalCursor from "./components/Royalcursor";
 
 import './App.css';
 
