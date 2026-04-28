@@ -7,7 +7,6 @@ const NAV_ICONS = {
   About:   'M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z',
   Events:  'M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z',
   Gallery: 'M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z',
-  Contact: 'M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z',
 };
 
 const navLinks = [
@@ -18,7 +17,7 @@ const navLinks = [
 ];
 
 const NavIcon = ({ path }) => (
-  <svg width="22" height="22" viewBox="0 0 24 24" fill="none"
+  <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
     stroke="currentColor" strokeWidth="1.8"
     strokeLinecap="round" strokeLinejoin="round">
     <path d={path} />
@@ -29,7 +28,6 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [active, setActive]  = useState('Home');
 
-  // lock body scroll when drawer open
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
@@ -45,25 +43,32 @@ const Navbar = () => {
       {/* ── FLOATING TOP BAR ── */}
       <div className="btv-topbar">
 
-        {/* Logo — always visible */}
+        {/* Logo */}
         <div className="btv-logo-mark">
-  <span className="ab-drop-cap">L</span>
-  <div className="logo-text-wrap">
-    <span className="logo-main">ITHIUM</span>
-    <span className="logo-sub">2K26 · DREAMSCAPE</span>
-  </div>
-</div>
+          <span className="ab-drop-cap">L</span>
+          <div className="logo-text-wrap">
+            <span className="logo-main">ITHIUM</span>
+            <span className="logo-sub">2K26 · DREAMSCAPE</span>
+          </div>
+        </div>
 
-        {/* Hamburger */}
+        {/* ── ROYAL PARCHMENT HAMBURGER ── */}
         <button
           className={`btv-ham ${isOpen ? 'active' : ''}`}
           onClick={() => setIsOpen(v => !v)}
-          aria-label="Menu"
+          aria-label={isOpen ? 'Close menu' : 'Open menu'}
         >
-          
-          <span /><span /><span />
+          {/* Corner filigree dots */}
+          <div className="btv-ham-corners" />
+
+          {/* Three royal lines */}
+          <div className="btv-ham-lines">
+            <span />
+            <span />
+            <span />
+          </div>
         </button>
-        
+
       </div>
 
       {/* ── BACKDROP ── */}
@@ -71,9 +76,9 @@ const Navbar = () => {
         className={`btv-backdrop ${isOpen ? 'show' : ''}`}
         onClick={() => setIsOpen(false)}
       />
-     
+
       {/* ── DRAWER ── */}
-      <nav className={`btv-drawer ${isOpen ? 'open' : ''}`}>
+      <nav className={`btv-drawer ${isOpen ? 'open' : ''}`} aria-hidden={!isOpen}>
 
         {/* Drawer header */}
         <div className="drawer-head">
@@ -82,55 +87,37 @@ const Navbar = () => {
             <span className="dh-year">2K26</span>
           </div>
           <div className="drawer-head-theme">✦ BEYOND THE VEIL ✦</div>
-<Floatchar
-        src="/assets-optimized/chars/spidy.webp"
-        alt="Villain"
-        size={400}
-        top="190%"
-        left="-2%"
-        animation="float"
-        glowColor="#FF2D87"
-        delay="0.4s"
-        />
+
+          
           {/* Close button */}
-          <button className="drawer-close" onClick={() => setIsOpen(false)} aria-label="Close">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" strokeWidth="2.5"
-              strokeLinecap="round">
-              <path d="M18 6L6 18M6 6l12 12"/>
+          <button className="drawer-close" onClick={() => setIsOpen(false)} aria-label="Close menu">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
+              <path d="M18 6L6 18M6 6l12 12" />
             </svg>
           </button>
         </div>
 
-        {/* Divider */}
+        {/* Ornate divider */}
         <div className="drawer-divider" />
 
-        {/* Links */}
+        {/* Nav links */}
         <ul className="drawer-links">
           {navLinks.map((link, i) => (
-            <li
-              key={link.name}
-              className="drawer-item"
-              style={{ '--i': i }}
-            >
+            <li key={link.name} className="drawer-item" style={{ '--i': i }}>
               <a
                 href={link.href}
                 className={`drawer-link ${active === link.name ? 'active' : ''}`}
                 onClick={() => handleLink(link.name)}
               >
-                {/* Icon box */}
                 <span className="drawer-icon-box">
                   <NavIcon path={NAV_ICONS[link.name]} />
                 </span>
-
-                {/* Label */}
                 <span className="drawer-label">{link.name}</span>
-
-                {/* Arrow */}
                 <span className="drawer-arrow">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" strokeWidth="2.5" strokeLinecap="round">
-                    <path d="M9 18l6-6-6-6"/>
+                    <path d="M9 18l6-6-6-6" />
                   </svg>
                 </span>
               </a>
@@ -138,15 +125,14 @@ const Navbar = () => {
           ))}
         </ul>
 
-        {/* Drawer bottom */}
+        {/* Ornate divider */}
         <div className="drawer-divider" />
+
+        {/* Footer */}
         <div className="drawer-foot">
           <span>© 2026 Techno Bengal Institute of Technology</span>
-                  </div>
+        </div>
 
-        {/* Decorative glow orbs inside drawer */}
-        <div className="drawer-orb drawer-orb-1" />
-        <div className="drawer-orb drawer-orb-2" />
       </nav>
     </>
   );
