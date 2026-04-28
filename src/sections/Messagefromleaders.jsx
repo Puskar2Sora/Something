@@ -11,8 +11,8 @@ const LEADERS = [
     accentColor: '#FFE600',
     glowColor: 'rgba(255,230,0,0.25)',
     badgeIcon: '',
-    videoSrc: '/assets-optimized/videos/director.mp4',
-    poster: '/assets-optimized/posters/director.webp',
+    videoSrc: '/assets/videos/director.mp4',
+    poster: '/assets/posters/director.webp',
   },
   {
     id: 'principal',
@@ -22,8 +22,8 @@ const LEADERS = [
     accentColor: '#FF2D87',
     glowColor: 'rgba(255,45,135,0.25)',
     badgeIcon: '',
-    videoSrc: '/assets-optimized/videos/principal.mp4',
-    poster: '/assets-optimized/posters/principal.webp',
+    videoSrc: '/assets/videos/principal.mp4',
+    poster: '/assets/posters/principal.webp',
   },
 ];
 
@@ -125,30 +125,7 @@ const MessageFromLeaders = () => {
       <div className="mfl-slash-accent" />
 
       {/* Floatchar — desktop size */}
-      <div className="mfl-floatchar mfl-floatchar--desktop">
-        <Floatchar
-          src="/assets-optimized/chars/batman.webp"
-          alt="Batman"
-          size={200}
-          bottom="85%"
-          right="23%"
-          animation="none"
-          glowColor="#FF2D87"
-        />
-      </div>
-      {/* Floatchar — mobile size */}
-      <div className="mfl-floatchar mfl-floatchar--mobile">
-        <Floatchar
-          src="/assets-optimized/chars/batman.webp"
-          alt="Batman"
-          size={90}
-          bottom="97%"
-          right="4%"
-          animation="none"
-          glowColor="#FF2D87"
-        />
-      </div>
-
+     
       <br />
 
       <div className={`mfl-inner ${visible ? 'mfl-inner--visible' : ''}`}>
@@ -162,8 +139,7 @@ const MessageFromLeaders = () => {
             <span className="mfl-dot" />
           </div>
           <h2 className="mfl-title">
-            <span className="mfl-title-line1">A MESSAGE</span>
-            <span className="mfl-title-line2">FROM THE VEIL</span>
+            <span className="mfl-title-line2">Message</span>
           </h2>
         </header>
 
