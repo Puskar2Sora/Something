@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../styles/Footer.css';
-import Floatchar from '../components/Floatchar';
+import FloatChar from '../components/Floatchar';
 
 const NAV = [
   { label: 'Home',    href: '#home'    },
@@ -122,11 +122,20 @@ export default function Footer() {
         ))}
       </div>
 
+
+   <FloatChar
+      src="/assets/chars/royal.png"
+      alt="Miles Morales"
+      size={200}
+      bottom="71%"
+      right="27%"
+      animation="none"     // float | swing | bob | spin-slow
+      glowColor="#f7f4f500"
+   />
       {/* Nebula washes */}
       <div className="ft-nb ft-nb1" />
       <div className="ft-nb ft-nb2" />
       <div className="ft-nb ft-nb3" />
-
 
       <div className="ft-inner">
 
@@ -146,6 +155,7 @@ export default function Footer() {
               <span className="rh-yr-26">26</span>
             </div>
           </div>
+
 
             {/* Typewriter theme */}
             <div className="ft-tw">

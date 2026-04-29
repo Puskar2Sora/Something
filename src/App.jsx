@@ -1,4 +1,4 @@
-import React, { lazy, useMemo, useState } from 'react';
+import React, { lazy, useMemo, useState, useEffect} from 'react';
 import Navbar from './components/Navbar';
 import Hero from './sections/Hero';
 import Intro from './components/Intro.jsx';
@@ -29,6 +29,10 @@ function shouldPlayIntro() {
 let _introPlayedThisSession = false;
 
 function App() {
+   useEffect(() => {
+    console.log("%c✦ PUSKAR NATH'S DREAM ✦", 
+      "color: #e6bc34be; font-size: 20px; font-weight: bold;");
+  }, []);
   const [showIntro, setShowIntro] = useState(() => shouldPlayIntro());
   const sectionFallback = useMemo(() => <div className="section-skeleton" aria-hidden="true" />, []);
 
