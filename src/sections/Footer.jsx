@@ -175,7 +175,7 @@ export default function Footer() {
               THE EVENT
             </div>
             {[
-              { icon: '', lbl: 'DATE',    val: 'May 7, 2026'                              },
+              { icon: '', lbl: 'DATE',    val: '1st June, 2026'                              },
               { icon: '', lbl: 'TIME',    val: '2:00 PM onwards'                            },
               { icon: '', lbl: 'VENUE',   val: 'Laban Hrad Mancha BD Auditorium, Kolkata'    },
               { icon: '', lbl: 'HOST',    val: 'Techno Bengal Institute of Technology'       },
@@ -231,6 +231,7 @@ export default function Footer() {
             <p className="ft-copy">
               © 2026 Techno Bengal Institute of Technology
             </p>
+            
           </div>
         </div>
 
