@@ -128,7 +128,7 @@ export default function Footer() {
       alt="Miles Morales"
       size={200}
       bottom="71%"
-      right="27%"
+      right="26%"
       animation="none"     // float | swing | bob | spin-slow
       glowColor="#f7f4f500"
    />
