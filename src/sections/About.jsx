@@ -133,13 +133,11 @@ export default function About() {
           {/* Animated text paragraphs */}
           <div className="ab-text-block">
             <p className="ab-para ab-p1" style={{ '--di': 0 }}>
-              <span className="ab-drop-cap">L</span>
-              ITHIUM is the Fresher's Welcome event of{' '}
-              <strong>Techno Bengal Institute of Technology</strong> —
-              a celebration where creativity breaks every boundary and
-              characters from every universe collide in one electric night.
-            </p>
-            
+  <span className="ab-drop-cap">L</span>
+  ITHIUM is the premier flagship induction of <strong>Techno Bengal Institute of Technology</strong>— 
+  a grand ceremonial initiation where the brilliance of a new generation meets the seasoned legacy of our institution. It is a night designed to dissolve the boundaries of reality, 
+  fostering a spirit of unity through the lens of boundless creativity and electric celebration.
+In this hallowed space, we do not merely welcome the future; we crown it.</p>
           </div>
         </div>
 
@@ -167,10 +165,12 @@ export default function About() {
           {/* Animated text paragraphs */}
           <div className="ab-text-block">
            <p className="ab-para ab-p2" style={{ '--di': 1 }}>
-              The theme <strong>DREAMSCAPE</strong> invites you to step
-              through the membrane between worlds. Wear any face. Embody any
-              legend. Whether you arrive as a pirate, a sorcerer, a cyborg,
-              or the legendary Spider-Man — every universe is welcome here.
+              The theme <strong>DREAMSCAPE</strong> a sovereign invitation to step beyond the mundane and traverse the thin membrane between dimensions. In this realm, your imagination is the only law. 
+              We beckon you to cast aside the ordinary and ascend as the legends you admire.
+Whether you walk the path of the High Seas, wield the Sorcery of the Ancients, navigate the Cyborg Frontiers of tomorrow, or swing through the Multiverse itself—your essence is the masterpiece of this night.
+<br/>
+<br/>
+<strong> <span className="ab-drop-cap">DREAMSCAPE</span> Where every universe converges, and every guest is royalty.</strong>
             </p></div>
         </div>
 
