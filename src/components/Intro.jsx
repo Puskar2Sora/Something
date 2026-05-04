@@ -1,294 +1,176 @@
-import React, { useEffect, useRef, useState } from 'react';
-import '../styles/Intro.css';
+import { useEffect, useRef, useState } from "react";
 
-const LOAD_STEPS = [
-  { pct: 15, label: 'LIGHTING THE ROYAL LANTERNS...',  delay: 320  },
-  { pct: 38, label: 'UNFURLING THE KINGDOM SCROLL...', delay: 460  },
-  { pct: 60, label: 'SUMMONING THE COURT...',           delay: 390  },
-  { pct: 79, label: 'ADORNING THE GREAT HALL...',       delay: 430  },
-  { pct: 94, label: 'THE KINGDOM AWAITS...',            delay: 360  },
-  { pct: 100, label: '✦  ENTER THE REALM  ✦',          delay: 290  },
-];
+/**
+ * Lithium 2K26 — Intro Animation
+ *
+ * Parchment background (#C9C0B3). Full "LITHIUM 2K 26" wordmark drawn
+ * stroke-by-stroke using SVG stroke-dashoffset, centered in the viewport.
+ * Screen fades out after all strokes complete.
+ *
+ * Usage:
+ *   <Intro onComplete={() => setShowMain(true)} />
+ *
+ * Props:
+ *   onComplete?: () => void   — fires after animation is fully done
+ *   duration?:   number (ms)  — total time before onComplete (default: 11500)
+ */
+export default function Intro({ onComplete, duration = 11500 }) {
+  const [phase, setPhase] = useState("drawing"); // "drawing" | "hold" | "fading" | "done"
 
-// Royal parchment ornaments — floating on ivory background
-const ORNAMENTS = ['⚜', '◆', '✦', '⚜', '◆', '✦', '⚜', '◆'];
-
-export default function Intro({ onDone }) {
-  const canvasRef   = useRef(null);
-  const [pct, setPct]         = useState(0);
-  const [label, setLabel]     = useState('');
-  const [counter, setCounter] = useState(0);
-  const [phase, setPhase]     = useState('idle');
-
-  const targetRef = useRef(0);
-  const dispRef   = useRef(0);
-  const rafRef    = useRef(null);
-
-  /* ─── Particle canvas — gold dust & parchment sparks ─── */
   useEffect(() => {
-    const canvas = canvasRef.current;
-    const ctx    = canvas.getContext('2d');
-    let W, H, particles = [], raf;
+    const t1 = setTimeout(() => setPhase("hold"),   10000);
+    const t2 = setTimeout(() => setPhase("fading"), 10700);
+    const t3 = setTimeout(() => {
+      setPhase("done");
+      onComplete?.();
+    }, duration);
 
-    const resize = () => {
-      W = canvas.width  = canvas.offsetWidth;
-      H = canvas.height = canvas.offsetHeight;
-    };
-    resize();
-    window.addEventListener('resize', resize);
+    return () => { clearTimeout(t1); clearTimeout(t2); clearTimeout(t3); };
+  }, [onComplete, duration]);
 
-    class Particle {
-      constructor() { this.reset(true); }
-      reset(init = false) {
-        this.x     = Math.random() * W;
-        this.y     = init ? Math.random() * H : H + 10;
-        this.vx    = (Math.random() - 0.5) * 0.4;
-        this.vy    = -(Math.random() * 1.2 + 0.3);
-        this.r     = Math.random() * 2 + 0.5;
-        this.alpha = Math.random() * 0.5 + 0.10;
-        // Warm ivory palette — gold dust, amber, maroon rose, cream
-        this.color = [
-          '#C9973A', '#E8C76A', '#8B6410',
-          '#D4788A', '#9B2D40', '#F2EAD5',
-          '#EDD4A0', '#C9973A',
-        ][Math.floor(Math.random() * 8)];
-        this.twinkle = Math.random() > 0.65;
-        this.twinkleSpeed = Math.random() * 0.05 + 0.02;
-        this.twinkleOffset = Math.random() * Math.PI * 2;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.alpha -= 0.0015;
-        if (this.alpha <= 0 || this.y < -10) this.reset();
-      }
-      draw(t) {
-        let a = this.alpha;
-        if (this.twinkle) {
-          a *= 0.5 + 0.5 * Math.sin(t * this.twinkleSpeed + this.twinkleOffset);
-        }
-        ctx.beginPath();
-        // Diamond star shapes for bigger particles
-        if (this.r > 1.5) {
-          const s = this.r * 1.5;
-          ctx.moveTo(this.x, this.y - s);
-          ctx.lineTo(this.x + s * 0.4, this.y);
-          ctx.lineTo(this.x, this.y + s);
-          ctx.lineTo(this.x - s * 0.4, this.y);
-          ctx.closePath();
-        } else {
-          ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
-        }
-        ctx.fillStyle = this.color;
-        ctx.globalAlpha = a;
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < 180; i++) particles.push(new Particle());
-
-    let t = 0;
-    const loop = () => {
-      ctx.clearRect(0, 0, W, H);
-      ctx.globalAlpha = 1;
-      t++;
-      particles.forEach(p => { p.update(); p.draw(t); });
-      raf = requestAnimationFrame(loop);
-    };
-    loop();
-
-    return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('resize', resize);
-    };
-  }, []);
-
-  /* ─── Smooth counter tick ─── */
-  useEffect(() => {
-    const tick = () => {
-      const t = targetRef.current;
-      const d = dispRef.current;
-      if (d < t) {
-        const next = Math.min(d + Math.ceil((t - d) * 0.08 + 1), t);
-        dispRef.current = next;
-        setCounter(next);
-      }
-      rafRef.current = requestAnimationFrame(tick);
-    };
-    rafRef.current = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafRef.current);
-  }, []);
-
-  /* ─── Sequencer ─── */
-  useEffect(() => {
-    const t0 = setTimeout(() => setPhase('reveal'), 200);
-
-    const t1 = setTimeout(() => {
-      setPhase('loading');
-      let elapsed = 0;
-      const timers = LOAD_STEPS.map(step => {
-        const t = setTimeout(() => {
-          targetRef.current = step.pct;
-          setPct(step.pct);
-          setLabel(step.label);
-        }, elapsed += step.delay);
-        return t;
-      });
-
-      const totalDelay = LOAD_STEPS.reduce((a, s) => a + s.delay, 0) + 800;
-      const tExit = setTimeout(() => setPhase('slam'), totalDelay);
-
-      return () => { timers.forEach(clearTimeout); clearTimeout(tExit); };
-    }, 1300);
-
-    return () => { clearTimeout(t0); clearTimeout(t1); };
-  }, []);
-
-  /* ─── Slam → onDone ─── */
-  useEffect(() => {
-    if (phase !== 'slam') return;
-    const t = setTimeout(onDone, 1150);
-    return () => clearTimeout(t);
-  }, [phase, onDone]);
-
-  const isReveal  = phase === 'reveal'  || phase === 'loading' || phase === 'slam';
-  const isLoading = phase === 'loading' || phase === 'slam';
-  const isSlam    = phase === 'slam';
+  if (phase === "done") return null;
 
   return (
-    <div className={`intro ${isSlam ? 'intro-slam' : ''}`}>
+    <>
+      <style>{`
+        @keyframes lithium-draw { to { stroke-dashoffset: 0; } }
+      `}</style>
 
-      {/* Gold dust particle canvas */}
-      <canvas ref={canvasRef} className="intro-canvas" />
-
-      {/* ── Background layers — warm ivory parchment ── */}
-      <div className="intro-bg-base" />
-      <div className="intro-grid" />
-      <div className="intro-beam" />
-      <div className="intro-vignette" />
-
-      {/* Warm ambient glow orbs */}
-      <div className="intro-orb orb-purple" />
-      <div className="intro-orb orb-orange" />
-      <div className="intro-orb orb-cyan" />
-
-      {/* Floating royal ornaments — on parchment */}
-      <div className="intro-bg-chars" aria-hidden="true">
-        {ORNAMENTS.map((c, i) => (
-          <span key={i} className={`bg-char bg-char-${i}`}>{c}</span>
-        ))}
+      <div
+        aria-label="Loading Lithium 2K26"
+        role="status"
+        style={{
+          position:       "fixed",
+          inset:          0,
+          background:     "#C9C0B3",
+          display:        "flex",
+          alignItems:     "center",
+          justifyContent: "center",
+          zIndex:         9999,
+          opacity:        phase === "fading" ? 0 : 1,
+          transition:     phase === "fading" ? "opacity 0.8s ease" : "none",
+          pointerEvents:  "none",
+          willChange:     "opacity",
+        }}
+      >
+        <LithiumWordmark animate={phase === "drawing"} />
       </div>
+    </>
+  );
+}
 
-      {/* Parchment kingdom silhouette */}
-      <div className="intro-kingdom" />
+/* ─────────────────────────────────────────────────────────────────────────────
+   LithiumWordmark
+   ViewBox: 720 × 120. Full "LITHIUM 2K 26" centered as one block.
 
-      {/* ═══ MAIN CONTENT ═══ */}
-      <div className={`intro-content ${isReveal ? 'content-visible' : ''}`}>
+   Letter x positions (each ~55px wide, 8px gap):
+     L=38  I=99  T=147  H=196+244  I=269  U=300+352  M=372+440
+     [gap 22px]
+     2=466  K=514
+     [gap 16px]
+     2r=566  6r=616+652
 
-        {/* Royal proclamation eyebrow — big, letter-by-letter animated */}
-        <div className="intro-eyebrow">
+   Drawing order per letter: top serifs → stem → crossbar → bottom serifs
+   LITHIUM 2K = charcoal #2A211A
+   26         = crimson  #8B2525
+───────────────────────────────────────────────────────────────────────────── */
+function LithiumWordmark({ animate }) {
+  const dark = "#2A211A";
+  const red  = "#8B2525";
+  const sw   = 3.2;
+  const ss   = 2.0;
+  const ease = "cubic-bezier(0.45,0,0.2,1)";
 
-          {/* Top filigree rule */}
-          <div className="eyebrow-rule">
-            <span className="eyebrow-line" />
-            <span className="eyebrow-gem">⚜</span>
-            <span className="eyebrow-line" />
-          </div>
-{/* Institute name — each letter drops in individually */}
-<div className="eyebrow-text-wrap">
-  <div className="eyebrow-rule eyebrow-rule--top" />
-  <div className="eyebrow-text">
-    {['TECHNO', 'BENGAL', 'INSTITUTE', 'OF', 'TECHNOLOGY'].map((word, wi) => {
-      const prevLetters = ['TECHNO', 'BENGAL', 'INSTITUTE', 'OF', 'TECHNOLOGY']
-        .slice(0, wi)
-        .reduce((acc, w) => acc + w.length, 0) + wi;
-      return (
-        <span key={wi} className="eyebrow-word">
-          {word.split('').map((ch, ci) => (
-            <span
-              key={ci}
-              className="ey-ch"
-              style={{ '--li': prevLetters + ci }}
-            >{ch}</span>
-          ))}
-        </span>
-      );
-    })}
-  </div>
-  <div className="eyebrow-rule eyebrow-rule--bottom" />
-  <br/>
-  <div className="eyebrow-sub">✦ Presents ✦</div>
-</div>
+  const segments = [
+  // ── L ──────────────────────────────────────────────────────
+  { d:"M100,18 L100,102 L140,102",                                len:198, delay:0.08, dur:0.54, color:dark, sw  },
+  
+  // ── I ──────────────────────────────────────────────────────
+  { d:"M200,18 L160,18",                                          len:20,  delay:0.73, dur:0.14, color:dark, sw:ss },
+  { d:"M180,18 L180,102",                                         len:108, delay:0.79, dur:0.42, color:dark, sw  },
+  { d:"M200,102 L160,102",                                        len:20,  delay:1.17, dur:0.14, color:dark, sw:ss },
 
+  // ── T ──────────────────────────────────────────────────────
+  { d:"M220,18 L272,18",                                          len:50,  delay:1.34, dur:0.25, color:dark, sw:ss },
+  { d:"M245,18 L245,102",                                         len:108, delay:1.50, dur:0.42, color:dark, sw  },
+  
+  // ── H ──────────────────────────────────────────────────────
+  { d:"M305,18 L305,102",                                         len:108, delay:2.10, dur:0.42, color:dark, sw  },
+  { d:"M365,18 L365,102",                                         len:108, delay:2.24, dur:0.42, color:dark, sw  },
+  { d:"M305,60 L365,60",                                          len:52,  delay:2.60, dur:0.22, color:dark, sw:2.8},
+  
+  // ── I ──────────────────────────────────────────────────────
+  { d:"M400,18 L435,18",                                          len:20,  delay:2.80, dur:0.14, color:dark, sw:ss },
+  { d:"M417,18 L417,102",                                         len:108, delay:2.86, dur:0.42, color:dark, sw  },
+  { d:"M400,102 L435,102",                                        len:20,  delay:3.24, dur:0.14, color:dark, sw:ss },
 
-        </div>
+  // ── U ──────────────────────────────────────────────────────
+  { d:"M466,18 L466,80 Q466,106 492,106 Q518,106 518,80 L518,18", len:228, delay:3.46, dur:0.72, color:dark, sw  },
 
-        {/* Main title block — matches Hero title style */}
-         <div className="rh-title-block">
-            <div className="rh-title-year">
-              <span className="rh-yr-2k">LITHIUM</span>
-              <br/>
-              <span className="rh-yr-2k">2K</span>
-              <span className="rh-yr-26">26</span>
-            </div>
-          </div>
+  // ── M ──────────────────────────────────────────────────────
+  { d:"M538,102 L538,18 L572,66 L606,18 L606,102",                len:368, delay:4.26, dur:0.95, color:dark, sw  },
+  ];
+  return (
+    <svg
+      viewBox="0 0 720 120"
+      width="800"
+      height="200"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      {segments.map((seg, i) => (
+        <DrawnPath
+          key={i}
+          d={seg.d}
+          estimatedLen={seg.len}
+          delay={seg.delay}
+          duration={seg.dur}
+          ease={ease}
+          color={seg.color}
+          strokeWidth={seg.sw}
+          animate={animate}
+        />
+      ))}
+    </svg>
+  );
+}
 
+/* ─────────────────────────────────────────────────────────────────────────────
+   DrawnPath — stroke-dashoffset drawing trick
+───────────────────────────────────────────────────────────────────────────── */
+function DrawnPath({ d, estimatedLen, delay, duration, ease, color, strokeWidth, animate }) {
+  const pathRef = useRef(null);
+  const [length, setLength] = useState(estimatedLen);
 
-        {/* Ornamental divider — matches Hero divider */}
-        <div className="intro-divider">
-          <span className="intro-div-line" />
-          <span className="intro-div-gem">◆</span>
-          <span className="intro-div-line" />
-        </div>
+  useEffect(() => {
+    if (pathRef.current) {
+      const l = pathRef.current.getTotalLength?.();
+      if (l && l > 0) setLength(l);
+    }
+  }, []);
 
-        {/* Theme decree — DREAMSCAPE in fantasy royal style */}
-        <div className="intro-theme">
+  const animatedStyle = animate
+    ? {
+        strokeDasharray:  length,
+        strokeDashoffset: length,
+        animation: `lithium-draw ${duration}s ${ease} ${delay}s forwards`,
+      }
+    : {
+        strokeDasharray:  "none",
+        strokeDashoffset: 0,
+      };
 
-<div className="rh-title-block">
-            <div className="rh-title-year">
-              <span className="rh-theme-name">DREAMSCAPE</span>
-              <br/>
-            </div>
-          </div>
-
-        </div>
-
-        {/* ═══ LOADER ═══ */}
-        <div className={`intro-loader ${isLoading ? 'loader-visible' : ''}`}>
-
-          {/* Royal counter */}
-          <div className="rh-theme-name">
-            <span className="counter-number">{String(counter).padStart(2, '0')}</span>
-            <span className="counter-pct">%</span>
-          </div>
-
-          {/* Scroll progress bar */}
-          <div className="loader-bar-outer">
-            <div className="bar-notch notch-l" />
-            <div className="bar-notch notch-r" />
-            <div className="loader-bar-track">
-              <div className="loader-bar-fill" style={{ width: `${pct}%` }}>
-                <div className="bar-shine" />
-              </div>
-              {[25, 50, 75].map(t => (
-                <div
-                  key={t}
-                  className={`bar-tick ${pct >= t ? 'tick-on' : ''}`}
-                  style={{ left: `${t}%` }}
-                />
-              ))}
-            </div>
-          </div>
-
-        
-        </div>
-      </div>
-
-
-      {/* Royal curtain slam panels */}
-      <div className={`slam-panel slam-top ${isSlam ? 'slam-active' : ''}`} />
-      <div className={`slam-panel slam-bot ${isSlam ? 'slam-active' : ''}`} />
-
-    </div>
+  return (
+    <path
+      ref={pathRef}
+      d={d}
+      stroke={color}
+      strokeWidth={strokeWidth}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      fill="none"
+      style={animatedStyle}
+    />
   );
 }
