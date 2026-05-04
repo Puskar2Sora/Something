@@ -14,12 +14,12 @@ import { useEffect, useRef, useState } from "react";
  *   onComplete?: () => void   — fires after animation is fully done
  *   duration?:   number (ms)  — total time before onComplete (default: 11500)
  */
-export default function Intro({ onComplete, duration = 11500 }) {
+export default function Intro({ onComplete, duration = 6000 }) {
   const [phase, setPhase] = useState("drawing"); // "drawing" | "hold" | "fading" | "done"
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase("hold"),   10000);
-    const t2 = setTimeout(() => setPhase("fading"), 10700);
+    const t1 = setTimeout(() => setPhase("hold"),   5000);
+    const t2 = setTimeout(() => setPhase("fading"), 5400);
     const t3 = setTimeout(() => {
       setPhase("done");
       onComplete?.();
